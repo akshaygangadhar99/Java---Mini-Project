@@ -39,7 +39,7 @@ MySQL has been selected as the RDBMS for our portal. There are 10 tables in our 
  **street_id**: references _tblStreet(street_id) _   
 
 - ### tblApartment:  
- ![image](https://user-images.githubusercontent.com/118504392/235843609-380a6f55-c90f-4dd7-82c4-8b880b7f1a0a.png) 
+ ![image](https://user-images.githubusercontent.com/118504392/235843609-380a6f55-c90f-4dd7-82c4-8b880b7f1a0a.png)  
  **bld_id**: references _tblBuilding(bld_id)_ 
 
 - ### tblAptBooking:  
@@ -54,7 +54,7 @@ MySQL has been selected as the RDBMS for our portal. There are 10 tables in our 
  **apt_bed_id**: references _tblAptBooking(bed_id)_   
  
 ## Database Rules  
-To ease the backend programming load, we have implemented several rules for the entry of attributes into the table in our database. These rules are briefly described (table-wise) below:  
+To ease the backend programming load, we have implemented several rules for the entry of attributes into the tables in our database. These rules are briefly described (table-wise) below:  
 - ### tblUser  
   - user_gender:  
     - 1 - Male  
