@@ -9,15 +9,15 @@
 - We are developing a Roommate Portal for the university students. The objective is to develop a fast and efficient system wherein students can check for available housing based on a number of filters such as pricing, distance from campus and room-sharing.  
 - We hope this serves as a good foundation to help our university develop a real-time portal which can help smoothen the hostel-booking process in the near future.  
 
-## Database Rules  
+## Database   
 MySQL has been selected as the RDBMS for our portal. There are 10 tables in our MySQL database. These are:  
 - ### tblStreet:  
   - street_id (PK): varchar(10)  
   - street_name: varchar(50)  
-- tblCourse:  
+- ### tblCourse:  
   - course_id (PK): varchar(10)  
   - course_name: varchar(100)  
-- tblUser:
+- ### tblUser:
   - user_id (PK): varchar(10)  
   - user_fname: varchar(100)  
   - user_lname: varchar(100)  
@@ -33,7 +33,7 @@ MySQL has been selected as the RDBMS for our portal. There are 10 tables in our 
   - user_type: int  
   - user_status: int  
   - user_password: varchar(100)  
-- tblPreferences:
+- ### tblPreferences:
   - user_id (FK): varchar(10) -> references tblUser(user_id)  
   - user_food_preference: int  
   - user_bio: varchar(100)  
@@ -42,7 +42,7 @@ MySQL has been selected as the RDBMS for our portal. There are 10 tables in our 
   - user_smoker: int  
   - user_alcohol: int  
   - user_language: varchar(250)  
-- tblVilla:  
+- ### tblVilla:  
   - villa_id (PK): varchar(10)  
   - street_id (FK): varchar(10) -> references tblStreet(street_id)  
   - villa_no: varchar(10)  
@@ -51,30 +51,30 @@ MySQL has been selected as the RDBMS for our portal. There are 10 tables in our 
   - room_3: int  
   - uni_distance: float  
   - availability  
-- tblVillaBooking:  
+- ### tblVillaBooking:  
   - bed_id (PK): varchar(10)  
   - villa_id (FK): varchar(10) -> references tblVilla(villa_id)  
   - user_id (FK): varchar(10) -> references tblUser(user_id)  
   - availability: int  
-- tblBuilding:  
+- ### tblBuilding:  
   - bld_id (PK): varchar(10)  
   - street_id (FK): varchar(10) -> references tblStreet(street_id)  
   - bld_name: varchar(100)  
   - uni_distance: float  
   - availability: int  
-- tblApartment:  
+- ### tblApartment:  
   - apt_id (PK): varchar(10)  
   - bld_id (FK): varchar(10) -> references tblBuilding(bld_id)  
   - room_1: int  
   - room_2: int  
   - room_3: int  
   - availability: int  
-- tblAptBooking:  
+- ### tblAptBooking:  
   - bed_id (PK): varchar(10)  
   - apt_id (FK): varchar(10) -> references tblApartment(apt_id)  
   - user_id (FK): varchar(10) -> references tblUser(user_id)  
   - availability: int  
-- tblBookingDetails:  
+- ### tblBookingDetails:  
   - booking_id (PK): varchar(10)  
   - user_id (FK): varchar(10) -> references tblUser(user_id)  
   - booking_date: date  
@@ -82,4 +82,18 @@ MySQL has been selected as the RDBMS for our portal. There are 10 tables in our 
   - villa_bed_id: varchar(10) -> references tblVillaBooking(bed_id)  
   - apt_bed_id: varchar(10) -> references tblAptBooking(bed_id)  
  
- 
+## Database Rules  
+To ease the backend programming load, we have implemented several rules for the entry of attributes into the table in our database. These rules are briefly described (table-wise) below:  
+- ### tblUser  
+  - user_gender:  
+    - 1 - Male  
+    - 2 - Female  
+    - 3 - Others  
+  - user_type:  
+    - 1 - Student  
+    - 2 - Admin  
+  - user_status:  
+    - 1 - Active  
+    - 2 - Inactive  
+- ### tblPreferences  
+  -   
