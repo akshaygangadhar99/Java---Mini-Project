@@ -96,4 +96,28 @@ To ease the backend programming load, we have implemented several rules for the 
     - 1 - Active  
     - 2 - Inactive  
 - ### tblPreferences  
-  -   
+  - user_food_preferences:  
+    - 1 - Veg  
+    - 2 - Non-veg  
+    - 3 - Both  
+  - user_bio:  
+    - User is required to write a bio briefly describing their interests, hobbies, and anything else they would like others to know about themselves within a 1000 charaacter limit.  
+  - user_personality:  
+    - 0 - Introvert  
+    - 5 - Ambivert  
+    - 10 - Extrovert
+  - user_cooking_ability:  
+    - 1 - Cannot cook  
+    - 2 - Can cook (partially)  
+    - 3 - Can cook well  
+  - user_smoker:  
+    - 1 - non-smoker  
+    - 2 - occasional smoker  
+    - 3 - heavy smoker  
+  - user_alcohol:  
+    - 1 - non-consumer  
+    - 2 - occasional drinker  
+    - 3 - heavy drinker  
+  - user_language:  
+    - User is required to sequentially list all languages they can speak  
+ 
