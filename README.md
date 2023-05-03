@@ -18,8 +18,8 @@ MySQL has been selected as the RDBMS for our portal. There are 10 tables in our 
 ![image](https://user-images.githubusercontent.com/118504392/235843256-80c71970-79b2-42bc-a2a2-76b989934e74.png)
 
 - ### tblUser:
-![image](https://user-images.githubusercontent.com/118504392/235843327-18960920-d56f-4d50-bf0b-13cd700001af.png)   
-  - user_course_id (FK): varchar(10) -> references tblCourse(course_id)  
+![image](https://user-images.githubusercontent.com/118504392/235843327-18960920-d56f-4d50-bf0b-13cd700001af.png)  
+ - _user_course_id: references tblCourse(course_id)_  
 
 - ### tblPreferences:  
 ![image](https://user-images.githubusercontent.com/118504392/235843431-aa468a74-25d0-403b-b9f8-e9a8c5d5e92a.png)  
