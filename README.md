@@ -11,13 +11,13 @@
 
 ## Database Rules  
 MySQL has been selected as the RDBMS for our portal. There are 10 tables in our MySQL database. These are:  
-(1) tblStreet:  
+- tblStreet:  
   - street_id (PK): varchar(10)  
   - street_name: varchar(50)  
-(2) tblCourse:  
+- tblCourse:  
   - course_id (PK): varchar(10)  
   - course_name: varchar(100)  
-(3) tblUser:
+- tblUser:
   - user_id (PK): varchar(10)  
   - user_fname: varchar(100)  
   - user_lname: varchar(100)  
@@ -33,7 +33,7 @@ MySQL has been selected as the RDBMS for our portal. There are 10 tables in our 
   - user_type: int  
   - user_status: int  
   - user_password: varchar(100)  
-(4) tblPreferences:
+- tblPreferences:
   - user_id (FK): varchar(10) -> references tblUser(user_id)  
   - user_food_preference: int  
   - user_bio: varchar(100)  
@@ -42,7 +42,7 @@ MySQL has been selected as the RDBMS for our portal. There are 10 tables in our 
   - user_smoker: int  
   - user_alcohol: int  
   - user_language: varchar(250)  
-(5) tblVilla:  
+- tblVilla:  
   - villa_id (PK): varchar(10)  
   - street_id (FK): varchar(10) -> references tblStreet(street_id)  
   - villa_no: varchar(10)  
@@ -51,30 +51,30 @@ MySQL has been selected as the RDBMS for our portal. There are 10 tables in our 
   - room_3: int  
   - uni_distance: float  
   - availability  
-(6) tblVillaBooking:  
+- tblVillaBooking:  
   - bed_id (PK): varchar(10)  
   - villa_id (FK): varchar(10) -> references tblVilla(villa_id)  
   - user_id (FK): varchar(10) -> references tblUser(user_id)  
   - availability: int  
-(7) tblBuilding:  
+- tblBuilding:  
   - bld_id (PK): varchar(10)  
   - street_id (FK): varchar(10) -> references tblStreet(street_id)  
   - bld_name: varchar(100)  
   - uni_distance: float  
   - availability: int  
-(8) tblApartment:  
+- tblApartment:  
   - apt_id (PK): varchar(10)  
   - bld_id (FK): varchar(10) -> references tblBuilding(bld_id)  
   - room_1: int  
   - room_2: int  
   - room_3: int  
   - availability: int  
-(9) tblAptBooking:  
+- tblAptBooking:  
   - bed_id (PK): varchar(10)  
   - apt_id (FK): varchar(10) -> references tblApartment(apt_id)  
   - user_id (FK): varchar(10) -> references tblUser(user_id)  
   - availability: int  
-(10)tblBookingDetails:  
+- tblBookingDetails:  
   - booking_id (PK): varchar(10)  
   - user_id (FK): varchar(10) -> references tblUser(user_id)  
   - booking_date: date  
