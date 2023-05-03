@@ -12,7 +12,7 @@
 ## Database   
 MySQL has been selected as the RDBMS for our portal. There are 10 tables in our MySQL database. These are:  
 - ### tblStreet:  
-![image](https://user-images.githubusercontent.com/118504392/235843172-1bd245ca-4ba4-4224-9b59-1c540b65d727.png)
+ - ![image](https://user-images.githubusercontent.com/118504392/235843172-1bd245ca-4ba4-4224-9b59-1c540b65d727.png)
  
 - ### tblCourse:  
 ![image](https://user-images.githubusercontent.com/118504392/235843256-80c71970-79b2-42bc-a2a2-76b989934e74.png)
