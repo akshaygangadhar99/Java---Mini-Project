@@ -19,39 +19,39 @@ MySQL has been selected as the RDBMS for our portal. There are 10 tables in our 
 
 - ### tblUser:
  ![image](https://user-images.githubusercontent.com/118504392/235843327-18960920-d56f-4d50-bf0b-13cd700001af.png)  
- **_user_course_id**: references tblCourse(course_id)_  
+ **user_course_id**: references _tblCourse(course_id)_  
 
 - ### tblPreferences:  
-![image](https://user-images.githubusercontent.com/118504392/235843431-aa468a74-25d0-403b-b9f8-e9a8c5d5e92a.png)  
- - **_user_id**: references tblUser(user_id)_  
+ ![image](https://user-images.githubusercontent.com/118504392/235843431-aa468a74-25d0-403b-b9f8-e9a8c5d5e92a.png)  
+ **_user_id**: references tblUser(user_id)_  
 
 - ### tblVilla:  
-![image](https://user-images.githubusercontent.com/118504392/235843471-8e1bdec8-cdba-44b0-8b67-d907940b2f44.png)  
- - _**street_id**: references tblStreet(street_id)_  
+ ![image](https://user-images.githubusercontent.com/118504392/235843471-8e1bdec8-cdba-44b0-8b67-d907940b2f44.png)  
+ **street_id**: references tblStreet(street_id)  
  
 - ### tblVillaBooking:  
-![image](https://user-images.githubusercontent.com/118504392/235843518-63788ea3-e950-4b8f-9322-3a4935192572.png)   
- - _**villa_id**: references tblVilla(villa_id) _
- - _**user_id**: tblUser(user_id) _ 
+ ![image](https://user-images.githubusercontent.com/118504392/235843518-63788ea3-e950-4b8f-9322-3a4935192572.png)   
+ **villa_id**: references tblVilla(villa_id)  
+ **user_id**: tblUser(user_id)  
  
 - ### tblBuilding:  
-![image](https://user-images.githubusercontent.com/118504392/235843561-66f02447-d9bb-4df6-b0a3-d9f8acf14bd8.png)  
- - _**street_id**: references tblStreet(street_id)_  
+ ![image](https://user-images.githubusercontent.com/118504392/235843561-66f02447-d9bb-4df6-b0a3-d9f8acf14bd8.png)  
+ **street_id**: references tblStreet(street_id)_  
 
 - ### tblApartment:  
-![image](https://user-images.githubusercontent.com/118504392/235843609-380a6f55-c90f-4dd7-82c4-8b880b7f1a0a.png) 
- - _**bld_id**: references tblBuilding(bld_id)_  
+ ![image](https://user-images.githubusercontent.com/118504392/235843609-380a6f55-c90f-4dd7-82c4-8b880b7f1a0a.png) 
+ **bld_id**: references tblBuilding(bld_id) 
 
 - ### tblAptBooking:  
-![image](https://user-images.githubusercontent.com/118504392/235843647-e237fb11-e736-402b-93ec-13288014a070.png)   
- - _**apt_id**: references tblApartment(apt_id)_  
- - _**user_id**: references tblUser(user_id)_
+ ![image](https://user-images.githubusercontent.com/118504392/235843647-e237fb11-e736-402b-93ec-13288014a070.png)   
+ **apt_id**: references tblApartment(apt_id)  
+ **user_id**: references tblUser(user_id)
 
 - ### tblBookingDetails:  
-![image](https://user-images.githubusercontent.com/118504392/235843726-79d44f62-f2a2-4f48-a4c5-e0fe978671fb.png)  
- - _**user_id**: references tblUser(user_id)_  
- - _**villa_bed_id**: references tblVillaBooking(bed_id)_  
- - _**apt_bed_id**: references tblAptBooking(bed_id)_  
+ ![image](https://user-images.githubusercontent.com/118504392/235843726-79d44f62-f2a2-4f48-a4c5-e0fe978671fb.png)  
+ **user_id**: _references tblUser(user_id)_  
+ **villa_bed_id**: _references tblVillaBooking(bed_id)_  
+ **apt_bed_id**: _references tblAptBooking(bed_id)_   
  
 ## Database Rules  
 To ease the backend programming load, we have implemented several rules for the entry of attributes into the table in our database. These rules are briefly described (table-wise) below:  
