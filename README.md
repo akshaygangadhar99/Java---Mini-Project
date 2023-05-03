@@ -11,7 +11,7 @@
 
 ## Database Rules  
 MySQL has been selected as the RDBMS for our portal. There are 10 tables in our MySQL database. These are:  
-- tblStreet:  
+- ### tblStreet:  
   - street_id (PK): varchar(10)  
   - street_name: varchar(50)  
 - tblCourse:  
