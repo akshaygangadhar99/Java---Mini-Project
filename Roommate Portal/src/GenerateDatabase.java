@@ -33,7 +33,6 @@ public class GenerateDatabase {
             -> tblVilla
             -> tblVillaBooking
             -> tblBookingDetails
-
          */
 
         String createStreet = "CREATE TABLE IF NOT EXISTS tblStreet (street_id varchar(10)," +
@@ -59,7 +58,8 @@ public class GenerateDatabase {
                 "CONSTRAINT FOREIGN KEY (user_id) REFERENCES tblUser(user_id))";
 
         String createBuilding = "CREATE TABLE IF NOT EXISTS tblBuilding (bld_id varchar(10)," +
-                "street_id varchar(10), bld_name varchar(100), uni_distance float, availability int," +
+                "street_id varchar(10), bld_name varchar(100), uni_distance float, availability int, " +
+                "three_sharing_avail int, four_sharing_avail int," +
                 "CONSTRAINT PRIMARY KEY (bld_id)," +
                 "CONSTRAINT FOREIGN KEY (street_id) REFERENCES tblStreet(street_id))";
 
@@ -152,6 +152,22 @@ public class GenerateDatabase {
         }
     }
 
+    /*
+        Our hostel database contains the following information:
+            -> There are 6 streets, namely:
+                (i) Thicket Crescent (25 x villas): 250 capacity
+                (ii) Thicket (25 x villas): 250 capacity
+                (iii) Dasve (10 x villas): 100 capacity
+                (iv) Portofino (9 blocks x 2 buildings per block; 5 floors (G+4) x 4 apartments per floor): ((18*20)=360)*10 = 3600 capacity
+                (v) Club View (5 x villas; 2 x buildings : 5 floors (G+4) x 4 apartments per floor): 50 + 400 = 450 capacity
+                (vi) Hill View (35 x villas): 350 capacity
+
+            -> Total housing capacity = 250 + 250 + 100 + 3600 + 450 + 350 = 5000
+
+        For our initial database, the entire street of Portofino encompasses of apartments.
+        The buildings are named as: A1, A2, B1, B2, ... , I1, I2 -> Which results in a total of 18 buildings
+    */
+
     public static void addBuilding(){
         /*
         In this method, we insert default Portofino database values into tblBuilding
@@ -182,7 +198,7 @@ public class GenerateDatabase {
 
                     String insertBuilding = "INSERT INTO tblBuilding " +
                             "(bld_id, street_id, bld_name, uni_distance, availability) VALUES (" +
-                            "'" + Integer.toString(PK) + "','4','" + bldName + "'," + Float.toString(distToUni) + ",1" +
+                            "'" + Integer.toString(PK) + "','4','" + bldName + "'," + Float.toString(distToUni) + ",1,1,1" +
                             ")";
 
                     stmt.executeUpdate(insertBuilding);
@@ -403,33 +419,6 @@ public class GenerateDatabase {
             e.printStackTrace();
         }
     }
-
-    public static void genDefaultValues(){
-        /*
-        This method is intended to store a set of default values in the tables pertaining to the villa and apartment
-        database.
-
-        Our hostel database contains the following information:
-            -> There are 6 streets, namely:
-                (i) Thicket Crescent (25 x villas): 250 capacity
-                (ii) Thicket (25 x villas): 250 capacity
-                (iii) Dasve (10 x villas): 100 capacity
-                (iv) Portofino (9 blocks x 2 buildings per block; 5 floors (G+4) x 4 apartments per floor): ((18*20)=360)*10 = 3600 capacity
-                (v) Club View (5 x villas; 2 x buildings : 5 floors (G+4) x 4 apartments per floor): 50 + 400 = 450 capacity
-                (vi) Hill View (35 x villas): 350 capacity
-
-            -> Total housing capacity = 250 + 250 + 100 + 3600 + 450 + 350 = 5000
-
-         */
-
-        /*
-        For our initial database, the entire street of Portofino encompasses of apartments.
-        The buildings are named as: A1, A2, B1, B2, ... , I1, I2 -> Which results in a total of 18 buildings
-         */
-    }
-
-
-
     public static void main(String[] args) throws SQLException {
         // Create the database - dbPortal
         // createDB();
@@ -450,8 +439,6 @@ public class GenerateDatabase {
         // addVillaBooking();
 
         // addAdmin();
-
-
 
     }
 
