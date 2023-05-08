@@ -86,7 +86,7 @@ public class GenerateDatabase {
                  "CONSTRAINT FOREIGN KEY (villa_id) REFERENCES tblVilla(villa_id)," +
                  "CONSTRAINT FOREIGN KEY (user_id) REFERENCES tblUser(user_id))";
 
-         String createBookingDetails = "CREATE TABLE IF NOT EXISTS tblBookingDetails (booking_id varchar(10)," +
+         String createBookingDetails = "CREATE TABLE IF NOT EXISTS tblBookingDetails (booking_id int NOT NULL AUTO_INCREMENT," +
                  "user_id varchar(10), booking_date date, booking_time time," +
                  "villa_bed_id varchar(10), apt_bed_id varchar(10)," +
                  "CONSTRAINT PRIMARY KEY (booking_id)," +
@@ -197,7 +197,8 @@ public class GenerateDatabase {
                     // availability = availability
 
                     String insertBuilding = "INSERT INTO tblBuilding " +
-                            "(bld_id, street_id, bld_name, uni_distance, availability) VALUES (" +
+                            "(bld_id, street_id, bld_name, uni_distance, availability,three_sharing_avail," +
+                            "four_sharing_avail) VALUES (" +
                             "'" + Integer.toString(PK) + "','4','" + bldName + "'," + Float.toString(distToUni) + ",1,1,1" +
                             ")";
 
@@ -237,7 +238,7 @@ public class GenerateDatabase {
                 float dist = distToUni[i];
                 for(int j=1; j<=numOfVillas[i]; j++){
                     String insertVilla = "INSERT INTO tblVilla " +
-                            "(villa_id,street_id,villa_no,room_1,room_2,room_3,uni_distance,availability) " +
+                            "(villa_id,street_id,villa_no,room_1,room_2,room_3,uni_distance,availability)" +
                             "VALUES (" +
                             "'"+Integer.toString(PK)+"','"+streetID[i]+"','" +
                             Integer.toString(j) + "',4,3,3,"+ Float.toString(dist)+",1)";
@@ -270,7 +271,7 @@ public class GenerateDatabase {
                 for(int aptNo: apt){
                     for(int i=0; i<4; i++){
                         String insertApt =  "INSERT INTO tblApartment " +
-                                "(apt_id,bld_id,apt_no,room_1,room_2,room_3,availability) " +
+                                "(apt_id,bld_id,apt_no,room_1,room_2,room_3,availability)" +
                                 "VALUES (" +
                                 "'"+Integer.toString(PK)+"','"+Integer.toString(bldID)+"','" +
                                 Integer.toString(aptNo+i)+"',4,3,3,1" +

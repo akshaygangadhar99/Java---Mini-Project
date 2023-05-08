@@ -144,6 +144,7 @@ public class MinorMethods {
         /*
         This method returns a 2D String array containing information pertaining to available buildings
         based on room-availability. Details are stored as follows:
+        -> Column 0: Building ID (UNIQUE)
         -> Column 1: Street Name
         -> Column 2: Building Name
         -> Column 3: Distance to University (km)
@@ -152,7 +153,7 @@ public class MinorMethods {
         String[] street = {"4"};
         int row = 0;
         // Since there are 18 buildings
-        String[][] bldDetails = new String[18][3];
+        String[][] bldDetails = new String[18][4];
 
         if(roomType==1){
             // 3-sharing
@@ -162,22 +163,25 @@ public class MinorMethods {
                 Statement stmt = connection.createStatement();
 
                 String distToUni;
+                String bldID;
                 String bldNo;
                 String streetName;
 
                 for(String streetID : street){
                     streetName = getStName(streetID);
 
-                    String retrieveDetails = "SELECT bld_name,uni_distance FROM tblBuilding WHERE " +
+                    String retrieveDetails = "SELECT bld_id,bld_name,uni_distance FROM tblBuilding WHERE " +
                             "availability=1 and street_id="+streetID+" and three_sharing_avail=1";
                     ResultSet rs = stmt.executeQuery(retrieveDetails);
                     while(rs.next()){
+                        bldID = rs.getString("bld_id");
                         bldNo = rs.getString("bld_name");
                         distToUni = Float.toString(rs.getFloat("uni_distance"));
 
-                        bldDetails[row][0] = streetName;
-                        bldDetails[row][1] = bldNo;
-                        bldDetails[row][2] = distToUni;
+                        bldDetails[row][0] = bldID;
+                        bldDetails[row][1] = streetName;
+                        bldDetails[row][2] = bldNo;
+                        bldDetails[row][3] = distToUni;
 
                         row += 1;
                     }
@@ -196,22 +200,25 @@ public class MinorMethods {
                 Statement stmt = connection.createStatement();
 
                 String distToUni;
+                String bldID;
                 String bldNo;
                 String streetName;
 
                 for(String streetID : street){
                     streetName = getStName(streetID);
 
-                    String retrieveDetails = "SELECT bld_name,uni_distance FROM tblBuilding WHERE " +
+                    String retrieveDetails = "SELECT bld_id,bld_name,uni_distance FROM tblBuilding WHERE " +
                             "availability=1 and street_id="+streetID+" and four_sharing_avail=1";
                     ResultSet rs = stmt.executeQuery(retrieveDetails);
                     while(rs.next()){
+                        bldID = rs.getString("bld_id");
                         bldNo = rs.getString("bld_name");
                         distToUni = Float.toString(rs.getFloat("uni_distance"));
 
-                        bldDetails[row][0] = streetName;
-                        bldDetails[row][1] = bldNo;
-                        bldDetails[row][2] = distToUni;
+                        bldDetails[row][0] = bldID;
+                        bldDetails[row][1] = streetName;
+                        bldDetails[row][2] = bldNo;
+                        bldDetails[row][3] = distToUni;
 
                         row += 1;
                     }
@@ -225,4 +232,5 @@ public class MinorMethods {
         }
         return null;
     }
+
 }

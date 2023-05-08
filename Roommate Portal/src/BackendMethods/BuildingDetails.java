@@ -29,7 +29,7 @@ public class BuildingDetails {
         Building[] bldObj = new Building[bldDet.length];
 
         for(int i=0; i<bldDet.length; i++){
-            bldObj[i] = new Building(bldDet[i][0],bldDet[i][1],Float.parseFloat(bldDet[i][2]));
+            bldObj[i] = new Building(bldDet[i][0],bldDet[i][1],bldDet[i][2],Float.parseFloat(bldDet[i][3]));
         }
 
         return bldObj;

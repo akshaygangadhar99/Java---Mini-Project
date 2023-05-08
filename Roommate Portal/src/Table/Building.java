@@ -26,8 +26,9 @@ public class Building {
         this.four_sharing_avail = fourSharing;
     }
 
-    public Building(String streetName, String bldName, float uniDist){
+    public Building(String bldID, String streetName, String bldName, float uniDist){
         // Constructor
+        this.bld_id = bldID;
         this.street_name = streetName;
         this.bld_name = bldName;
         this.uni_distance = uniDist;
