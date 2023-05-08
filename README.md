@@ -36,7 +36,7 @@ MySQL has been selected as the RDBMS for our portal. There are 10 tables in our 
  
 - ### tblBuilding:  
  ![image](https://user-images.githubusercontent.com/118504392/235843561-66f02447-d9bb-4df6-b0a3-d9f8acf14bd8.png)  
- **street_id**: references _tblStreet(street_id) _   
+ **street_id**: references _tblStreet(street_id)_  
 
 - ### tblApartment:  
  ![image](https://user-images.githubusercontent.com/118504392/235843609-380a6f55-c90f-4dd7-82c4-8b880b7f1a0a.png)  
