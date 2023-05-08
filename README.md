@@ -22,7 +22,7 @@ MySQL has been selected as the RDBMS for our portal. There are 10 tables in our 
  **user_course_id**: references _tblCourse(course_id)_  
 
 - ### tblPreferences:  
- ![image](https://user-images.githubusercontent.com/118504392/235843431-aa468a74-25d0-403b-b9f8-e9a8c5d5e92a.png)  
+ ![image](https://user-images.githubusercontent.com/118504392/236744490-f5344089-2c8b-4d97-ac6b-a1390de7e659.png)  
  **user_id**: references _tblUser(user_id)_  
 
 - ### tblVilla:  
