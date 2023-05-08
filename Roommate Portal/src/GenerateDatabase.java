@@ -52,7 +52,7 @@ public class GenerateDatabase {
                 "CONSTRAINT PRIMARY KEY (user_id), " +
                 "CONSTRAINT FOREIGN KEY (user_course_id) REFERENCES tblCourse(course_id))";
 
-        String createPreferences = "CREATE TABLE IF NOT EXISTS tblPreferences (user_id varchar(10)," +
+        String createPreferences = "CREATE TABLE IF NOT EXISTS tblPreferences (user_id varchar(10) PRIMARY KEY," +
                 "user_food_preference int, user_bio varchar(1000), user_personality int, user_cooking_ability int," +
                 "user_smoker int, user_alcohol int, user_language varchar(250)," +
                 "CONSTRAINT FOREIGN KEY (user_id) REFERENCES tblUser(user_id))";
