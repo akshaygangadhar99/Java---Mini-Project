@@ -455,6 +455,6 @@ public class UpdateTables {
     }
 
     public static void main(String[] args) {
-        System.out.println(updateTables("170933068","68","Apartment"));
+        System.out.println(updateTables("170933068","125","Villa"));
     }
 }

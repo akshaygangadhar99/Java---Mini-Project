@@ -359,10 +359,213 @@ public class AdminMethods {
         return false;
     }
 
+    public static Boolean deleteUserBooking(String user_id){
+        /*
+        Assuming a user has booked a particular bed, this method deletes this booking and subsequently updates the
+        villa/apartment tables for the same
+         */
+
+        try{
+            String dbURL = url + "dbPortal";
+            Connection connection = DriverManager.getConnection(dbURL,user,password);
+            Statement stmt = connection.createStatement();
+
+            // First we retrieve the bed_id booked by the user -STILL NEED TO DELETE USER FROM TBLBOOKING DETAILS
+            String getBedID = "SELECT villa_bed_id, apt_bed_id " +
+                    "FROM tblBookingDetails " +
+                    "WHERE user_id = '"+user_id+"'";
+
+            ResultSet rs = stmt.executeQuery(getBedID);
+
+            String villa_bed_id = "";
+            String apt_bed_id = "";
+            if(rs != null){
+                while(rs.next()){
+                    villa_bed_id = rs.getString("villa_bed_id");
+                    apt_bed_id = rs.getString("apt_bed_id");
+                }
+                if(villa_bed_id!=null){
+                    // We update villa tables -> tblVillaBooking & tblVilla
+                    String updateVillaBooking = "UPDATE tblVillaBooking " +
+                            "SET availability = 1, " +
+                            "user_id = NULL " +
+                            "WHERE bed_id = '"+villa_bed_id+"'";
+
+                    if(stmt.executeUpdate(updateVillaBooking)>0){
+                        String getVillaID = "SELECT villa_id FROM tblVillaBooking WHERE bed_id = '"+villa_bed_id+"'";
+                        ResultSet rs2 = stmt.executeQuery(getVillaID);
+                        if(rs2 != null){
+                            String villa_id = "";
+                            while(rs2.next()){
+                                villa_id = rs2.getString("villa_id");
+                            }
+                            // Now we modify corresponding availability & room_1/room_2/room_3 attributes in tblVilla
+                            int roomNo = Integer.parseInt(villa_bed_id)%10;
+                            if (roomNo==0){
+                                roomNo = 10;
+                            }
+
+                            String room = "";
+                            if(roomNo<=4){
+                                room = "room_1";
+                            } else if (roomNo>4 && roomNo<=7) {
+                                room = "room_2";
+                            } else{
+                                room = "room_3";
+                            }
+
+                            String updateVilla = "UPDATE tblVilla " +
+                                    "SET availability = 1, " +
+                                    room+" = "+room+" + 1 " +
+                                    "WHERE villa_id = '"+villa_id+"'";
+
+                            if(stmt.executeUpdate(updateVilla)>0){
+                                // Finally, we can delete the user booking details from tblBookingDetails
+                                String deleteUserBooking = "DELETE FROM tblBookingDetails WHERE user_id = '"+user_id+"'";
+                                if(stmt.executeUpdate(deleteUserBooking)>0){
+                                    return true;
+                                } else {
+                                    return false;
+                                }
+                            } else {
+                                return false;
+                            }
+                        } else{
+                            return false;
+                        }
+                    } else{
+                        return false;
+                    }
+                } else{
+                    /*
+                    We update apartment tables:
+                        -> tblAptBooking
+                        -> tblApartment
+                        -> tblBuilding
+                     */
+
+                    // Let's first retrieve the apt_id from tblAptBooking
+                    String getAptID = "SELECT apt_id FROM tblAptBooking WHERE bed_id = '"+apt_bed_id+"'";
+
+                    ResultSet rs3 = stmt.executeQuery(getAptID);
+
+                    if(rs3 != null){
+                        String apt_id = "";
+                        while(rs3.next()){
+                            apt_id = rs3.getString("apt_id");
+                        }
+
+                        // We modify the availability of bed to 1, remove user_id and move on to the next stage
+                        String updateAptBooking = "UPDATE tblAptBooking " +
+                                "SET availability = 1, " +
+                                "user_id = NULL " +
+                                "WHERE bed_id = '"+apt_bed_id+"'";
+
+                        if(stmt.executeUpdate(updateAptBooking)>0){
+                            // Now, we move on to updating tblApartment
+                            // First we retrieve bld_id
+                            String getBldID = "SELECT bld_id FROM tblApartment WHERE apt_id = '"+apt_id+"'";
+                            ResultSet rs4 = stmt.executeQuery(getBldID);
+                            if(rs4 != null){
+                                String bld_id = "";
+                                while(rs4.next()){
+                                    bld_id = rs4.getString("bld_id");
+                                }
+
+                                int bedNo = Integer.parseInt(apt_bed_id)%10;
+
+                                if(bedNo==0){
+                                    bedNo = 10;
+                                }
+
+                                if(bedNo<=4){
+                                    // Four-sharing: room_1
+                                    // Update tblApartment
+                                    String updateApartment = "UPDATE tblApartment " +
+                                            "SET availability = 1, " +
+                                            "room_1 = room_1 + 1 " +
+                                            "WHERE apt_id = '"+apt_id+"'";
+
+                                    if(stmt.executeUpdate(updateApartment)>0){
+                                        // modify tblBuilding
+                                        String updateBuilding = "UPDATE tblBuilding " +
+                                                "SET four_sharing_avail = 1, " +
+                                                "availability = 1 " +
+                                                "WHERE bld_id = '"+bld_id+"'";
+                                        if(stmt.executeUpdate(updateBuilding)>0){
+                                            return true;
+                                        } else{
+                                            return false;
+                                        }
+                                    } else{
+                                        return false;
+                                    }
+                                } else{
+                                    // First update tblBuilding: three_sharing_avail and availability
+                                    String updateBuilding = "UPDATE tblBuilding " +
+                                            "SET availability = 1, " +
+                                            "three_sharing_avail = 1 " +
+                                            "WHERE bld_id = '"+bld_id+"'";
+                                    if(stmt.executeUpdate(updateBuilding)>0){
+                                        // Now update tblApartment room_2/room_3
+                                        String updateApartment = "";
+                                        if(bedNo<=7){
+                                            // room_2
+                                            updateApartment = "UPDATE tblApartment " +
+                                                    "SET room_2 = room_2 + 1, " +
+                                                    "availability = 1 " +
+                                                    "WHERE apt_id = '"+apt_id+"'";
+                                        } else{
+                                            // room_3
+                                            updateApartment = "UPDATE tblApartment " +
+                                                    "SET room_3 = room_3 + 1, " +
+                                                    "availability = 1 " +
+                                                    "WHERE apt_id = '"+apt_id+"'";
+                                        }
+
+                                        if(stmt.executeUpdate(updateApartment)>0){
+                                            // Now that all required modifications are done, we can delete user booking
+                                            // from tblBookingDetails
+                                            String deleteUserBooking = "DELETE FROM tblBookingDetails WHERE user_id = '"+user_id+"'";
+                                            if(stmt.executeUpdate(deleteUserBooking)>0){
+                                                return true;
+                                            } else {
+                                                return false;
+                                            }
+                                        } else{
+                                            return false;
+                                        }
+                                    } else{
+                                        return false;
+                                    }
+                                }
+
+                            } else{
+                                return false;
+                            }
+                        } else{
+                            return false;
+                        }
+                    } else{
+                        return false;
+                    }
+                }
+            } else{
+                return false;
+            }
+
+
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+        return false;
+    }
+
     public static void main(String[] args) {
-        //System.out.println(changeAptRoomAvailability("1",4,1));
-        //System.out.println(changeApartmentAvailability("1",1)); // WORKS PERFECTLY!!!
-        //System.out.println(changeBuildingAvailability("2",0)); // WORKS PERFECTLY!!!
-        System.out.println(changeVillaAvailability("1",1)); // WORKS PERFECTLY!!!
+        // System.out.println(changeAptRoomAvailability("1",4,1));
+        // System.out.println(changeApartmentAvailability("1",1)); // WORKS PERFECTLY!!!
+        // System.out.println(changeBuildingAvailability("2",0)); // WORKS PERFECTLY!!!
+        // System.out.println(changeVillaAvailability("1",1)); // WORKS PERFECTLY!!!
+        System.out.println(deleteUserBooking("170933068"));
     }
 }
