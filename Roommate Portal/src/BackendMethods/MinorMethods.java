@@ -54,6 +54,19 @@ public class MinorMethods {
         return newArr;
     }
 
+    public static String[] cropArray1D(int index, String[] oldArr){
+        /*
+        This method returns new array containing first "index" rows of oldArr
+         */
+
+        String[] newArr = new String[index];
+        for(int i=0; i<index; i++){
+            newArr[i] = oldArr[i];
+        }
+
+        return newArr;
+    }
+
     public static String[][] getVillaList(int roomType){
         /*
         This method returns a 2D String array containing information pertaining to available villas

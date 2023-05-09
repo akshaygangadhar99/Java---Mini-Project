@@ -222,10 +222,14 @@ public class UpdateTables {
         } else{
             return false;
         }
-
     }
 
     public static String updateAptBooking(String bed_id, String user_id){
+        /*
+        -> This method updates tblAptBooking - by inserting user_id and setting
+        availability to 0 for given bed_id
+        -> The method returns apt_id as a string
+         */
         String apt_id = "";
 
         try{
@@ -261,6 +265,10 @@ public class UpdateTables {
     }
 
     public static Boolean updateApartment(String apt_id, String bed_id){
+        /*
+
+         */
+
         String room = "";
         try{
             String dbURL = url + "dbPortal";
@@ -308,7 +316,6 @@ public class UpdateTables {
                     // Update three_sharing_avail for given building in tblBuilding
                     Boolean checkThree = checkApartmentAvailability(bld_id,2);
                     String updateThreeAvail = "";
-                    //int threeShareCheck = 0;
                     if(checkThree == null){
                         return false; // This implies that the checkApartmentAvailability() method has failed
                     } else if (!checkThree) {
@@ -331,7 +338,6 @@ public class UpdateTables {
                         availabilityCheck[1] = 1;
                         stmtExecCheck[1] = stmt.executeUpdate(updateFourAvail);
                     }
-
 
                     // Update availability of corresponding building in tblBuilding
                     String updateBldAvail = "";
@@ -378,8 +384,13 @@ public class UpdateTables {
 
     public static Boolean checkApartmentAvailability(String bld_id, int checkType){
         /*
-        Returns true if apartments are available in tblApartment for given bld_id
+        Returns true if apartments are available in tblApartment for given bld_id.
+        There are three types of checks:
+            (1) checkType = 1: Checks for apartment availability
+            (2) checkType = 2: Checks for three-sharing availability
+            (3) checkType = 3: Checks for four-sharing availability
          */
+
         try{
             String dbURL = url + "dbPortal";
             Connection connection = DriverManager.getConnection(dbURL,user,password);
