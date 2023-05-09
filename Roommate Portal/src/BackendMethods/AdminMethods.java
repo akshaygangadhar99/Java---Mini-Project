@@ -553,8 +553,6 @@ public class AdminMethods {
             } else{
                 return false;
             }
-
-
         } catch (SQLException e){
             e.printStackTrace();
         }
@@ -566,6 +564,6 @@ public class AdminMethods {
         // System.out.println(changeApartmentAvailability("1",1)); // WORKS PERFECTLY!!!
         // System.out.println(changeBuildingAvailability("2",0)); // WORKS PERFECTLY!!!
         // System.out.println(changeVillaAvailability("1",1)); // WORKS PERFECTLY!!!
-        System.out.println(deleteUserBooking("170933068"));
+        // System.out.println(deleteUserBooking("170933068")); // WORKS PERFECTLY!!!
     }
 }
