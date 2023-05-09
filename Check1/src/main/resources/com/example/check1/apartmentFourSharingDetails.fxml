@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="CENTER" prefHeight="592.0" style="-fx-background-color: lightblue;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.check1.ApartmentFourSharingDetailsController">
+    <ScrollPane hbarPolicy="NEVER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" vbarPolicy="NEVER">
+        <AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="573.0" prefWidth="644.0" style="-fx-background-color: lightblue; -fx-background-image: buildingImg.jpg;" VBox.vgrow="SOMETIMES" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+            <Label alignment="TOP_CENTER" layoutY="133.0" prefHeight="53.0" prefWidth="644.0" text="Bed Details" underline="true">
+                <font>
+                    <Font name="System Bold Italic" size="36.0" />
+                </font>
+            </Label>
+            <ImageView fitHeight="118.0" fitWidth="625.0" layoutX="5.0" layoutY="14.0" pickOnBounds="true">
+                 <image>
+                    <Image url="@../../../images/christLogo.png" />
+                 </image>
+            </ImageView>
+            <TableView fx:id="tableView" accessibleRole="PARENT" layoutX="33.0" layoutY="189.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="323.0" prefWidth="581.0">
+                <columns>
+                    <TableColumn fx:id="BedNumber" prefWidth="162.0000343322754" text="Bed Number">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="bedID" />
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn fx:id="Availability" prefWidth="160.66664123535156" text="Availability">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="availability" />
+                        </cellValueFactory>
+                    </TableColumn>
+                </columns>
+            </TableView>
+            <Hyperlink fx:id="goBack" alignment="TOP_LEFT" layoutX="14.0" layoutY="518.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#goBackToHome" text="Go back">
+            <font>
+               <Font name="System Bold" size="14.0" />
+            </font></Hyperlink>
+            </AnchorPane>
+    </ScrollPane>
+</VBox>
