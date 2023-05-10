@@ -35,6 +35,9 @@ public class ApartmentFourSharingDetailsController implements Initializable {
     private Hyperlink goBack;
     private String regID;
     private String apartmentID;
+    private int sharingChoice;
+    private int housingChoice;
+    private String buildingID;
 
     private ObservableList<ApartmentBed> apartmentBeds = FXCollections.observableArrayList();
 
@@ -44,6 +47,9 @@ public class ApartmentFourSharingDetailsController implements Initializable {
         String[] userChoice = readUserChoice();
         this.regID = userChoice[0];
         this.apartmentID = userChoice[1];
+        this.buildingID = userChoice[2];
+        this.housingChoice = Integer.parseInt(userChoice[3]);
+        this.sharingChoice = Integer.parseInt(userChoice[4]);
         sql="select bed_id,tblaptbooking.apt_id,user_id,tblaptbooking.availability,apt_no,tblaptbooking.availability" +
                 " from tblaptbooking join tblapartment on tblaptbooking.apt_id=tblapartment.apt_id " +
                 "where tblapartment.apt_id="+apartmentID+" and bed_id>"+(Integer.parseInt(apartmentID)-1)*10+
@@ -52,7 +58,7 @@ public class ApartmentFourSharingDetailsController implements Initializable {
         addColumnForBooking();
     }
     public String[] readUserChoice(){
-        String[] userChoice = new String[2];
+        String[] userChoice = new String[5];
         try {
             File file = new File(".userChoice.txt");
             FileReader fileReader = new FileReader(file);
@@ -71,7 +77,7 @@ public class ApartmentFourSharingDetailsController implements Initializable {
     }
     public void getDataFromDatabaseForVillaFourSharing(String sql){
         try {
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbPortal", "root", "0123456789");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbPortal", "root", "root");
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
             while (rs.next()) {
@@ -114,7 +120,7 @@ public class ApartmentFourSharingDetailsController implements Initializable {
 //                    alert.setContentText("Bed ID "+apartmentBed.getBedID()+"\n"+"Room"+apartmentBed.getRoomID()+"\n"+apartmentBed.getUserID()+"\n"+apartmentBed.getApartmentID());
 //                    alert.showAndWait();
                     UserAuthentication admin = new UserAuthentication();
-                    admin.writeToAHiddenFile(regID+"\n"+apartmentBed.getBedID()+"\n"+"apartment");
+                    admin.writeToAHiddenFile(regID+"\n"+apartmentBed.getBedID()+"\n"+"apartment"+"\n"+housingChoice+"\n"+sharingChoice+"\n"+buildingID);
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("userPreferencePage.fxml"));
                     Parent root = null;
                     try {
@@ -149,7 +155,7 @@ public class ApartmentFourSharingDetailsController implements Initializable {
                         alert.show();
                     } else{
                         UserAuthentication admin = new UserAuthentication();
-                        admin.writeToAHiddenFile(regID+"\n"+userId);
+                        admin.writeToAHiddenFile(regID+"\n"+userId+"\n"+apartmentID+"\n"+housingChoice+"\n"+sharingChoice+"\n"+buildingID);
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("viewProfilePage.fxml"));
                         Parent root = null;
                         try {
@@ -173,8 +179,8 @@ public class ApartmentFourSharingDetailsController implements Initializable {
     }
     public void goBackToHome() throws IOException {
         UserAuthentication admin = new UserAuthentication();
-        admin.writeToAHiddenFile(regID);
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("homePage.fxml")));
+        admin.writeToAHiddenFile(regID+"\n"+buildingID+"\n"+housingChoice+"\n"+sharingChoice);
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("buildingDetails.fxml")));
         Scene scene = new Scene(root);
         Stage stage = (Stage) goBack.getScene().getWindow();
         stage.setScene(scene);

@@ -8,6 +8,7 @@ public class Apartment {
     private int room2;
     private int room3;
     private int availability;
+    private String buildingName;
     private String floor;
 
     public Apartment(String apartmentID, String buildingID, String apartmentNo,String floor, int room1, int room2, int room3, int availability){
@@ -21,9 +22,20 @@ public class Apartment {
         this.availability = availability;
         this.floor = floor;
     }
+    public Apartment(String apartmentID, String buildingName, String apartmentNo,String floor, int availability){
+        // Constructor
+        this.apartmentID = apartmentID;
+        this.buildingName = buildingName;
+        this.apartmentNo = apartmentNo;
+        this.availability = availability;
+        this.floor = floor;
+    }
 
     public String getApartmentID(){
         return this.apartmentID;
+    }
+    public String getBuildingName(){
+        return this.buildingName;
     }
 
     public String getBuildingID(){

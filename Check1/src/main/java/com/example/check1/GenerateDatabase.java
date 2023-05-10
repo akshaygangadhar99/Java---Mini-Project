@@ -9,7 +9,7 @@ public class GenerateDatabase {
 
     private static final String url = "jdbc:mysql://localhost:3306/";
     private static final String user = "root";
-    private static final String password = "0123456789";
+    private static final String password = "root";
     public static void createDB() throws SQLException{
         String sql = "CREATE DATABASE IF NOT EXISTS dbPortal";
         try {
@@ -388,14 +388,14 @@ public class GenerateDatabase {
                     "(user_id,user_fname,user_lname,user_dob,user_gender," +
                     "user_city,user_state,user_country,user_email,user_religion,user_type," +
                     "user_status,user_password) VALUES (" +
-                    "'1','Akshay','Gangadhar','1999-08-24',2,'Mumbai','Maharashtra','India'," +
+                    "'1','Akshay','Gangadhar','1999-08-24',1,'Mumbai','Maharashtra','India'," +
                     "'akshaygangadhar99@gmail.com','Hindu',2,1,'0123456789')";
 
             String insertAdmin2 = "INSERT INTO tblUser " +
                     "(user_id,user_fname,user_lname,user_dob,user_gender," +
                     "user_city,user_state,user_country,user_email,user_religion,user_type," +
                     "user_status,user_password) VALUES (" +
-                    "'2','Karan','Punjabi','2000-04-09',2,'Ahmedabad','Gujarat','India'," +
+                    "'2','Karan','Punjabi','2000-04-09',1,'Ahmedabad','Gujarat','India'," +
                     "'karanpunjabi660@gmail.com','Hindu',2,1,'0123456789')";
 
             stmt.executeUpdate(insertAdmin1);

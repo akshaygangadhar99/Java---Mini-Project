@@ -34,6 +34,8 @@ public class VillaFourSharingDetailsController implements Initializable {
     private String regID;
     @FXML
     private String villaID;
+    private int housingChoice;
+    private int sharingChoice;
 
     private ObservableList<VillaBed> villaBeds = FXCollections.observableArrayList();
 
@@ -43,6 +45,8 @@ public class VillaFourSharingDetailsController implements Initializable {
         String[] userChoice = readUserChoice();
         this.regID = userChoice[0];
         this.villaID = userChoice[1];
+        this.housingChoice = Integer.parseInt(userChoice[2]);
+        this.sharingChoice = Integer.parseInt(userChoice[3]);
         sql="select bed_id,tblvillabooking.villa_id,user_id,tblvillabooking.availability " +
                 "from tblvillabooking join tblvilla on tblvillabooking.villa_id=tblvilla.villa_id " +
                 "where tblvillabooking.villa_id="+villaID+" and " +
@@ -52,7 +56,7 @@ public class VillaFourSharingDetailsController implements Initializable {
         addColumnForBooking();
     }
     public String[] readUserChoice(){
-        String[] userChoice = new String[2];
+        String[] userChoice = new String[4];
         try {
             File file = new File(".userChoice.txt");
             FileReader fileReader = new FileReader(file);
@@ -71,7 +75,7 @@ public class VillaFourSharingDetailsController implements Initializable {
     }
     public void getDataFromDatabaseForVillaFourSharing(String sql){
         try {
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbPortal", "root", "0123456789");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbPortal", "root", "root");
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
             while (rs.next()) {
@@ -114,7 +118,7 @@ public class VillaFourSharingDetailsController implements Initializable {
 //                    alert.setContentText("Bed ID "+villaBed.getBedID()+"Room"+villaBed.getRoomID());
 //                    alert.showAndWait();
                     UserAuthentication admin = new UserAuthentication();
-                    String content=regID+"\n"+villaBed.getBedID()+"\n"+"villa";
+                    String content=regID+"\n"+villaBed.getBedID()+"\n"+"villa"+"\n"+housingChoice+"\n"+sharingChoice;
                     admin.writeToAHiddenFile(content);
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("userPreferencePage.fxml"));
                     Parent root = null;
@@ -150,7 +154,7 @@ public class VillaFourSharingDetailsController implements Initializable {
                         alert.setContentText("This bed has been blocked by the university.");
                         alert.show();
                     }else{
-                        admin.writeToAHiddenFile(regID+"\n"+userId);
+                        admin.writeToAHiddenFile(regID+"\n"+userId+"\n"+villaID+"\n"+housingChoice+"\n"+sharingChoice);
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("viewProfilePage.fxml"));
                         Parent root = null;
                         try {
@@ -175,8 +179,8 @@ public class VillaFourSharingDetailsController implements Initializable {
     }
     public void goBackToHome() throws IOException {
         UserAuthentication user = new UserAuthentication();
-        user.writeToAHiddenFile(regID);
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("homePage.fxml")));
+        user.writeToAHiddenFile(regID+"\n"+housingChoice+"\n"+sharingChoice);
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("housingDetails.fxml")));
         Scene scene = new Scene(root);
         Stage stage = (Stage) goBack.getScene().getWindow();
         stage.setScene(scene);

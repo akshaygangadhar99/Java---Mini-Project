@@ -55,17 +55,13 @@ public class HousingDetailsController implements Initializable {
         if(housingChoice==1 && sharingChoice==1){
             HeadingLabel.setText("Villa Details");
             buildingName.setText("Villa Number");
-            sql="select villa_id,tblvilla.street_id,street_name,villa_no,room_1,room_2,room_3,uni_distance,availability " +
-                    "from tblvilla inner join tblstreet on tblstreet.street_id=tblvilla.street_id " +
-                    "where (room_2<>0 or room_3<>0) and availability=1;";
+            sql="select villa_id,tblvilla.street_id,street_name,villa_no,room_1,room_2,room_3,uni_distance,availability from tblvilla inner join tblstreet on tblstreet.street_id=tblvilla.street_id where (room_2<>0 or room_3<>0) and availability=1;";
             getDataFromDatabaseForVilla(sql);
             addColumnForVilla();
         } else if (housingChoice==1 && sharingChoice==2) {
             HeadingLabel.setText("Villa Details");
             buildingName.setText("Villa Number");
-            sql="select villa_id,tblvilla.street_id,street_name,villa_no,room_1,room_2,room_3,uni_distance,availability " +
-                    "from tblvilla inner join tblstreet on tblstreet.street_id=tblvilla.street_id " +
-                    "where room_1<>0 and availability=1;";
+            sql="select villa_id,tblvilla.street_id,street_name,villa_no,room_1,room_2,room_3,uni_distance,availability from tblvilla inner join tblstreet on tblstreet.street_id=tblvilla.street_id where room_1<>0 and availability=1;";
             getDataFromDatabaseForVilla(sql);
             addColumnForVilla();
         } else if (housingChoice==2 && sharingChoice==1) {
@@ -73,9 +69,7 @@ public class HousingDetailsController implements Initializable {
             PropertyValueFactory<Villa, Hyperlink> buildingNameCellValueFactory = new PropertyValueFactory<>("buildingName");
             buildingName.setCellValueFactory(buildingNameCellValueFactory);
             buildingName.setText("Building Name");
-            sql="select bld_id,tblBuilding.street_id,street_name,bld_name,uni_distance,availability " +
-                    "from tblBuilding inner join tblStreet on tblBuilding.street_id=tblstreet.street_id " +
-                    "where four_sharing_avail=1 and availability=1;";
+            sql="select bld_id,tblBuilding.street_id,street_name,bld_name,uni_distance,availability from tblBuilding inner join tblStreet on tblBuilding.street_id=tblstreet.street_id where four_sharing_avail=1 and availability=1;";
             getDataFromDatabaseForBuilding(sql);
             addColumnForBuilding();
         } else if (housingChoice==2 && sharingChoice==2) {
@@ -83,9 +77,7 @@ public class HousingDetailsController implements Initializable {
             PropertyValueFactory<Villa, Hyperlink> buildingNameCellValueFactory = new PropertyValueFactory<>("buildingName");
             buildingName.setCellValueFactory(buildingNameCellValueFactory);
             buildingName.setText("Building Name");
-            sql="select bld_id,tblBuilding.street_id,street_name,bld_name,uni_distance,availability " +
-                    "from tblBuilding inner join tblStreet on tblBuilding.street_id=tblstreet.street_id " +
-                    "where three_sharing_avail=1 and availability=1;";
+            sql="select bld_id,tblBuilding.street_id,street_name,bld_name,uni_distance,availability from tblBuilding inner join tblStreet on tblBuilding.street_id=tblstreet.street_id where three_sharing_avail=1 and availability=1;";
             getDataFromDatabaseForBuilding(sql);
             addColumnForBuilding();
         }
@@ -122,7 +114,7 @@ public class HousingDetailsController implements Initializable {
     }
     public void getDataFromDatabaseForVilla(String sql) {
         try {
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbPortal", "root", "0123456789");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbPortal", "root", "root");
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
             while (rs.next()) {
@@ -151,7 +143,7 @@ public class HousingDetailsController implements Initializable {
     }
     public void getDataFromDatabaseForBuilding(String sql) {
         try {
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbPortal", "root", "0123456789");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbPortal", "root", "root");
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
             while (rs.next()) {
@@ -187,7 +179,7 @@ public class HousingDetailsController implements Initializable {
 //                alert.setContentText("Villa ID "+villa.getVillaID()+"Street Name"+villa.getStreetName());
 //                alert.showAndWait();
                 UserAuthentication admin = new UserAuthentication();
-                admin.writeToAHiddenFile(regID+"\n"+villa.getVillaID());
+                admin.writeToAHiddenFile(regID+"\n"+villa.getVillaID()+"\n"+housingChoice+"\n"+sharingChoice);
                 FXMLLoader loader = new FXMLLoader();
                 if(sharingChoice==2) {
                     loader = new FXMLLoader(getClass().getResource("villaFourSharingDetails.fxml"));
@@ -219,7 +211,7 @@ public class HousingDetailsController implements Initializable {
             Hyperlink link = new Hyperlink("View");
             link.setOnAction(event -> {
                 UserAuthentication admin = new UserAuthentication();
-                String content = regID+"\n"+sharingChoice+"\n"+building.getBuildingID();
+                String content = regID+"\n"+building.getBuildingID()+"\n"+housingChoice+"\n"+sharingChoice;
                 admin.writeToAHiddenFile(content);
 //                Alert alert = new Alert(Alert.AlertType.INFORMATION);
 //                alert.setTitle("Housing Type Selected");

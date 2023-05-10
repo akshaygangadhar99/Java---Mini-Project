@@ -1,5 +1,6 @@
 package com.example.check1;
 
+import com.example.check1.BackendMethods.AdminMethods;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -12,6 +13,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.BufferedReader;
@@ -43,18 +45,38 @@ public class BookingDetailsController implements Initializable {
     private TableView tableView;
     @FXML
     private Hyperlink goBack;
+    private String regID;
+    @FXML
+    private AnchorPane anchorPane;
     private ObservableList<Booking> bookings = FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         String sql="";
+        this.regID = readUserChoice();
         sql="select * from tblbookingdetails;";
         getDataFromDatabaseForBookingDetails(sql);
+        addColumnForDeleting();
     }
-
+    public String readUserChoice(){
+        String userChoice = "";
+        try {
+            File file = new File(".userChoice.txt");
+            FileReader fileReader = new FileReader(file);
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                userChoice+=line;
+            }
+            fileReader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return userChoice;
+    }
     public void getDataFromDatabaseForBookingDetails(String sql){
         try {
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbPortal", "root", "0123456789");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbPortal", "root", "root");
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
             while (rs.next()) {
@@ -78,7 +100,40 @@ public class BookingDetailsController implements Initializable {
             e.printStackTrace();
         }
     }
+    public void addColumnForDeleting(){
+        TableColumn<Booking, Hyperlink> hyperlink = new TableColumn<>("Delete");
+        hyperlink.setCellValueFactory(cellData -> {
+            Booking booking = cellData.getValue();
+            Hyperlink link = new Hyperlink("Delete");
+            link.setOnAction(event -> {
+                if(AdminMethods.deleteUserBooking(booking.getUserID())){
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Deleted");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Booking with "+booking.getUserID()+", deleted Successfully");
+                    alert.show();
+                    Parent root = null;
+                    try {
+                        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("bookingDetails.fxml")));
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                    Scene scene = new Scene(root);
+                    Stage stage = (Stage)  anchorPane.getScene().getWindow();
+                    stage.setScene(scene);
+                    stage.setTitle("Booking Details");
+                    stage.setMaximized(false);
+                    stage.setMaximized(true);
+                    stage.show();
+                }
+            });
+            return new SimpleObjectProperty<>(link);
+        });
+        tableView.getColumns().add(hyperlink);
+    }
     public void goBackToHome() throws IOException {
+        UserAuthentication user = new UserAuthentication();
+        user.writeToAHiddenFile(regID);
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("adminHomePage.fxml")));
         Scene scene = new Scene(root);
         Stage stage = (Stage) goBack.getScene().getWindow();

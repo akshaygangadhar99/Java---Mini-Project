@@ -32,6 +32,8 @@ public class BuildingDetailsController implements Initializable {
     @FXML
     private Hyperlink goBack;
     private int sharingChoice;
+    private int housingChoice;
+    private String buildingID;
     private ObservableList<Apartment> apartments = FXCollections.observableArrayList();
     private String regID;
     @Override
@@ -39,22 +41,19 @@ public class BuildingDetailsController implements Initializable {
         String sql="";
         String[] userChoice = readUserChoice();
         this.regID = userChoice[0];
-        this.sharingChoice = Integer.parseInt(userChoice[1]);
-        String buildingID = userChoice[2];
+        this.buildingID = userChoice[1];
+        this.housingChoice = Integer.parseInt(userChoice[2]);
+        this.sharingChoice = Integer.parseInt(userChoice[3]);
         if(sharingChoice==1){
-            sql="select apt_id,tblapartment.bld_id,bld_name,apt_no,room_1,room_2,room_3,tblapartment.availability " +
-                    "from tblapartment join tblbuilding on tblapartment.bld_id=tblbuilding.bld_id where tblapartment.bld_id="+buildingID+" " +
-                    "and (room_2<>0 or room_3<>0) and tblapartment.availability=1;";
+            sql="select apt_id,tblapartment.bld_id,bld_name,apt_no,room_1,room_2,room_3,tblapartment.availability from tblapartment join tblbuilding on tblapartment.bld_id=tblbuilding.bld_id where tblapartment.bld_id="+buildingID+" and (room_2<>0 or room_3<>0) and tblapartment.availability=1;";
         } else if (sharingChoice==2) {
-            sql="select apt_id,tblapartment.bld_id,bld_name,apt_no,room_1,room_2,room_3,tblapartment.availability " +
-                    "from tblapartment join tblbuilding on tblapartment.bld_id=tblbuilding.bld_id where tblapartment.bld_id="+buildingID+" " +
-                    "and room_1<>0 and tblapartment.availability=1;";
+            sql="select apt_id,tblapartment.bld_id,bld_name,apt_no,room_1,room_2,room_3,tblapartment.availability from tblapartment join tblbuilding on tblapartment.bld_id=tblbuilding.bld_id where tblapartment.bld_id="+buildingID+" and room_1<>0 and tblapartment.availability=1;";
         }
         getDataFromDatabaseForBuildingDetails(sql);
         addColumnForSelectingBuilding();
     }
     public String[] readUserChoice(){
-        String[] userChoice = new String[3];
+        String[] userChoice = new String[4];
         try {
             File file = new File(".userChoice.txt");
             FileReader fileReader = new FileReader(file);
@@ -73,7 +72,7 @@ public class BuildingDetailsController implements Initializable {
     }
     public void getDataFromDatabaseForBuildingDetails(String sql){
         try {
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbPortal", "root", "0123456789");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbPortal", "root", "root");
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
             while (rs.next()) {
@@ -112,7 +111,7 @@ public class BuildingDetailsController implements Initializable {
 //                alert.showAndWait();
                 if(sharingChoice==2){
                     UserAuthentication admin = new UserAuthentication();
-                    String content = regID+"\n"+apartment.getApartmentID();
+                    String content = regID+"\n"+apartment.getApartmentID()+"\n"+buildingID+"\n"+housingChoice+"\n"+sharingChoice;
                     admin.writeToAHiddenFile(content);
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("apartmentFourSharingDetails.fxml"));
                     Parent root = null;
@@ -130,7 +129,7 @@ public class BuildingDetailsController implements Initializable {
                     stage.show();
                 } else if (sharingChoice==1) {
                     UserAuthentication admin = new UserAuthentication();
-                    String content = regID+"\n"+apartment.getApartmentID();
+                    String content = regID+"\n"+apartment.getApartmentID()+"\n"+buildingID+"\n"+housingChoice+"\n"+sharingChoice;
                     admin.writeToAHiddenFile(content);
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("apartmentThreeSharingDetails.fxml"));
                     Parent root = null;
@@ -154,8 +153,8 @@ public class BuildingDetailsController implements Initializable {
     }
     public void goBackToHome() throws IOException {
         UserAuthentication user = new UserAuthentication();
-        user.writeToAHiddenFile(regID);
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("homePage.fxml")));
+        user.writeToAHiddenFile(regID+"\n"+housingChoice+"\n"+sharingChoice);
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("housingDetails.fxml")));
         Scene scene = new Scene(root);
         Stage stage = (Stage) goBack.getScene().getWindow();
         stage.setScene(scene);

@@ -8,7 +8,7 @@ public class AdminsInsertion {
     public static void main(String[] args) {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/roommate_portal", "root", "0123456789");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/roommate_portal", "root", "root");
             Statement stmt = conn.createStatement();
 
             String sql = "INSERT INTO admins (name, email, password) VALUES " +

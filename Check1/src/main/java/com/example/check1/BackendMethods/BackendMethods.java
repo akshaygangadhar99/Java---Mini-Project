@@ -1,4 +1,4 @@
-package com.example.check1;
+package com.example.check1.BackendMethods;
 
 import java.sql.*;
 public class BackendMethods {
@@ -9,7 +9,7 @@ public class BackendMethods {
 
     private static final String url = "jdbc:mysql://localhost:3306/";
     private static final String user = "root";
-    private static final String password = "0123456789";
+    private static final String password = "root";
 
     public static String[][] cropArray(int index, String[][] oldArr){
         /*

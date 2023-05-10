@@ -10,7 +10,7 @@ import java.sql.*;
 public class UserAuthentication {
     private static final String DB_URL = "jdbc:mysql://localhost:3306/dbPortal";
     private static final String DB_USER = "root";
-    private static final String DB_PASSWORD = "0123456789";
+    private static final String DB_PASSWORD = "root";
 
     public boolean authenticateUser(String regNo, String password, int userType) {
         boolean isAuthenticated = false;
@@ -58,12 +58,7 @@ public class UserAuthentication {
         boolean success = false;
         try{
             Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
-            String sql = "insert into tblUser(user_id,user_fname,user_lname,user_dob,user_gender,user_course_id,user_city," +
-                    "user_state,user_country,user_email,user_image,user_religion,user_type,user_status,user_password) " +
-                    "VALUES("+student.getUserID()+",'"+student.getFirstName()+"','"+student.getLastName()+"','"+
-                    student.getUserDOB()+"',"+student.getGender()+",'"+student.getCourseID()+"','"+student.getCity()+
-                    "','"+student.getState()+"','"+student.getCountry()+"','"+student.getEmail()+"',NULL,'"+student.getReligion()+
-                    "',1,1,'"+student.getPassword()+"');";
+            String sql = "insert into tblUser(user_id,user_fname,user_lname,user_dob,user_gender,user_course_id,user_city,user_state,user_country,user_email,user_image,user_religion,user_type,user_status,user_password) VALUES("+student.getUserID()+",'"+student.getFirstName()+"','"+student.getLastName()+"','"+student.getUserDOB()+"',"+student.getGender()+",'"+student.getCourseID()+"','"+student.getCity()+"','"+student.getState()+"','"+student.getCountry()+"','"+student.getEmail()+"',NULL,'"+student.getReligion()+"',1,1,'"+student.getPassword()+"');";
             Statement stmt = conn.createStatement();
             int check = stmt.executeUpdate(sql);
             if (check > 0) {
@@ -102,8 +97,7 @@ public class UserAuthentication {
         boolean success = false;
         try{
             Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
-            String sql = "insert into tblpreferences(user_id,user_food_preference,user_bio,user_personality," +
-                    "user_cooking_ability,user_smoker,user_alcohol,user_language)" +
+            String sql = "insert into tblpreferences(user_id,user_food_preference,user_bio,user_personality,user_cooking_ability,user_smoker,user_alcohol,user_language)" +
                     " values('"+userID+"',"+foodChoice+",'"+bio+"',"+personality+","+cookAbility+","+smoker+","+alcohol+",'"+language+"');";
             Statement stmt = conn.createStatement();
             int check = stmt.executeUpdate(sql);
@@ -122,11 +116,11 @@ public class UserAuthentication {
         String userName="";
         try{
             Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
-            String sql = "select user_fname from tbluser where user_id="+regID+";";
+            String sql = "select CONCAT(user_fname,' ',user_lname) AS user_name from tbluser where user_id="+regID+";";
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
             while (rs.next()){
-                userName = rs.getString("user_fname");
+                userName = rs.getString("user_name");
             }
             return userName;
         }
@@ -149,6 +143,62 @@ public class UserAuthentication {
         }
         catch (Exception e){
             return "-";
+        }
+    }
+    public boolean checkPreference(String regID){
+        boolean success = false;
+        try{
+            Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+            String sql = "select * from tblpreferences where user_id="+regID+";";
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            while (rs.next()){
+                success = true;
+                String courseName = rs.getString("user_id");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return success;
+    }
+    public boolean hasRecords(String sql){
+        boolean success = false;
+        try{
+            Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            while (rs.next()){
+                success = true;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return success;
+    }
+    public String getHouseID(String bedID){
+        String houseID="";
+        try{
+            Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+            String sql = "select apt_id from tblaptbooking where bed_id="+bedID+";";
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            while (rs.next()){
+                houseID = rs.getString("apt_id");
+            }
+            if(houseID!=null){
+                return houseID;
+            } else{
+                sql = "select villa_id from tblvillabooking where bed_id="+bedID+";";
+                stmt = conn.createStatement();
+                rs = stmt.executeQuery(sql);
+                while (rs.next()){
+                    houseID = rs.getString("villa_id");
+                }
+                return houseID;
+            }
+        }
+        catch (Exception e){
+            return "";
         }
     }
     public static void main(String[] args) {

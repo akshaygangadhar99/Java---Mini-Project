@@ -60,7 +60,7 @@ public class HomePageController implements Initializable {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("MISSING");
             alert.setHeaderText(null);
-            alert.setContentText("Please enter the details!");
+            alert.setContentText("Please Enter the details!");
             alert.show();
         } else {
             int houseChoice=0;
@@ -108,7 +108,7 @@ public class HomePageController implements Initializable {
     }
     public void viewProfile() throws IOException {
         UserAuthentication user = new UserAuthentication();
-        user.writeToAHiddenFile(regID+"\n"+regID);
+        user.writeToAHiddenFile(regID+"\n"+regID+"\n"+"view");
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("viewProfilePage.fxml")));
         Scene scene = new Scene(root);
         Stage stage = (Stage) viewProfile.getScene().getWindow();

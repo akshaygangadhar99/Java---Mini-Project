@@ -28,14 +28,14 @@ public class ResetPasswordController {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("MISSING");
             alert.setHeaderText(null);
-            alert.setContentText("Please enter the details!");
+            alert.setContentText("Please Enter the details!");
             alert.showAndWait();
         } else {
             if(reset.getUserName(regID).isEmpty()){
                 Alert alert = new Alert(Alert.AlertType.WARNING);
                 alert.setTitle("INVALID");
                 alert.setHeaderText(null);
-                alert.setContentText("Please enter a valid Registration number!");
+                alert.setContentText("Please enter valid Registration Number!");
                 alert.showAndWait();
             } else{
                 if(password.equals(cnfPassword)){
@@ -50,14 +50,14 @@ public class ResetPasswordController {
                         Alert alert = new Alert(Alert.AlertType.WARNING);
                         alert.setTitle("INVALID");
                         alert.setHeaderText(null);
-                        alert.setContentText("Please enter a valid Registration number!");
+                        alert.setContentText("Please enter valid Registration Number!");
                         alert.showAndWait();
                     }
                 } else {
                     Alert alert = new Alert(Alert.AlertType.WARNING);
                     alert.setTitle("INVALID");
                     alert.setHeaderText(null);
-                    alert.setContentText("Password did not match!");
+                    alert.setContentText("Passwords did not match!");
                     alert.showAndWait();
                 }
             }

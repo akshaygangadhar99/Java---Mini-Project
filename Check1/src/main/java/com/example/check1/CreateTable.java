@@ -5,7 +5,7 @@ public class CreateTable {
 
     static final String DB_URL = "jdbc:mysql://localhost/roommate_portal";
     static final String USER = "root";
-    static final String PASS = "0123456789";
+    static final String PASS = "root";
 
     public static void main(String[] args) {
         Connection conn = null;

@@ -6,6 +6,7 @@ public class ApartmentBed {
     private String apartmentID;
     private String userID;
     private String availability;
+    private String userName;
 
     public ApartmentBed(String bedID, String roomID, String apartmentID, String userID, String availability){
         this.bedID=bedID;
@@ -14,7 +15,12 @@ public class ApartmentBed {
         this.userID=userID;
         this.availability=availability;
     }
-
+    public ApartmentBed(String bedID, String roomID, String userID, String userName){
+        this.bedID = bedID;
+        this.roomID = roomID;
+        this.userID = userID;
+        this.userName = userName;
+    }
     public String getBedID(){
         return bedID;
     }
@@ -29,5 +35,8 @@ public class ApartmentBed {
     }
     public String getAvailability(){
         return availability;
+    }
+    public String getUserName(){
+        return this.userName;
     }
 }

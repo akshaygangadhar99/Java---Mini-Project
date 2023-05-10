@@ -32,6 +32,10 @@ public class UserPreferenceController implements Initializable {
     private String userID;
     private String bedID;
     private String houseType;
+    private String houseID;
+    private int housingChoice;
+    private int sharingChoice;
+    private String buildingID;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle){
@@ -39,9 +43,18 @@ public class UserPreferenceController implements Initializable {
         this.userID = userChoice[0];
         this.bedID = userChoice[1];
         this.houseType = userChoice[2];
+        this.housingChoice = Integer.parseInt(userChoice[3]);
+        this.sharingChoice = Integer.parseInt(userChoice[4]);
+        try{
+            this.buildingID = userChoice[5];
+        } catch (Exception e){
+
+        }
+        UserAuthentication user = new UserAuthentication();
+        this.houseID = user.getHouseID(bedID);
     }
     public String[] readUserChoice(){
-        String[] userChoice = new String[3];
+        String[] userChoice = new String[6];
         try {
             File file = new File(".userChoice.txt");
             FileReader fileReader = new FileReader(file);
@@ -70,14 +83,14 @@ public class UserPreferenceController implements Initializable {
                 Alert alert = new Alert(Alert.AlertType.WARNING);
                 alert.setTitle("MISSING");
                 alert.setHeaderText(null);
-                alert.setContentText("Please enter the details!");
+                alert.setContentText("Please Enter the details!");
                 alert.show();
             }else{
                 String strFoodChoice = radioFoodChoice.getText();
                 int foodChoice = 0;
-                if(strFoodChoice.equalsIgnoreCase("Vegetarian")){
+                if(strFoodChoice.equalsIgnoreCase("Veg")){
                     foodChoice = 1;
-                } else if (strFoodChoice.equalsIgnoreCase("Non-Vegetarian")) {
+                } else if (strFoodChoice.equalsIgnoreCase("Non Veg")) {
                     foodChoice = 2;
                 } else if (strFoodChoice.equalsIgnoreCase("Both")) {
                     foodChoice = 3;
@@ -88,25 +101,25 @@ public class UserPreferenceController implements Initializable {
                 int cookAbility = 0;
                 if(strCookAbility.equalsIgnoreCase("Cannot cook")){
                     cookAbility = 1;
-                } else if (strCookAbility.equalsIgnoreCase("Cam cook partially")) {
+                } else if (strCookAbility.equalsIgnoreCase("Partially")) {
                     cookAbility = 2;
                 } else if (strCookAbility.equalsIgnoreCase("Can cook well")) {
                     cookAbility = 3;
                 }
                 String strSmoker = radioSmokerChoice.getText();
                 int smoker = 0;
-                if(strSmoker.equalsIgnoreCase("Non-Smoker")){
+                if(strSmoker.equalsIgnoreCase("Non Smoker")){
                     smoker = 1;
-                } else if (strSmoker.equalsIgnoreCase("Occasional Smoker")) {
+                } else if (strSmoker.equalsIgnoreCase("Occasional")) {
                     smoker = 2;
                 } else if (strSmoker.equalsIgnoreCase("Heavy Smoker")) {
                     smoker = 3;
                 }
                 String strAlcohol = radioAlcoholChoice.getText();
                 int alcohol = 0;
-                if(strAlcohol.equalsIgnoreCase("Non-Consumer")){
+                if(strAlcohol.equalsIgnoreCase("Non Consumer")){
                     alcohol = 1;
-                } else if (strAlcohol.equalsIgnoreCase("Occasional Drinker")) {
+                } else if (strAlcohol.equalsIgnoreCase("Occasional")) {
                     alcohol = 2;
                 } else if (strAlcohol.equalsIgnoreCase("Heavy Drinker")) {
                     alcohol = 3;
@@ -122,15 +135,15 @@ public class UserPreferenceController implements Initializable {
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("CONGRATULATIONS!");
                     alert.setHeaderText(null);
-                    String content = "Booking is SUCCESSFUL!!!";
+                    String content = "Your booking is SUCCESSFUL";
                     alert.setContentText(content);
                     alert.showAndWait();
-                    goBackToHome();
+                    goBackToBookedHome();
                 } else{
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle("SORRY!");
                     alert.setHeaderText(null);
-                    String content = "Booking FAILED";
+                    String content = "Your booking FAILED";
                     alert.setContentText(content);
                     alert.showAndWait();
                 }
@@ -147,8 +160,32 @@ public class UserPreferenceController implements Initializable {
     }
     public void goBackToHome() throws IOException {
         UserAuthentication user = new UserAuthentication();
+        Parent root = null;
+        if(housingChoice==1 && sharingChoice==2){
+            user.writeToAHiddenFile(userID+"\n"+houseID+"\n"+housingChoice+"\n"+sharingChoice);
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("villaFourSharingDetails.fxml")));
+        } else if(housingChoice==1 && sharingChoice==1){
+            user.writeToAHiddenFile(userID+"\n"+houseID+"\n"+housingChoice+"\n"+sharingChoice);
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("villaThreeSharingDetails.fxml")));
+        } else if (housingChoice==2 && sharingChoice==2) {
+            user.writeToAHiddenFile(userID+"\n"+houseID+"\n"+buildingID+"\n"+housingChoice+"\n"+sharingChoice);
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("apartmentFourSharingDetails.fxml")));
+        } else if (housingChoice==2 && sharingChoice==1) {
+            user.writeToAHiddenFile(userID+"\n"+houseID+"\n"+buildingID+"\n"+housingChoice+"\n"+sharingChoice);
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("apartmentThreeSharingDetails.fxml")));
+        }
+        Scene scene = new Scene(root);
+        Stage stage = (Stage) goBack.getScene().getWindow();
+        stage.setScene(scene);
+        stage.setTitle("Home Page");
+        stage.setMaximized(false);
+        stage.setMaximized(true);
+        stage.show();
+    }
+    public void goBackToBookedHome() throws IOException {
+        UserAuthentication user = new UserAuthentication();
         user.writeToAHiddenFile(userID);
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("homePage.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("bookedHomePage.fxml")));
         Scene scene = new Scene(root);
         Stage stage = (Stage) goBack.getScene().getWindow();
         stage.setScene(scene);

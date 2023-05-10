@@ -38,7 +38,7 @@ public class loginController {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("MISSING");
             alert.setHeaderText(null);
-            alert.setContentText("Please enter the details!");
+            alert.setContentText("Please Enter the details!");
             alert.show();
         }
         else{
@@ -56,7 +56,12 @@ public class loginController {
 //                alert.setContentText("Welcome "+ userName);
 //                alert.show();
                 verify.writeToAHiddenFile(regID);
-                goToHomePage();
+
+                if(!verify.checkPreference(regID)){
+                    goToHomePage();
+                } else {
+                    goToBookedHomePage();
+                }
             } else if (userType==2 && verify.authenticateUser(regID,password1,userType)){
 
 //                Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -109,6 +114,16 @@ public class loginController {
     }
     public void goToAdminHomePage() throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("adminHomePage.fxml")));
+        Scene scene = new Scene(root);
+        Stage stage = (Stage) btnLogin.getScene().getWindow();
+        stage.setScene(scene);
+        stage.setTitle("Home Page");
+        stage.setMaximized(false);
+        stage.setMaximized(true);
+        stage.show();
+    }
+    public void goToBookedHomePage() throws IOException {
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("bookedHomePage.fxml")));
         Scene scene = new Scene(root);
         Stage stage = (Stage) btnLogin.getScene().getWindow();
         stage.setScene(scene);

@@ -75,14 +75,14 @@ public class RegistrationController {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("MISSING");
             alert.setHeaderText(null);
-            alert.setContentText("Please enter the details!");
+            alert.setContentText("Please Enter the details!");
             alert.show();
         } else {
             if (!(regNo.matches("[0-9]+") && regNo.length() <= 10)) {
                 Alert alert = new Alert(Alert.AlertType.WARNING);
                 alert.setTitle("CHECK");
                 alert.setHeaderText(null);
-                alert.setContentText("Registration number should be numeric and less than 10 digits!");
+                alert.setContentText("Registration Number can only be in numbers and less than 10 digits");
                 alert.show();
             } else{
                 UserAuthentication user = new UserAuthentication();
@@ -90,7 +90,7 @@ public class RegistrationController {
                     Alert alert = new Alert(Alert.AlertType.WARNING);
                     alert.setTitle("REMEMBER");
                     alert.setHeaderText(null);
-                    alert.setContentText("You are already registered as a user!");
+                    alert.setContentText("You are already registered!");
                     alert.show();
                 } else {
                     if(password.equals(cnfPassword)) {
@@ -108,7 +108,7 @@ public class RegistrationController {
                         }
                         String courseID = "0";
                         switch (course){
-                            case "Bsc":
+                            case "BSc":
                                 courseID="1";
                                 break;
                             case "BBA":
@@ -145,7 +145,7 @@ public class RegistrationController {
                             Alert alert = new Alert(Alert.AlertType.ERROR);
                             alert.setTitle("FAILED");
                             alert.setHeaderText(null);
-                            alert.setContentText("Registration failed! Please try again!");
+                            alert.setContentText("Registration Failed! Try Again!");
                             alert.showAndWait();
                         }
                     }
@@ -153,7 +153,7 @@ public class RegistrationController {
                         Alert alert = new Alert(Alert.AlertType.WARNING);
                         alert.setTitle("INCORRECT DETAILS");
                         alert.setHeaderText(null);
-                        alert.setContentText("Password did not match!");
+                        alert.setContentText("Passwords did not match!");
                         alert.show();
                     }
                 }
