@@ -42,9 +42,13 @@ public class BuildingDetailsController implements Initializable {
         this.sharingChoice = Integer.parseInt(userChoice[1]);
         String buildingID = userChoice[2];
         if(sharingChoice==1){
-            sql="select apt_id,tblapartment.bld_id,bld_name,apt_no,room_1,room_2,room_3,tblapartment.availability from tblapartment join tblbuilding on tblapartment.bld_id=tblbuilding.bld_id where tblapartment.bld_id="+buildingID+" and (room_2<>0 or room_3<>0) and tblapartment.availability=1;";
+            sql="select apt_id,tblapartment.bld_id,bld_name,apt_no,room_1,room_2,room_3,tblapartment.availability " +
+                    "from tblapartment join tblbuilding on tblapartment.bld_id=tblbuilding.bld_id where tblapartment.bld_id="+buildingID+" " +
+                    "and (room_2<>0 or room_3<>0) and tblapartment.availability=1;";
         } else if (sharingChoice==2) {
-            sql="select apt_id,tblapartment.bld_id,bld_name,apt_no,room_1,room_2,room_3,tblapartment.availability from tblapartment join tblbuilding on tblapartment.bld_id=tblbuilding.bld_id where tblapartment.bld_id="+buildingID+" and room_1<>0 and tblapartment.availability=1;";
+            sql="select apt_id,tblapartment.bld_id,bld_name,apt_no,room_1,room_2,room_3,tblapartment.availability " +
+                    "from tblapartment join tblbuilding on tblapartment.bld_id=tblbuilding.bld_id where tblapartment.bld_id="+buildingID+" " +
+                    "and room_1<>0 and tblapartment.availability=1;";
         }
         getDataFromDatabaseForBuildingDetails(sql);
         addColumnForSelectingBuilding();
@@ -69,7 +73,7 @@ public class BuildingDetailsController implements Initializable {
     }
     public void getDataFromDatabaseForBuildingDetails(String sql){
         try {
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbPortal", "root", "root");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbPortal", "root", "0123456789");
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
             while (rs.next()) {

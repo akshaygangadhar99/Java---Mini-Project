@@ -38,7 +38,7 @@ public class loginController {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("MISSING");
             alert.setHeaderText(null);
-            alert.setContentText("Please Enter the details!");
+            alert.setContentText("Please enter the details!");
             alert.show();
         }
         else{

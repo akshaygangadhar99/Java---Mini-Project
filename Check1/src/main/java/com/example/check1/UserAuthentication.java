@@ -10,7 +10,7 @@ import java.sql.*;
 public class UserAuthentication {
     private static final String DB_URL = "jdbc:mysql://localhost:3306/dbPortal";
     private static final String DB_USER = "root";
-    private static final String DB_PASSWORD = "root";
+    private static final String DB_PASSWORD = "0123456789";
 
     public boolean authenticateUser(String regNo, String password, int userType) {
         boolean isAuthenticated = false;
@@ -58,7 +58,12 @@ public class UserAuthentication {
         boolean success = false;
         try{
             Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
-            String sql = "insert into tblUser(user_id,user_fname,user_lname,user_dob,user_gender,user_course_id,user_city,user_state,user_country,user_email,user_image,user_religion,user_type,user_status,user_password) VALUES("+student.getUserID()+",'"+student.getFirstName()+"','"+student.getLastName()+"','"+student.getUserDOB()+"',"+student.getGender()+",'"+student.getCourseID()+"','"+student.getCity()+"','"+student.getState()+"','"+student.getCountry()+"','"+student.getEmail()+"',NULL,'"+student.getReligion()+"',1,1,'"+student.getPassword()+"');";
+            String sql = "insert into tblUser(user_id,user_fname,user_lname,user_dob,user_gender,user_course_id,user_city," +
+                    "user_state,user_country,user_email,user_image,user_religion,user_type,user_status,user_password) " +
+                    "VALUES("+student.getUserID()+",'"+student.getFirstName()+"','"+student.getLastName()+"','"+
+                    student.getUserDOB()+"',"+student.getGender()+",'"+student.getCourseID()+"','"+student.getCity()+
+                    "','"+student.getState()+"','"+student.getCountry()+"','"+student.getEmail()+"',NULL,'"+student.getReligion()+
+                    "',1,1,'"+student.getPassword()+"');";
             Statement stmt = conn.createStatement();
             int check = stmt.executeUpdate(sql);
             if (check > 0) {
@@ -97,7 +102,8 @@ public class UserAuthentication {
         boolean success = false;
         try{
             Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
-            String sql = "insert into tblpreferences(user_id,user_food_preference,user_bio,user_personality,user_cooking_ability,user_smoker,user_alcohol,user_language)" +
+            String sql = "insert into tblpreferences(user_id,user_food_preference,user_bio,user_personality," +
+                    "user_cooking_ability,user_smoker,user_alcohol,user_language)" +
                     " values('"+userID+"',"+foodChoice+",'"+bio+"',"+personality+","+cookAbility+","+smoker+","+alcohol+",'"+language+"');";
             Statement stmt = conn.createStatement();
             int check = stmt.executeUpdate(sql);

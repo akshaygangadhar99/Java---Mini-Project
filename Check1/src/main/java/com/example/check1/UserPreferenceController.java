@@ -70,14 +70,14 @@ public class UserPreferenceController implements Initializable {
                 Alert alert = new Alert(Alert.AlertType.WARNING);
                 alert.setTitle("MISSING");
                 alert.setHeaderText(null);
-                alert.setContentText("Please Enter the details!");
+                alert.setContentText("Please enter the details!");
                 alert.show();
             }else{
                 String strFoodChoice = radioFoodChoice.getText();
                 int foodChoice = 0;
-                if(strFoodChoice.equalsIgnoreCase("Veg")){
+                if(strFoodChoice.equalsIgnoreCase("Vegetarian")){
                     foodChoice = 1;
-                } else if (strFoodChoice.equalsIgnoreCase("Non Veg")) {
+                } else if (strFoodChoice.equalsIgnoreCase("Non-Vegetarian")) {
                     foodChoice = 2;
                 } else if (strFoodChoice.equalsIgnoreCase("Both")) {
                     foodChoice = 3;
@@ -88,25 +88,25 @@ public class UserPreferenceController implements Initializable {
                 int cookAbility = 0;
                 if(strCookAbility.equalsIgnoreCase("Cannot cook")){
                     cookAbility = 1;
-                } else if (strCookAbility.equalsIgnoreCase("Partially")) {
+                } else if (strCookAbility.equalsIgnoreCase("Cam cook partially")) {
                     cookAbility = 2;
                 } else if (strCookAbility.equalsIgnoreCase("Can cook well")) {
                     cookAbility = 3;
                 }
                 String strSmoker = radioSmokerChoice.getText();
                 int smoker = 0;
-                if(strSmoker.equalsIgnoreCase("Non Smoker")){
+                if(strSmoker.equalsIgnoreCase("Non-Smoker")){
                     smoker = 1;
-                } else if (strSmoker.equalsIgnoreCase("Occasional")) {
+                } else if (strSmoker.equalsIgnoreCase("Occasional Smoker")) {
                     smoker = 2;
                 } else if (strSmoker.equalsIgnoreCase("Heavy Smoker")) {
                     smoker = 3;
                 }
                 String strAlcohol = radioAlcoholChoice.getText();
                 int alcohol = 0;
-                if(strAlcohol.equalsIgnoreCase("Non Consumer")){
+                if(strAlcohol.equalsIgnoreCase("Non-Consumer")){
                     alcohol = 1;
-                } else if (strAlcohol.equalsIgnoreCase("Occasional")) {
+                } else if (strAlcohol.equalsIgnoreCase("Occasional Drinker")) {
                     alcohol = 2;
                 } else if (strAlcohol.equalsIgnoreCase("Heavy Drinker")) {
                     alcohol = 3;
@@ -122,7 +122,7 @@ public class UserPreferenceController implements Initializable {
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("CONGRATULATIONS!");
                     alert.setHeaderText(null);
-                    String content = "Your booking is SUCCESSFUL";
+                    String content = "Booking is SUCCESSFUL!!!";
                     alert.setContentText(content);
                     alert.showAndWait();
                     goBackToHome();
@@ -130,7 +130,7 @@ public class UserPreferenceController implements Initializable {
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle("SORRY!");
                     alert.setHeaderText(null);
-                    String content = "Your booking FAILED";
+                    String content = "Booking FAILED";
                     alert.setContentText(content);
                     alert.showAndWait();
                 }

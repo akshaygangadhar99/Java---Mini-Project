@@ -36,12 +36,18 @@ public class ViewProfilePageController implements Initializable {
         this.userID = userChoice[1];
         if(userID.equals(regID)){
             String userName = user.getUserName(regID);
-            String sql = "SELECT CONCAT(user_fname, ' ', user_lname) AS full_name, FLOOR(DATEDIFF(CURDATE(), user_dob) / 365) AS age,user_gender,user_course_id, CONCAT(user_city, ', ', user_state,', ',user_country) AS address,user_email,user_religion,user_food_preference,user_bio,user_personality,user_cooking_ability,user_smoker,user_alcohol,user_language  FROM tbluser join tblpreferences on tbluser.user_id=tblpreferences.user_id where tbluser.user_id=" + regID + ";";
+            String sql = "SELECT CONCAT(user_fname, ' ', user_lname) AS full_name, FLOOR(DATEDIFF(CURDATE(), user_dob) / 365) AS age," +
+                    "user_gender,user_course_id, CONCAT(user_city, ', ', user_state,', ',user_country) AS address," +
+                    "user_email,user_religion,user_food_preference,user_bio,user_personality,user_cooking_ability,user_smoker,user_alcohol,user_language  " +
+                    "FROM tbluser join tblpreferences on tbluser.user_id=tblpreferences.user_id where tbluser.user_id=" + regID + ";";
             getDataFromDatabaseForProfileDetails(sql);
             HeadingLabel.setText(userName + "'s Profile!");
         }else {
             String userName = user.getUserName(userID);
-            String sql = "SELECT CONCAT(user_fname, ' ', user_lname) AS full_name, FLOOR(DATEDIFF(CURDATE(), user_dob) / 365) AS age,user_gender,user_course_id, CONCAT(user_city, ', ', user_state,', ',user_country) AS address,user_email,user_religion,user_food_preference,user_bio,user_personality,user_cooking_ability,user_smoker,user_alcohol,user_language  FROM tbluser join tblpreferences on tbluser.user_id=tblpreferences.user_id where tbluser.user_id=" + userID + ";";
+            String sql = "SELECT CONCAT(user_fname, ' ', user_lname) AS full_name, FLOOR(DATEDIFF(CURDATE(), user_dob) / 365) AS age," +
+                    "user_gender,user_course_id, CONCAT(user_city, ', ', user_state,', ',user_country) AS address,user_email," +
+                    "user_religion,user_food_preference,user_bio,user_personality,user_cooking_ability,user_smoker,user_alcohol,user_language  " +
+                    "FROM tbluser join tblpreferences on tbluser.user_id=tblpreferences.user_id where tbluser.user_id=" + userID + ";";
             getDataFromDatabaseForProfileDetails(sql);
             HeadingLabel.setText(userName + "'s Profile!");
         }
@@ -67,7 +73,7 @@ public class ViewProfilePageController implements Initializable {
 
     public void getDataFromDatabaseForProfileDetails(String sql){
         try {
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbPortal", "root", "root");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbPortal", "root", "0123456789");
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
             while (rs.next()) {
@@ -93,9 +99,9 @@ public class ViewProfilePageController implements Initializable {
                 int food_preferences = rs.getInt("user_food_preference");
                 String food="";
                 if(food_preferences==1){
-                    food="Pure Vegiterian";
+                    food="Pure Vegetarian";
                 } else if (food_preferences==2) {
-                    food="Pure Non-Vegiterian";
+                    food="Pure Non-Vegetarian";
                 } else{
                     food="Both Veg and Non-Veg";
                 }
@@ -104,7 +110,7 @@ public class ViewProfilePageController implements Initializable {
                 int cookingAbility = rs.getInt("user_cooking_ability");
                 String cook="";
                 if(cookingAbility==1){
-                    cook="Cannot Cook";
+                    cook="Cannot cook";
                 } else if (cookingAbility==2) {
                     cook="Can cook partially";
                 } else{

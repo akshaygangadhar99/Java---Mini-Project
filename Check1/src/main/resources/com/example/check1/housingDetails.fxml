@@ -37,7 +37,7 @@
                             <PropertyValueFactory property="villaNo" />
                         </cellValueFactory>
                     </TableColumn>
-                    <TableColumn fx:id="distance" prefWidth="142.0" text="Distance in (KM)">
+                    <TableColumn fx:id="distance" prefWidth="142.0" text="Distance (KM)">
                         <cellValueFactory>
                             <PropertyValueFactory property="distance" />
                         </cellValueFactory>
