@@ -11,8 +11,24 @@
 - We hope this serves as a concrete foundation to help our university develop a real-time portal which can help smoothen the hostel-booking process in the near future.  
 
 ## Key Features of the Roommate Portal Application  
-- Students can search for available aparments and villas based on their choice of room type (3/4-sharing).  
-- On selection of a room (within an apartment or villa), profiles of potential roommates 
+There are two user modules - Admin & Student.  
+
+### Student Module  
+- House listings are displayed based on user-specified choice of filters. Students can search for available aparments and villas based on their choice of room type (3/4-sharing).  
+- On viewing a room (within an apartment or a villa), profiles of potential roommates (who have already booked a bed) will be visible.    
+- Users will be able to view key insights such as:  
+  - Gender-based demographics of users  
+  - Total bookings based on distance from the university  
+  - Street-wise distribution of religions  
+- The intention is to help students get as much crucial information as possible that will help them make the best decision with respect to their housing concerns.  
+
+### Admin Module  
+Admins can avail several different functionalities such as:  
+  - View all bookings  
+  - Delete bookings  
+  - Block / Unblock buildings  
+  - Block / Unblock apartments  
+  - Block / Unblock villas  
 
 ## Database   
 MySQL has been selected as the RDBMS for our portal. There are 10 tables in our MySQL database. These are:  
@@ -105,7 +121,7 @@ To ease backend programming load, several rules have been implemented for the en
  5. The entire set of methods required for generating the same are available within the class aptly named [GenerateDatabase2](Roommate%20Portal/src/BackendMethods/GenerateDatabase2.java).  
 
 ## About the Application    
- - All the classes and methods used for backend modifications (based on frontend user-actions) are contained within the package aptly named -[BackendMethods](Roommate%20Portal/src/BackendMethods).  
+ - All the classes and methods used for backend modifications (based on frontend user-actions) are contained within the package aptly named [BackendMethods](Roommate%20Portal/src/BackendMethods).  
  - Important classes within this package are:  
    - [GenerateDatabase2](Roommate%20Portal/src/BackendMethods/GenerateDatabase2.java)  
    - [AdminMethods](Roommate%20Portal/src/BackendMethods/AdminMethods.java)  
