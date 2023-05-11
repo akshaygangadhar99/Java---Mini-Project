@@ -54,7 +54,7 @@ MySQL has been selected as the RDBMS for our portal. There are 10 tables in our 
  **apt_bed_id**: references _tblAptBooking(bed_id)_   
  
 ## Database Rules  
-To ease the backend programming load, we have implemented several rules for the entry of attributes into the tables in our database. These rules are briefly described (table-wise) below:  
+To ease backend programming load, several rules have been implemented for the entry of attributes into the tables in our database. These rules are briefly described (table-wise) below:  
 - ### tblUser  
   - user_gender:  
     - 1 - Male  
@@ -68,13 +68,13 @@ To ease the backend programming load, we have implemented several rules for the 
     - 2 - Inactive  
 - ### tblPreferences  
   - user_food_preferences:  
-    - 1 - Veg  
-    - 2 - Non-veg  
+    - 1 - Vegetarian    
+    - 2 - Non-vegetarian    
     - 3 - Both  
   - user_bio:  
     - User is required to write a bio briefly describing their interests, hobbies, and anything else they would like others to know about themselves within a 1000 charaacter limit.  
   - user_personality:  
-    - 0 - Introvert  
+    - 1 - Introvert  
     - 5 - Ambivert  
     - 10 - Extrovert
   - user_cooking_ability:  
@@ -82,13 +82,23 @@ To ease the backend programming load, we have implemented several rules for the 
     - 2 - Can cook (partially)  
     - 3 - Can cook well  
   - user_smoker:  
-    - 1 - non-smoker  
-    - 2 - occasional smoker  
-    - 3 - heavy smoker  
+    - 1 - Non-smoker  
+    - 2 - Occasional smoker  
+    - 3 - Heavy smoker  
   - user_alcohol:  
-    - 1 - non-consumer  
-    - 2 - occasional drinker  
-    - 3 - heavy drinker  
+    - 1 - Non-consumer  
+    - 2 - Occasional   
+    - 3 - Frequent    
   - user_language:  
     - User is required to sequentially list all languages they can speak  
- 
+
+### Note
+(1) To demonstrate the entire range of functionalities possessed by our application, a comprehensize database with 2500 unique users has been designed. This includes a complete set of user-id's, first and last names, date of births, email-id's, religions, and a complete entry of preferences (in tblPreferences). Each user is assigned a particular bed in a specific room of a villa / apartment (on a random basis).  
+(2) To ensure a more "realistic" feel to the database, religions have been assigned to each user on a random basis while keeping in mind the relative popularity of each religion in today's world. For example, Hinduism/Christianity/Islam has been allotted a higher proportion than, say, Buddhism, Sikh, or Judaism.  
+(3) Another point to keep in mind while generating the bookings for the database is to ensure that the villas do not get "overbooked" as a result of the lesser number of available beds (950) as compared to the apartments (3600).  
+(4) Unique user names have been obtained from a dataset containing over 800,000 names from [Kaggle](https://www.kaggle.com/datasets/ironicninja/baby-names).  
+(4) The entire set of methods required for generating the same are available within the class apts named [GenerateDatabase2]()
+
+## Functionality  
+
+
