@@ -1,15 +1,18 @@
 # Java---Mini-Project  
 
 ## Collaborators  
-- Akshay Gangadhar (Reg. No. 22122103)  
-- Karan Punjabi (Reg. No. 22122140)  
+- [Akshay Gangadhar](https://github.com/akshaygangadhar99) (Reg. No. 22122103)  
+- [Karan Punjabi](https://github.com/karanpunjabi18) (Reg. No. 22122140)  
 
 ## About  
-- This is a mini-project developed by myself and Karan Punjabi (GitHub User ID - karanpunjabi18) as part of our Java course in Semester-2 of our MSc in Data Science program.  
+- This is a mini-project developed by us as part of our Java course in Semester-2 of our MSc in Data Science program at Christ University, Lavasa.  
 - We are developing a Roommate Portal for the university students. The objective is to develop a fast and efficient system wherein students can check for available housing based on a number of filters such as pricing, distance from campus and room-sharing.  
 - The objective is to aid students in booking a hostel bed at the start of the academic year.  
-- 
-- We hope this serves as a good foundation to help our university develop a real-time portal which can help smoothen the hostel-booking process in the near future.  
+- We hope this serves as a concrete foundation to help our university develop a real-time portal which can help smoothen the hostel-booking process in the near future.  
+
+## Key Features of the Roommate Portal Application  
+- Students can search for available aparments and villas based on their choice of room type (3/4-sharing).  
+- On selection of a room (within an apartment or villa), profiles of potential roommates 
 
 ## Database   
 MySQL has been selected as the RDBMS for our portal. There are 10 tables in our MySQL database. These are:  
@@ -101,13 +104,14 @@ To ease backend programming load, several rules have been implemented for the en
  4. Unique user names have been obtained from a dataset containing over 800,000 names from [Kaggle](https://www.kaggle.com/datasets/ironicninja/baby-names).  
  5. The entire set of methods required for generating the same are available within the class aptly named [GenerateDatabase2](Roommate%20Portal/src/BackendMethods/GenerateDatabase2.java).  
 
-## About the Application (Backend)  
+## About the Application    
  - All the classes and methods used for backend modifications (based on frontend user-actions) are contained within the package aptly named -[BackendMethods](Roommate%20Portal/src/BackendMethods).  
  - Important classes within this package are:  
-  - [GenerateDatabase](Roommate%20Portal/src/BackendMethods/GenerateDatabase2.java)  
-  - [AdminMethods](Roommate%20Portal/src/BackendMethods/AdminMethods.java)  
-  - [MinorMethods](Roommate%20Portal/src/BackendMethods/MinorMethods.java)  
-  - [UpdateTables](Roommate%20Portal/src/BackendMethods/UpdateTables.java)  
+   - [GenerateDatabase2](Roommate%20Portal/src/BackendMethods/GenerateDatabase2.java)  
+   - [AdminMethods](Roommate%20Portal/src/BackendMethods/AdminMethods.java)  
+   - [MinorMethods](Roommate%20Portal/src/BackendMethods/MinorMethods.java)  
+   - [UpdateTables](Roommate%20Portal/src/BackendMethods/UpdateTables.java)  
+     
 
 
 
