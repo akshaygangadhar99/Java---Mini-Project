@@ -1,5 +1,5 @@
 package com.example.check1.BackendMethods;
-import com.example.check1.Table.Building;
+import Table.Building;
 public class BuildingDetails {
     /*
     This class contains methods that will return details pertaining to available buildings

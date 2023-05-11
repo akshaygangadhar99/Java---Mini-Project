@@ -125,7 +125,7 @@ public class RoomMateDetailsController implements Initializable {
                 }
             }
             tableView.setItems(apartmentBeds);
-            tableView.getColumns().clear();
+            tableView.getColumns().clear();;
             tableView.getColumns().addAll(BedNumber,RoomNumber,UserName);
             conn.close();
         } catch (SQLException e) {

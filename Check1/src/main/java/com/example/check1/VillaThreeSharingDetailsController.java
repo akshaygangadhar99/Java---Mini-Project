@@ -8,10 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Hyperlink;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.BufferedReader;
@@ -33,6 +30,8 @@ public class VillaThreeSharingDetailsController implements Initializable {
     private TableColumn Availability;
     @FXML
     private Hyperlink goBack;
+    @FXML
+    private Label HeadingLabel;
     @FXML
     private String regID;
     @FXML
@@ -59,6 +58,7 @@ public class VillaThreeSharingDetailsController implements Initializable {
                 "bed_id<="+(Integer.parseInt(villaID))*10+";";
         getDataFromDatabaseForVillaThreeSharing(sql);
         addColumnForBooking();
+        HeadingLabel.setText("Bed Listings");
     }
     public String[] readUserChoice(){
         String[] userChoice = new String[4];
@@ -116,7 +116,7 @@ public class VillaThreeSharingDetailsController implements Initializable {
         }
     }
     public void addColumnForBooking(){
-        TableColumn<VillaBed, Hyperlink> hyperlink = new TableColumn<>("BookedByStudent");
+        TableColumn<VillaBed, Hyperlink> hyperlink = new TableColumn<>("Booking");
         hyperlink.setCellValueFactory(cellData -> {
             VillaBed villaBed = cellData.getValue();
             if(villaBed.getAvailability().equalsIgnoreCase("YES")){
@@ -194,7 +194,7 @@ public class VillaThreeSharingDetailsController implements Initializable {
         Scene scene = new Scene(root);
         Stage stage = (Stage) goBack.getScene().getWindow();
         stage.setScene(scene);
-        stage.setTitle("Home Page");
+        stage.setTitle("Villa Listings");
         stage.setMaximized(false);
         stage.setMaximized(true);
         stage.show();

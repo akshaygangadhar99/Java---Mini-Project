@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="CENTER" prefHeight="678.0" prefWidth="603.0" style="-fx-background-color: lightblue;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.check1.UserPreferenceController">
+   <children>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="638.0" prefWidth="603.0">
+         <children>
+            <ImageView fitHeight="132.0" fitWidth="588.0" layoutX="7.0" layoutY="5.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../../../images/christLogo.png" />
+               </image>
+            </ImageView>
+            <Label alignment="CENTER" layoutY="132.0" prefHeight="62.0" prefWidth="603.0" text="Tell us more about yourself">
+               <font>
+                  <Font name="System Bold" size="38.0" />
+               </font>
+            </Label>
+            <Label layoutX="60.0" layoutY="220.0" text="Food Preference">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <RadioButton alignment="TOP_LEFT" layoutX="239.0" layoutY="220.0" mnemonicParsing="false" text="Veg">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <toggleGroup>
+                  <ToggleGroup fx:id="FoodPreference" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton alignment="TOP_LEFT" layoutX="368.0" layoutY="220.0" mnemonicParsing="false" text="Non Veg" toggleGroup="$FoodPreference">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </RadioButton>
+            <RadioButton alignment="TOP_LEFT" layoutX="514.0" layoutY="220.0" mnemonicParsing="false" text="Both" toggleGroup="$FoodPreference">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </RadioButton>
+            <Label layoutX="60.0" layoutY="260.0" text="Personality">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+             <Slider fx:id="sliPersonality" blockIncrement="1.0" layoutX="239.0" layoutY="280.0" majorTickUnit="1.0" max="10.0" min="1.0" minorTickCount="0" prefHeight="37.0" prefWidth="333.0" showTickLabels="true" showTickMarks="true" snapToTicks="true">
+                 
+             </Slider>
+            <Label layoutX="239.0" layoutY="261.0" text="Introvert" />
+            <Label layoutX="524.0" layoutY="261.0" text="Extrovert" />
+            <Label layoutX="389.0" layoutY="261.0" text="Ambivert" />
+            <Label layoutX="60.0" layoutY="327.0" text="Cooking ability">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <RadioButton alignment="TOP_LEFT" layoutX="360.0" layoutY="327.0" mnemonicParsing="false" text="Partially">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <toggleGroup>
+                  <ToggleGroup fx:id="CookngAbility" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton alignment="TOP_LEFT" layoutX="239.0" layoutY="327.0" mnemonicParsing="false" text="Cannot cook" toggleGroup="$CookngAbility">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </RadioButton>
+            <RadioButton alignment="TOP_LEFT" layoutX="458.0" layoutY="327.0" mnemonicParsing="false" text="Can cook well" toggleGroup="$CookngAbility">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </RadioButton>
+            <Label layoutX="60.0" layoutY="371.0" text="Smoker">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="60.0" layoutY="405.0" text="Alcohol">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <RadioButton alignment="TOP_LEFT" layoutX="360.0" layoutY="371.0" mnemonicParsing="false" text="Occasional">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <toggleGroup>
+                  <ToggleGroup fx:id="Smoker" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton alignment="TOP_LEFT" layoutX="239.0" layoutY="371.0" mnemonicParsing="false" text="Non Smoker" toggleGroup="$Smoker">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </RadioButton>
+            <RadioButton alignment="TOP_LEFT" layoutX="458.0" layoutY="371.0" mnemonicParsing="false" text="Heavy Smoker" toggleGroup="$Smoker">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </RadioButton>
+            <RadioButton alignment="TOP_LEFT" layoutX="360.0" layoutY="405.0" mnemonicParsing="false" text="Occasional">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <toggleGroup>
+                  <ToggleGroup fx:id="Alcohol" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton alignment="TOP_LEFT" layoutX="239.0" layoutY="405.0" mnemonicParsing="false" text="Non Consumer" toggleGroup="$Alcohol">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </RadioButton>
+            <RadioButton alignment="TOP_LEFT" layoutX="458.0" layoutY="405.0" mnemonicParsing="false" text="Heavy Drinker" toggleGroup="$Alcohol">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </RadioButton>
+            <Label layoutX="60.0" layoutY="443.0" text="Languages Known">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtLanguages" layoutX="239.0" layoutY="440.0" prefHeight="25.0" prefWidth="333.0" />
+            <Label layoutX="63.0" layoutY="511.0" text="Describe Yourself">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextArea fx:id="txtBio" layoutX="242.0" layoutY="485.0" prefHeight="72.0" prefWidth="333.0" />
+            <Button fx:id="btnConfirmBooking" layoutX="255.0" layoutY="585.0" mnemonicParsing="false" onAction="#confirmBed" style="-fx-background-color: lightgreen;" text="Confirm Booking">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+            <Hyperlink fx:id="goBack" alignment="TOP_LEFT" layoutX="48.0" layoutY="588.0" onAction="#goBackToHome" prefHeight="24.0" prefWidth="112.0" text="Go back">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></Hyperlink>
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>

@@ -57,7 +57,7 @@ public class ViewProfilePageController implements Initializable {
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
-            HeadingLabel.setText(userName + "'s Profile!");
+//            HeadingLabel.setText(userName + "'s Profile!");
         } else {
             String userName = user.getUserName(userID);
             String sql = "SELECT CONCAT(user_fname, ' ', user_lname) AS full_name, FLOOR(DATEDIFF(CURDATE(), user_dob) / 365) AS age,user_gender,user_course_id, CONCAT(user_city, ', ', user_state,', ',user_country) AS address,user_email,user_religion,user_food_preference,user_bio,user_personality,user_cooking_ability,user_smoker,user_alcohol,user_language  FROM tbluser join tblpreferences on tbluser.user_id=tblpreferences.user_id where tbluser.user_id=" + userID + ";";
@@ -66,7 +66,7 @@ public class ViewProfilePageController implements Initializable {
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
-            HeadingLabel.setText(userName + "'s Profile!");
+//            HeadingLabel.setText(userName + "'s Profile!");
         }
     }
 
@@ -155,9 +155,9 @@ public class ViewProfilePageController implements Initializable {
                 int food_preferences = rs.getInt("user_food_preference");
                 food = "";
                 if (food_preferences == 1) {
-                    food = "Pure Vegiterian";
+                    food = "Vegetarian";
                 } else if (food_preferences == 2) {
-                    food = "Pure Non-Vegiterian";
+                    food = "Non-Vegetarian";
                 } else {
                     food = "Both Veg and Non-Veg";
                 }
@@ -197,10 +197,10 @@ public class ViewProfilePageController implements Initializable {
             label.setStyle("-fx-font-weight: bold; -fx-font-size: 14; -fx-alignment: center; -fx-margin: 100;");
             gridPane.add(label, 1, 0);
             label = new Label(Integer.toString(userDetails.getAge()));
-            label.setStyle("-fx-font-weight: bold; -fx-font-size: 14; -fx-alignment: center;");
+            label.setStyle("-fx-font-weight: bold; -fx-font-size: 14; -fx-alignment: center; ");
             gridPane.add(label, 1, 1);
             label = new Label(userDetails.getGender());
-            label.setStyle("-fx-font-weight: bold; -fx-font-size: 14; -fx-alignment: center;");
+            label.setStyle("-fx-font-weight: bold; -fx-font-size: 14; -fx-alignment: center; ");
             gridPane.add(label, 1, 2);
             label = new Label(userDetails.getCourse_name());
             label.setStyle("-fx-font-weight: bold; -fx-font-size: 14; -fx-alignment: center;");
@@ -219,6 +219,7 @@ public class ViewProfilePageController implements Initializable {
                 label.setStyle("-fx-font-weight: bold; -fx-font-size: 14; -fx-alignment: center;");
                 gridPane.add(label, 1, 7);
                 label = new Label(userDetails.getBio());
+                label.setWrapText(true);
                 label.setStyle("-fx-font-weight: bold; -fx-font-size: 14; -fx-alignment: center;");
                 gridPane.add(label, 1, 8);
                 label = new Label(Integer.toString(userDetails.getPersonality()));
@@ -234,6 +235,7 @@ public class ViewProfilePageController implements Initializable {
                 label.setStyle("-fx-font-weight: bold; -fx-font-size: 14; -fx-alignment: center;");
                 gridPane.add(label, 1, 12);
                 label = new Label(userDetails.getLanguages());
+                label.setWrapText(true);
                 label.setStyle("-fx-font-weight: bold; -fx-font-size: 14; -fx-alignment: center;");
                 gridPane.add(label, 1, 13);
             }
@@ -262,7 +264,7 @@ public class ViewProfilePageController implements Initializable {
             Scene scene = new Scene(root);
             Stage stage = (Stage) goBack.getScene().getWindow();
             stage.setScene(scene);
-            stage.setTitle("Housing Details");
+            stage.setTitle("Bed Listings");
             stage.setMaximized(false);
             stage.setMaximized(true);
             stage.show();

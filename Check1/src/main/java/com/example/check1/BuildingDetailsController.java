@@ -99,16 +99,11 @@ public class BuildingDetailsController implements Initializable {
         }
     }
     public void addColumnForSelectingBuilding(){
-        TableColumn<Apartment, Hyperlink> hyperlink = new TableColumn<>("Select");
+        TableColumn<Apartment, Hyperlink> hyperlink = new TableColumn<>("");
         hyperlink.setCellValueFactory(cellData -> {
             Apartment apartment = cellData.getValue();
-            Hyperlink link = new Hyperlink("Select");
+            Hyperlink link = new Hyperlink("View");
             link.setOnAction(event -> {
-//                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-//                alert.setTitle("Selected Apartment");
-//                alert.setHeaderText(null);
-//                alert.setContentText("Apartment ID "+apartment.getApartmentID()+"Apartment Name"+apartment.getApartmentNo());
-//                alert.showAndWait();
                 if(sharingChoice==2){
                     UserAuthentication admin = new UserAuthentication();
                     String content = regID+"\n"+apartment.getApartmentID()+"\n"+buildingID+"\n"+housingChoice+"\n"+sharingChoice;
@@ -123,7 +118,7 @@ public class BuildingDetailsController implements Initializable {
                     Scene scene = new Scene(root);
                     Stage stage = (Stage) tableView.getScene().getWindow();
                     stage.setScene(scene);
-                    stage.setTitle("Apartment Details");
+                    stage.setTitle("Apartment Bed Listings");
                     stage.setMaximized(false);
                     stage.setMaximized(true);
                     stage.show();
@@ -141,7 +136,7 @@ public class BuildingDetailsController implements Initializable {
                     Scene scene = new Scene(root);
                     Stage stage = (Stage) tableView.getScene().getWindow();
                     stage.setScene(scene);
-                    stage.setTitle("Apartment Details");
+                    stage.setTitle("Apartment Bed Listings");
                     stage.setMaximized(false);
                     stage.setMaximized(true);
                     stage.show();
@@ -158,7 +153,7 @@ public class BuildingDetailsController implements Initializable {
         Scene scene = new Scene(root);
         Stage stage = (Stage) goBack.getScene().getWindow();
         stage.setScene(scene);
-        stage.setTitle("Home Page");
+        stage.setTitle("Building Listings");
         stage.setMaximized(false);
         stage.setMaximized(true);
         stage.show();

@@ -53,19 +53,19 @@ public class HousingDetailsController implements Initializable {
         this.housingChoice=userChoice[1];
         this.sharingChoice=userChoice[2];
         if(housingChoice==1 && sharingChoice==1){
-            HeadingLabel.setText("Villa Details");
-            buildingName.setText("Villa Number");
+            HeadingLabel.setText("Villa Listings");
+            buildingName.setText("Villa No.");
             sql="select villa_id,tblvilla.street_id,street_name,villa_no,room_1,room_2,room_3,uni_distance,availability from tblvilla inner join tblstreet on tblstreet.street_id=tblvilla.street_id where (room_2<>0 or room_3<>0) and availability=1;";
             getDataFromDatabaseForVilla(sql);
             addColumnForVilla();
         } else if (housingChoice==1 && sharingChoice==2) {
-            HeadingLabel.setText("Villa Details");
-            buildingName.setText("Villa Number");
+            HeadingLabel.setText("Villa Listings");
+            buildingName.setText("Villa No.");
             sql="select villa_id,tblvilla.street_id,street_name,villa_no,room_1,room_2,room_3,uni_distance,availability from tblvilla inner join tblstreet on tblstreet.street_id=tblvilla.street_id where room_1<>0 and availability=1;";
             getDataFromDatabaseForVilla(sql);
             addColumnForVilla();
         } else if (housingChoice==2 && sharingChoice==1) {
-            HeadingLabel.setText("Building Details");
+            HeadingLabel.setText("Building Listings");
             PropertyValueFactory<Villa, Hyperlink> buildingNameCellValueFactory = new PropertyValueFactory<>("buildingName");
             buildingName.setCellValueFactory(buildingNameCellValueFactory);
             buildingName.setText("Building Name");
@@ -73,7 +73,7 @@ public class HousingDetailsController implements Initializable {
             getDataFromDatabaseForBuilding(sql);
             addColumnForBuilding();
         } else if (housingChoice==2 && sharingChoice==2) {
-            HeadingLabel.setText("Building Details");
+            HeadingLabel.setText("Building Listings");
             PropertyValueFactory<Villa, Hyperlink> buildingNameCellValueFactory = new PropertyValueFactory<>("buildingName");
             buildingName.setCellValueFactory(buildingNameCellValueFactory);
             buildingName.setText("Building Name");
@@ -195,7 +195,7 @@ public class HousingDetailsController implements Initializable {
                 Scene scene = new Scene(root);
                 Stage stage = (Stage) tableView.getScene().getWindow();
                 stage.setScene(scene);
-                stage.setTitle("Villa Bed Details");
+                stage.setTitle("Villa Bed Listings");
                 stage.setMaximized(false);
                 stage.setMaximized(true);
                 stage.show();
@@ -234,7 +234,7 @@ public class HousingDetailsController implements Initializable {
         Scene scene = new Scene(root);
         Stage stage = (Stage) tableView.getScene().getWindow();
         stage.setScene(scene);
-        stage.setTitle("Building Details");
+        stage.setTitle("Apartment Listings");
         stage.setMaximized(false);
         stage.setMaximized(true);
         stage.show();

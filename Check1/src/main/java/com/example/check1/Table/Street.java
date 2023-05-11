@@ -1,4 +1,4 @@
-package com.example.check1.Table;
+package Table;
 public class Street {
     // Stores values of tblStreet
     String street_id;

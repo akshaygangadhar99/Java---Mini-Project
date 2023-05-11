@@ -12,146 +12,160 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="678.0" prefWidth="603.0" style="-fx-background-color: lightblue;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.check1.UserPreferenceController">
+<VBox alignment="CENTER" style="-fx-background-color: lightgray;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.check1.UserPreferenceController">
    <children>
-      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="638.0" prefWidth="603.0">
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="638.0" prefWidth="643.0" style="-fx-background-color: white; -fx-border-color: black;">
          <children>
-            <ImageView fitHeight="132.0" fitWidth="588.0" layoutX="7.0" layoutY="5.0" pickOnBounds="true">
+            <ImageView fitHeight="78.0" fitWidth="232.0" layoutX="195.0" layoutY="14.0" pickOnBounds="true">
                <image>
                   <Image url="@../../../images/christLogo.png" />
                </image>
             </ImageView>
-            <Label alignment="CENTER" layoutY="132.0" prefHeight="62.0" prefWidth="603.0" text="Tell us more about yourself">
+            <Label alignment="CENTER" layoutX="1.0" layoutY="106.0" prefHeight="62.0" prefWidth="643.0" text="Tell us more about yourself">
                <font>
-                  <Font name="System Bold" size="38.0" />
+                  <Font name="Cambria Bold" size="30.0" />
                </font>
             </Label>
-            <Label layoutX="60.0" layoutY="220.0" text="Food Preference">
+            <Label layoutX="33.0" layoutY="200.0" text="Food Preference">
                <font>
-                  <Font name="System Bold" size="14.0" />
+                  <Font name="Cambria Bold" size="14.0" />
                </font>
             </Label>
-            <RadioButton alignment="TOP_LEFT" layoutX="239.0" layoutY="220.0" mnemonicParsing="false" text="Veg">
+            <RadioButton alignment="TOP_LEFT" layoutX="212.0" layoutY="200.0" mnemonicParsing="false" text="Vegetarian">
                <font>
-                  <Font size="14.0" />
+                  <Font name="Cambria" size="14.0" />
                </font>
                <toggleGroup>
                   <ToggleGroup fx:id="FoodPreference" />
                </toggleGroup>
             </RadioButton>
-            <RadioButton alignment="TOP_LEFT" layoutX="368.0" layoutY="220.0" mnemonicParsing="false" text="Non Veg" toggleGroup="$FoodPreference">
+            <RadioButton alignment="TOP_LEFT" layoutX="341.0" layoutY="200.0" mnemonicParsing="false" text="Non-Vegetarian" toggleGroup="$FoodPreference">
                <font>
-                  <Font size="14.0" />
+                  <Font name="Cambria" size="14.0" />
                </font>
             </RadioButton>
-            <RadioButton alignment="TOP_LEFT" layoutX="514.0" layoutY="220.0" mnemonicParsing="false" text="Both" toggleGroup="$FoodPreference">
+            <RadioButton alignment="TOP_LEFT" layoutX="497.0" layoutY="200.0" mnemonicParsing="false" text="Both" toggleGroup="$FoodPreference">
                <font>
-                  <Font size="14.0" />
+                  <Font name="Cambria" size="14.0" />
                </font>
             </RadioButton>
-            <Label layoutX="60.0" layoutY="260.0" text="Personality">
+            <Label layoutX="33.0" layoutY="256.0" text="Personality">
                <font>
-                  <Font name="System Bold" size="14.0" />
+                  <Font name="Cambria Bold" size="14.0" />
                </font>
             </Label>
-             <Slider fx:id="sliPersonality" blockIncrement="1.0" layoutX="239.0" layoutY="280.0" majorTickUnit="1.0" max="10.0" min="1.0" minorTickCount="0" prefHeight="37.0" prefWidth="333.0" showTickLabels="true" showTickMarks="true" snapToTicks="true">
+             <Slider fx:id="sliPersonality" blockIncrement="1.0" layoutX="212.0" layoutY="260.0" majorTickUnit="1.0" max="10.0" min="1.0" minorTickCount="0" prefHeight="37.0" prefWidth="395.0" showTickLabels="true" showTickMarks="true" snapToTicks="true">
                  
              </Slider>
-            <Label layoutX="239.0" layoutY="261.0" text="Introvert" />
-            <Label layoutX="524.0" layoutY="261.0" text="Extrovert" />
-            <Label layoutX="389.0" layoutY="261.0" text="Ambivert" />
-            <Label layoutX="60.0" layoutY="327.0" text="Cooking ability">
+            <Label layoutX="212.0" layoutY="241.0" text="Introvert" />
+            <Label layoutX="556.0" layoutY="241.0" text="Extrovert" />
+            <Label layoutX="385.0" layoutY="241.0" text="Ambivert" />
+            <Label layoutX="33.0" layoutY="307.0" text="Cooking ability">
                <font>
-                  <Font name="System Bold" size="14.0" />
+                  <Font name="Cambria Bold" size="14.0" />
                </font>
             </Label>
-            <RadioButton alignment="TOP_LEFT" layoutX="360.0" layoutY="327.0" mnemonicParsing="false" text="Partially">
+            <RadioButton alignment="TOP_LEFT" layoutX="342.0" layoutY="308.0" mnemonicParsing="false" text="Can cook a little">
                <font>
-                  <Font size="14.0" />
+                  <Font name="Cambria" size="14.0" />
                </font>
                <toggleGroup>
                   <ToggleGroup fx:id="CookngAbility" />
                </toggleGroup>
             </RadioButton>
-            <RadioButton alignment="TOP_LEFT" layoutX="239.0" layoutY="327.0" mnemonicParsing="false" text="Cannot cook" toggleGroup="$CookngAbility">
+            <RadioButton alignment="TOP_LEFT" layoutX="212.0" layoutY="307.0" mnemonicParsing="false" text="Cannot cook" toggleGroup="$CookngAbility">
                <font>
-                  <Font size="14.0" />
+                  <Font name="Cambria" size="14.0" />
                </font>
             </RadioButton>
-            <RadioButton alignment="TOP_LEFT" layoutX="458.0" layoutY="327.0" mnemonicParsing="false" text="Can cook well" toggleGroup="$CookngAbility">
+            <RadioButton alignment="TOP_LEFT" layoutX="498.0" layoutY="308.0" mnemonicParsing="false" text="Can cook well" toggleGroup="$CookngAbility">
                <font>
-                  <Font size="14.0" />
+                  <Font name="Cambria" size="14.0" />
                </font>
             </RadioButton>
-            <Label layoutX="60.0" layoutY="371.0" text="Smoker">
+            <Label layoutX="33.0" layoutY="351.0" text="Smoker">
                <font>
-                  <Font name="System Bold" size="14.0" />
+                  <Font name="Cambria Bold" size="14.0" />
                </font>
             </Label>
-            <Label layoutX="60.0" layoutY="405.0" text="Alcohol">
+            <Label layoutX="34.0" layoutY="392.0" text="Alcohol">
                <font>
-                  <Font name="System Bold" size="14.0" />
+                  <Font name="Cambria Bold" size="14.0" />
                </font>
             </Label>
-            <RadioButton alignment="TOP_LEFT" layoutX="360.0" layoutY="371.0" mnemonicParsing="false" text="Occasional">
+            <RadioButton alignment="TOP_LEFT" layoutX="343.0" layoutY="351.0" mnemonicParsing="false" text="Occasional Smoker">
                <font>
-                  <Font size="14.0" />
+                  <Font name="Cambria" size="14.0" />
                </font>
                <toggleGroup>
                   <ToggleGroup fx:id="Smoker" />
                </toggleGroup>
             </RadioButton>
-            <RadioButton alignment="TOP_LEFT" layoutX="239.0" layoutY="371.0" mnemonicParsing="false" text="Non Smoker" toggleGroup="$Smoker">
+            <RadioButton alignment="TOP_LEFT" layoutX="213.0" layoutY="351.0" mnemonicParsing="false" text="Non-Smoker" toggleGroup="$Smoker">
                <font>
-                  <Font size="14.0" />
+                  <Font name="Cambria" size="14.0" />
                </font>
             </RadioButton>
-            <RadioButton alignment="TOP_LEFT" layoutX="458.0" layoutY="371.0" mnemonicParsing="false" text="Heavy Smoker" toggleGroup="$Smoker">
+            <RadioButton alignment="TOP_LEFT" layoutX="499.0" layoutY="351.0" mnemonicParsing="false" text="Heavy Smoker" toggleGroup="$Smoker">
                <font>
-                  <Font size="14.0" />
+                  <Font name="Cambria" size="14.0" />
                </font>
             </RadioButton>
-            <RadioButton alignment="TOP_LEFT" layoutX="360.0" layoutY="405.0" mnemonicParsing="false" text="Occasional">
+            <RadioButton alignment="TOP_LEFT" layoutX="343.0" layoutY="392.0" mnemonicParsing="false" text="Occasional">
                <font>
-                  <Font size="14.0" />
+                  <Font name="Cambria" size="14.0" />
                </font>
                <toggleGroup>
                   <ToggleGroup fx:id="Alcohol" />
                </toggleGroup>
             </RadioButton>
-            <RadioButton alignment="TOP_LEFT" layoutX="239.0" layoutY="405.0" mnemonicParsing="false" text="Non Consumer" toggleGroup="$Alcohol">
+            <RadioButton alignment="TOP_LEFT" layoutX="213.0" layoutY="392.0" mnemonicParsing="false" text="Non-Consumer" toggleGroup="$Alcohol">
                <font>
-                  <Font size="14.0" />
+                  <Font name="Cambria" size="14.0" />
                </font>
             </RadioButton>
-            <RadioButton alignment="TOP_LEFT" layoutX="458.0" layoutY="405.0" mnemonicParsing="false" text="Heavy Drinker" toggleGroup="$Alcohol">
+            <RadioButton alignment="TOP_LEFT" layoutX="499.0" layoutY="392.0" mnemonicParsing="false" text="Frequent" toggleGroup="$Alcohol">
                <font>
-                  <Font size="14.0" />
+                  <Font name="Cambria" size="14.0" />
                </font>
             </RadioButton>
-            <Label layoutX="60.0" layoutY="443.0" text="Languages Known">
+            <Label layoutX="33.0" layoutY="440.0" text="Languages Known">
                <font>
-                  <Font name="System Bold" size="14.0" />
+                  <Font name="Cambria Bold" size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="txtLanguages" layoutX="239.0" layoutY="440.0" prefHeight="25.0" prefWidth="333.0" />
-            <Label layoutX="63.0" layoutY="511.0" text="Describe Yourself">
+            <TextField fx:id="txtLanguages" layoutX="212.0" layoutY="439.0" prefHeight="27.0" prefWidth="395.0">
                <font>
-                  <Font name="System Bold" size="14.0" />
+                  <Font name="Cambria" size="14.0" />
+               </font></TextField>
+            <Label layoutX="36.0" layoutY="517.0" text="Describe Yourself">
+               <font>
+                  <Font name="Cambria Bold" size="14.0" />
                </font>
             </Label>
-            <TextArea fx:id="txtBio" layoutX="242.0" layoutY="485.0" prefHeight="72.0" prefWidth="333.0" />
-            <Button fx:id="btnConfirmBooking" layoutX="255.0" layoutY="585.0" mnemonicParsing="false" onAction="#confirmBed" style="-fx-background-color: lightgreen;" text="Confirm Booking">
+            <TextArea fx:id="txtBio" layoutX="212.0" layoutY="492.0" prefHeight="72.0" prefWidth="395.0">
                <font>
-                  <Font name="System Bold" size="14.0" />
+                  <Font name="Cambria" size="14.0" />
+               </font></TextArea>
+            <Button fx:id="btnConfirmBooking" layoutX="257.0" layoutY="585.0" mnemonicParsing="false" onAction="#confirmBed" style="-fx-background-color: lightgreen;" text="Confirm Booking">
+               <font>
+                  <Font name="Cambria Bold" size="14.0" />
                </font>
             </Button>
-            <Hyperlink fx:id="goBack" alignment="TOP_LEFT" layoutX="48.0" layoutY="588.0" onAction="#goBackToHome" prefHeight="24.0" prefWidth="112.0" text="Go back">
+            <Hyperlink fx:id="goBack" alignment="TOP_LEFT" layoutX="34.0" layoutY="588.0" onAction="#goBackToHome" prefHeight="24.0" prefWidth="112.0" text="Go back">
                <font>
-                  <Font name="System Bold" size="14.0" />
+                  <Font name="Cambria Bold" size="14.0" />
                </font></Hyperlink>
+            <Line endX="492.33331298828125" endY="49.99999237060547" layoutX="151.0" layoutY="55.0" startX="-150.99998474121094" startY="49.99999237060547" />
+            <Line endX="491.33331298828125" endY="49.99998474121094" layoutX="152.0" layoutY="124.0" startX="-150.99998474121094" startY="49.99999237060547" />
+            <Label layoutX="34.0" layoutY="460.0" text="Eg: English, Hindi">
+               <font>
+                  <Font name="System Italic" size="12.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </children>

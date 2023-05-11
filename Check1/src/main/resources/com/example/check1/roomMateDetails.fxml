@@ -1,25 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.control.cell.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="564.0" prefWidth="721.0" style="-fx-background-color: lightblue;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.check1.RoomMateDetailsController">
+<VBox alignment="CENTER" style="-fx-background-color: lightgray;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.check1.RoomMateDetailsController">
     <ScrollPane hbarPolicy="NEVER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="564.0" prefWidth="688.0" vbarPolicy="NEVER">
-        <AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="561.0" prefWidth="681.0" style="-fx-background-color: lightblue; -fx-background-image: buildingImg.jpg;" VBox.vgrow="SOMETIMES" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
-            <Label fx:id="HeadingLabel" alignment="TOP_CENTER" layoutY="133.0" prefHeight="53.0" prefWidth="674.0" text="Bed Details" underline="true">
+        <AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="561.0" prefWidth="681.0" style="-fx-background-color: white; -fx-background-image: buildingImg.jpg;" VBox.vgrow="SOMETIMES" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+            <Label fx:id="HeadingLabel" alignment="TOP_CENTER" layoutX="1.0" layoutY="122.0" prefHeight="38.0" prefWidth="679.0" text="Bed Details" textAlignment="CENTER">
                 <font>
-                    <Font name="System Bold Italic" size="36.0" />
+                    <Font name="Cambria Bold" size="30.0" />
                 </font>
             </Label>
-            <ImageView fitHeight="112.0" fitWidth="671.0" layoutX="2.0" layoutY="14.0" pickOnBounds="true">
+            <ImageView fitHeight="78.0" fitWidth="232.0" layoutX="225.0" layoutY="14.0" pickOnBounds="true">
                  <image>
                     <Image url="@../../../images/christLogo.png" />
                  </image>
             </ImageView>
-            <TableView fx:id="tableView" accessibleRole="PARENT" layoutX="32.0" layoutY="200.0" prefHeight="292.0" prefWidth="638.0">
+            <TableView fx:id="tableView" accessibleRole="PARENT" layoutX="44.0" layoutY="200.0" prefHeight="292.0" prefWidth="593.0">
                 <columns>
                     <TableColumn fx:id="BedNumber" prefWidth="144.3333396911621" text="Bed Number">
                         <cellValueFactory>
@@ -38,10 +45,12 @@
                     </TableColumn>
                 </columns>
             </TableView>
-            <Hyperlink fx:id="goBack" alignment="TOP_LEFT" layoutX="32.0" layoutY="514.0" onAction="#goBackToHome" prefHeight="24.0" prefWidth="112.0" text="Go back">
+            <Hyperlink fx:id="goBack" alignment="TOP_LEFT" layoutX="29.0" layoutY="520.0" onAction="#goBackToHome" prefHeight="24.0" prefWidth="112.0" text="Go back">
             <font>
                <Font name="System Bold" size="14.0" />
             </font></Hyperlink>
+         <Line endX="563.3333740234375" endY="68.00001525878906" layoutX="118.0" layoutY="41.0" startX="-116.99998474121094" startY="68.00001525878906" />
+         <Line endX="563.3333740234375" endY="68.00001525878906" layoutX="118.0" layoutY="110.0" startX="-116.99998474121094" startY="68.00001525878906" />
             </AnchorPane>
     </ScrollPane>
 </VBox>

@@ -16,73 +16,74 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" style="-fx-background-color: lightblue;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.check1.RegistrationController">
+<VBox alignment="CENTER" prefWidth="692.0" style="-fx-background-color: lightgray;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.check1.RegistrationController">
    <children>
-      <ScrollPane hbarPolicy="NEVER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" pannable="true" prefHeight="618.0" prefWidth="677.0" style="-fx-background-color: lightblue;" vbarPolicy="ALWAYS">
+      <ScrollPane hbarPolicy="NEVER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" pannable="true" prefHeight="606.0" prefWidth="691.0" style="-fx-background-color: white; -fx-border-color: black;" vbarPolicy="ALWAYS">
          <content>
-            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-color: lightblue;">
+            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="793.0" prefWidth="675.0" style="-fx-background-color: white;">
                <children>
-                   <ImageView fitHeight="112.0" fitWidth="648.0" layoutX="9.0" pickOnBounds="true">
+                   <ImageView fitHeight="78.0" fitWidth="232.0" layoutX="240.0" layoutY="15.0" pickOnBounds="true">
                        <image>
                            <Image url="@../../../images/christLogo.png" />
                        </image>
                    </ImageView>
-                   <Label alignment="TOP_CENTER" layoutX="-4.0" layoutY="108.0" prefHeight="42.0" prefWidth="665.0" text="Registration Form" underline="true">
+                   <Label alignment="TOP_CENTER" layoutX="259.0" layoutY="123.0" prefHeight="42.0" prefWidth="193.0" text="Registration">
                        <font>
-                           <Font name="System Bold Italic" size="36.0" />
+                           <Font name="Cambria Bold" size="30.0" />
                        </font>
                           </Label>
-                         <Label layoutX="157.0" layoutY="171.0" text="Registration No">
+                         <Label layoutX="204.0" layoutY="204.0" text="Registration No">
                           <font>
                              <Font name="System Bold" size="12.0" />
                           </font>
                          </Label>
-                         <TextField fx:id="txtRegNo" layoutX="285.0" layoutY="168.0" prefHeight="26.0" prefWidth="191.0" />
-                         <Label layoutX="157.0" layoutY="213.0" text="First Name">
+                         <TextField fx:id="txtRegNo" layoutX="332.0" layoutY="201.0" prefHeight="26.0" prefWidth="191.0" />
+                         <Label layoutX="204.0" layoutY="246.0" text="First Name">
                           <font>
                              <Font name="System Bold" size="12.0" />
                           </font>
                          </Label>
-                         <TextField fx:id="txtFirstName" layoutX="285.0" layoutY="210.0" prefHeight="26.0" prefWidth="191.0" />
-                         <Label layoutX="157.0" layoutY="255.0" text="Last Name">
+                         <TextField fx:id="txtFirstName" layoutX="332.0" layoutY="243.0" prefHeight="26.0" prefWidth="191.0" />
+                         <Label layoutX="204.0" layoutY="288.0" text="Last Name">
                           <font>
                              <Font name="System Bold" size="12.0" />
                           </font>
                          </Label>
-                         <TextField fx:id="txtLastName" layoutX="285.0" layoutY="252.0" prefHeight="26.0" prefWidth="191.0" />
-                         <Label layoutX="157.0" layoutY="297.0" text="Date of Birth">
+                         <TextField fx:id="txtLastName" layoutX="332.0" layoutY="285.0" prefHeight="26.0" prefWidth="191.0" />
+                         <Label layoutX="204.0" layoutY="330.0" text="Date of Birth">
                           <font>
                              <Font name="System Bold" size="12.0" />
                           </font>
                          </Label>
-                         <DatePicker fx:id="txtDOB" layoutX="285.0" layoutY="293.0" prefHeight="26.0" prefWidth="191.0" />
-                         <Label layoutX="157.0" layoutY="341.0" text="Gender">
+                         <DatePicker fx:id="txtDOB" layoutX="332.0" layoutY="326.0" prefHeight="26.0" prefWidth="191.0" />
+                         <Label layoutX="204.0" layoutY="374.0" text="Gender">
                           <font>
                              <Font name="System Bold" size="12.0" />
                           </font>
                          </Label>
-                         <RadioButton fx:id="radioMale" layoutX="285.0" layoutY="339.0" mnemonicParsing="false" text="Male">
+                         <RadioButton fx:id="radioMale" layoutX="332.0" layoutY="372.0" mnemonicParsing="false" text="Male">
                              <toggleGroup>
                              <ToggleGroup fx:id="gender" />
                              </toggleGroup>
                          </RadioButton>
-                         <RadioButton fx:id="radioFemale" layoutX="354.0" layoutY="339.0" mnemonicParsing="false" text="Female" toggleGroup="$gender" />
-                         <RadioButton fx:id="radioOthers" layoutX="431.0" layoutY="339.0" mnemonicParsing="false" text="Others" toggleGroup="$gender" />
+                         <RadioButton fx:id="radioFemale" layoutX="401.0" layoutY="372.0" mnemonicParsing="false" text="Female" toggleGroup="$gender" />
+                         <RadioButton fx:id="radioOthers" layoutX="478.0" layoutY="372.0" mnemonicParsing="false" text="Others" toggleGroup="$gender" />
 
-                         <Label layoutX="156.0" layoutY="377.0" text="Email">
+                         <Label layoutX="203.0" layoutY="410.0" text="Email">
                           <font>
                              <Font name="System Bold" size="12.0" />
                           </font>
                          </Label>
-                         <TextField fx:id="txtEmail" layoutX="284.0" layoutY="374.0" prefHeight="26.0" prefWidth="191.0" />
-                           <Label layoutX="157.0" layoutY="417.0" text="Course">
+                         <TextField fx:id="txtEmail" layoutX="331.0" layoutY="407.0" prefHeight="26.0" prefWidth="191.0" />
+                           <Label layoutX="204.0" layoutY="450.0" text="Course">
                                <font>
                                    <Font name="System Bold" size="12.0" />
                                </font>
                            </Label>
-                           <ComboBox fx:id="cmbCourse" layoutX="285.0" layoutY="413.0" prefHeight="25.0" prefWidth="191.0" promptText="Selected Course" visibleRowCount="5">
+                           <ComboBox fx:id="cmbCourse" layoutX="332.0" layoutY="446.0" prefHeight="25.0" prefWidth="191.0" promptText="Selected Course" visibleRowCount="5">
                                <items>
                                    <FXCollections fx:factory="observableArrayList">
                                        <String fx:value="BSc" />
@@ -96,57 +97,57 @@
                                    </FXCollections>
                                </items>
                            </ComboBox>
-                           <Label layoutX="157.0" layoutY="459.0" text="City">
+                           <Label layoutX="204.0" layoutY="492.0" text="City">
                                <font>
                                    <Font name="System Bold" size="12.0" />
                                </font>
                            </Label>
-                            <ComboBox fx:id="cmbCity" editable="true" layoutX="285.0" layoutY="455.0" prefHeight="25.0" prefWidth="191.0" promptText="Select Your City" visibleRowCount="5" />
+                            <ComboBox fx:id="cmbCity" editable="true" layoutX="332.0" layoutY="488.0" prefHeight="25.0" prefWidth="191.0" promptText="Select Your City" visibleRowCount="5" />
 
 
-                           <Label layoutX="157.0" layoutY="501.0" text="State">
+                           <Label layoutX="204.0" layoutY="534.0" text="State">
                                <font>
                                    <Font name="System Bold" size="12.0" />
                                </font>
                            </Label>
-                   <ComboBox fx:id="cmbState" editable="true" layoutX="285.0" layoutY="497.0" prefHeight="25.0" prefWidth="191.0" promptText="Select Your State" visibleRowCount="5" />
-                           <Label layoutX="157.0" layoutY="543.0" text="Country">
+                   <ComboBox fx:id="cmbState" editable="true" layoutX="332.0" layoutY="530.0" prefHeight="25.0" prefWidth="191.0" promptText="Select Your State" visibleRowCount="5" />
+                           <Label layoutX="204.0" layoutY="576.0" text="Country">
                                <font>
                                    <Font name="System Bold" size="12.0" />
                                </font>
                            </Label>
-                   <ComboBox fx:id="cmbCountry" editable="true" layoutX="285.0" layoutY="539.0" prefHeight="25.0" prefWidth="191.0" promptText="Select Your Country" visibleRowCount="5" />
-                         <Label layoutX="157.0" layoutY="583.0" text="Religion">
+                   <ComboBox fx:id="cmbCountry" editable="true" layoutX="332.0" layoutY="572.0" prefHeight="25.0" prefWidth="191.0" promptText="Select Your Country" visibleRowCount="5" />
+                         <Label layoutX="204.0" layoutY="618.0" text="Religion">
                           <font>
                              <Font name="System Bold" size="12.0" />
                           </font>
                          </Label>
-                   <TextField fx:id="txtReligion" layoutX="285.0" layoutY="579.0" prefHeight="26.0" prefWidth="191.0" />
-                       <Label layoutX="156.0" layoutY="635.0" text="Password">
+                   <TextField fx:id="txtReligion" layoutX="332.0" layoutY="614.0" prefHeight="26.0" prefWidth="191.0" />
+                       <Label layoutX="204.0" layoutY="660.0" text="Password">
                           <font>
                              <Font name="System Bold" size="12.0" />
                           </font>
                        </Label>
-                       <Label layoutX="156.0" layoutY="678.0" text="Confirm Password">
+                       <Label layoutX="204.0" layoutY="703.0" text="Confirm Password">
                           <font>
                              <Font name="System Bold" size="12.0" />
                           </font>
                        </Label>
-                       <PasswordField fx:id="txtPwd" layoutX="284.0" layoutY="631.0" prefHeight="25.0" prefWidth="191.0" />
-                       <PasswordField fx:id="txtCnfPwd" layoutX="283.0" layoutY="674.0" prefHeight="25.0" prefWidth="191.0" />
+                       <PasswordField fx:id="txtPwd" layoutX="332.0" layoutY="656.0" prefHeight="25.0" prefWidth="191.0" />
+                       <PasswordField fx:id="txtCnfPwd" layoutX="331.0" layoutY="695.0" prefHeight="25.0" prefWidth="191.0" />
 
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" />
-
-                   <Button fx:id="btnRegister" layoutX="287.0" layoutY="716.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#registerUser" style="-fx-background-color: lightgreen;" text="REGISTER">
+                   <Button fx:id="btnRegister" layoutX="314.0" layoutY="749.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#registerUser" style="-fx-background-color: lightgreen;" text="REGISTER">
                        <font>
                            <Font name="System Bold" size="14.0" />
                        </font>
                    </Button>
-                     <Hyperlink fx:id="goBack" alignment="TOP_LEFT" layoutX="28.0" layoutY="728.0" maxHeight="-Infinity" maxWidth="-Infinity" onAction="#goBackToLogin" text="Go back">
+                     <Hyperlink fx:id="goBack" alignment="TOP_LEFT" layoutX="28.0" layoutY="752.0" maxHeight="-Infinity" maxWidth="-Infinity" onAction="#goBackToLogin" text="Go back">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Hyperlink>
+                  <Line endX="531.6666870117188" endY="47.33332061767578" layoutX="142.0" layoutY="64.0" startX="-133.33334350585938" startY="47.33332824707031" />
+                  <Line endX="531.6666870117188" endY="47.333343505859375" layoutX="141.0" layoutY="132.0" startX="-133.33334350585938" startY="47.33332824707031" />
                </children>
             </AnchorPane>
          </content>

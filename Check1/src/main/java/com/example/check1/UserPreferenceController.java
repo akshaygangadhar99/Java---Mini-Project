@@ -88,9 +88,9 @@ public class UserPreferenceController implements Initializable {
             }else{
                 String strFoodChoice = radioFoodChoice.getText();
                 int foodChoice = 0;
-                if(strFoodChoice.equalsIgnoreCase("Veg")){
+                if(strFoodChoice.equalsIgnoreCase("Vegetarian")){
                     foodChoice = 1;
-                } else if (strFoodChoice.equalsIgnoreCase("Non Veg")) {
+                } else if (strFoodChoice.equalsIgnoreCase("Non-Vegetarian")) {
                     foodChoice = 2;
                 } else if (strFoodChoice.equalsIgnoreCase("Both")) {
                     foodChoice = 3;
@@ -101,35 +101,29 @@ public class UserPreferenceController implements Initializable {
                 int cookAbility = 0;
                 if(strCookAbility.equalsIgnoreCase("Cannot cook")){
                     cookAbility = 1;
-                } else if (strCookAbility.equalsIgnoreCase("Partially")) {
+                } else if (strCookAbility.equalsIgnoreCase("Can cook a little")) {
                     cookAbility = 2;
                 } else if (strCookAbility.equalsIgnoreCase("Can cook well")) {
                     cookAbility = 3;
                 }
                 String strSmoker = radioSmokerChoice.getText();
                 int smoker = 0;
-                if(strSmoker.equalsIgnoreCase("Non Smoker")){
+                if(strSmoker.equalsIgnoreCase("Non-Smoker")){
                     smoker = 1;
-                } else if (strSmoker.equalsIgnoreCase("Occasional")) {
+                } else if (strSmoker.equalsIgnoreCase("Occasional Smoker")) {
                     smoker = 2;
                 } else if (strSmoker.equalsIgnoreCase("Heavy Smoker")) {
                     smoker = 3;
                 }
                 String strAlcohol = radioAlcoholChoice.getText();
                 int alcohol = 0;
-                if(strAlcohol.equalsIgnoreCase("Non Consumer")){
+                if(strAlcohol.equalsIgnoreCase("Non-Consumer")){
                     alcohol = 1;
                 } else if (strAlcohol.equalsIgnoreCase("Occasional")) {
                     alcohol = 2;
-                } else if (strAlcohol.equalsIgnoreCase("Heavy Drinker")) {
+                } else if (strAlcohol.equalsIgnoreCase("Frequent")) {
                     alcohol = 3;
                 }
-//            Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
-//            alert1.setTitle("Congratulations");
-//            alert1.setHeaderText(null);
-//            String content1 = ""+personality;
-//            alert1.setContentText(content1);
-//            alert1.showAndWait();
                 UserAuthentication admin = new UserAuthentication();
                 if(UpdateTables.updateTables(userID,bedID,houseType) && admin.insertUserPreference(userID,foodChoice,bio,personality,cookAbility,smoker,alcohol,languages)){
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -177,7 +171,7 @@ public class UserPreferenceController implements Initializable {
         Scene scene = new Scene(root);
         Stage stage = (Stage) goBack.getScene().getWindow();
         stage.setScene(scene);
-        stage.setTitle("Home Page");
+        stage.setTitle("Bed Listings");
         stage.setMaximized(false);
         stage.setMaximized(true);
         stage.show();

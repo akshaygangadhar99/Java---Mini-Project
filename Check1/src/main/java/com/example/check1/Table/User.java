@@ -1,4 +1,4 @@
-package com.example.check1.Table;
+package Table;
 
 
 import java.sql.Date;

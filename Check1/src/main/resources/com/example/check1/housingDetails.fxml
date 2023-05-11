@@ -10,22 +10,23 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" style="-fx-background-color: lightblue;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.check1.HousingDetailsController">
-    <ScrollPane hbarPolicy="NEVER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" pannable="true" prefHeight="588.0" prefWidth="644.0" vbarPolicy="NEVER">
-        <AnchorPane fx:id="anchorPane" minHeight="-Infinity" prefHeight="586.0" prefWidth="647.0" style="-fx-background-color: lightblue; -fx-background-image: buildingImg.jpg;" VBox.vgrow="SOMETIMES" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
-            <Label fx:id="HeadingLabel" alignment="TOP_CENTER" layoutY="133.0" prefHeight="53.0" prefWidth="644.0" text="Housing Details" underline="true">
+<VBox alignment="CENTER" style="-fx-background-color: lightgray;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.check1.HousingDetailsController">
+    <ScrollPane hbarPolicy="NEVER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" pannable="true" prefHeight="588.0" prefWidth="644.0" style="-fx-background-color: white; -fx-border-color: black;" vbarPolicy="NEVER">
+        <AnchorPane fx:id="anchorPane" minHeight="-Infinity" prefHeight="586.0" prefWidth="647.0" style="-fx-background-color: white; -fx-background-image: buildingImg.jpg;" VBox.vgrow="SOMETIMES" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+            <Label fx:id="HeadingLabel" alignment="TOP_CENTER" layoutX="2.0" layoutY="123.0" prefHeight="53.0" prefWidth="644.0" text="Housing Details">
                 <font>
-                    <Font name="System Bold Italic" size="36.0" />
+                    <Font name="Cambria Bold" size="30.0" />
                 </font>
             </Label>
-            <ImageView fitHeight="112.0" fitWidth="628.0" layoutX="9.0" layoutY="14.0" pickOnBounds="true">
+            <ImageView fitHeight="78.0" fitWidth="232.0" layoutX="206.0" layoutY="14.0" pickOnBounds="true">
                  <image>
                     <Image url="@../../../images/christLogo.png" />
                  </image>
             </ImageView>
-            <TableView fx:id="tableView" accessibleRole="PARENT" layoutX="16.0" layoutY="211.0" prefHeight="337.0" prefWidth="612.0">
+            <TableView fx:id="tableView" accessibleRole="PARENT" layoutX="16.0" layoutY="204.0" prefHeight="337.0" prefWidth="612.0">
                 <columns>
                     <TableColumn fx:id="streetName" prefWidth="219.99996948242188" text="Street Name">
                         <cellValueFactory>
@@ -37,7 +38,7 @@
                             <PropertyValueFactory property="villaNo" />
                         </cellValueFactory>
                     </TableColumn>
-                    <TableColumn fx:id="distance" prefWidth="142.0" text="Distance in (KM)">
+                    <TableColumn fx:id="distance" prefWidth="142.0" text="Distance (km)">
                         <cellValueFactory>
                             <PropertyValueFactory property="distance" />
                         </cellValueFactory>
@@ -46,8 +47,10 @@
             </TableView>
             <Hyperlink fx:id="goBack" alignment="TOP_LEFT" layoutX="15.0" layoutY="552.0" onAction="#goBackToHome" prefHeight="24.0" prefWidth="112.0" text="Go back">
             <font>
-               <Font name="System Bold" size="14.0" />
+               <Font name="Cambria Bold" size="14.0" />
             </font></Hyperlink>
+         <Line endX="507.3333740234375" endY="60.666664123535156" layoutX="132.0" layoutY="50.0" startX="-131.99998474121094" startY="60.666664123535156" />
+         <Line endX="507.3333740234375" endY="60.666664123535156" layoutX="133.0" layoutY="119.0" startX="-131.99998474121094" startY="60.666664123535156" />
             </AnchorPane>
     </ScrollPane>
 </VBox>

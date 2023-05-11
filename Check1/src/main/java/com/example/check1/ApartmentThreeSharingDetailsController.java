@@ -116,7 +116,7 @@ public class ApartmentThreeSharingDetailsController implements Initializable {
         }
     }
     public void addColumnForBooking(){
-        TableColumn<ApartmentBed, Hyperlink> hyperlink = new TableColumn<>("BookedByStudent");
+        TableColumn<ApartmentBed, Hyperlink> hyperlink = new TableColumn<>("Booking");
         hyperlink.setCellValueFactory(cellData -> {
             ApartmentBed apartmentBed = cellData.getValue();
             if(apartmentBed.getAvailability().equalsIgnoreCase("YES")){
@@ -193,7 +193,7 @@ public class ApartmentThreeSharingDetailsController implements Initializable {
         Scene scene = new Scene(root);
         Stage stage = (Stage) goBack.getScene().getWindow();
         stage.setScene(scene);
-        stage.setTitle("Home Page");
+        stage.setTitle("Apartment Listings");
         stage.setMaximized(false);
         stage.setMaximized(true);
         stage.show();

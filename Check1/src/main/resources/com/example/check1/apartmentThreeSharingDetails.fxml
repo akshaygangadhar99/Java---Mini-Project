@@ -2,7 +2,6 @@
 
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.cell.PropertyValueFactory?>
@@ -10,44 +9,46 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="535.0" prefWidth="647.0" style="-fx-background-color: lightblue;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.check1.ApartmentThreeSharingDetailsController">
-    <ScrollPane hbarPolicy="NEVER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" vbarPolicy="NEVER">
-        <AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-color: lightblue; -fx-background-image: buildingImg.jpg;" VBox.vgrow="SOMETIMES" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
-            <Label alignment="TOP_CENTER" layoutY="133.0" prefHeight="53.0" prefWidth="644.0" text="Bed Details" underline="true">
-                <font>
-                    <Font name="System Bold Italic" size="36.0" />
-                </font>
-            </Label>
-            <ImageView fitHeight="112.0" fitWidth="639.0" layoutX="2.0" layoutY="14.0" pickOnBounds="true">
-                 <image>
-                    <Image url="@../../../images/christLogo.png" />
-                 </image>
-            </ImageView>
-            <TableView fx:id="tableView" accessibleRole="PARENT" layoutX="30.0" layoutY="185.0" prefHeight="271.0" prefWidth="587.0">
-                <columns>
-                    <TableColumn fx:id="BedNumber" prefWidth="187.33331489562988" text="Bed Number">
-                        <cellValueFactory>
-                            <PropertyValueFactory property="bedID" />
-                        </cellValueFactory>
-                    </TableColumn>
-                    <TableColumn fx:id="RoomNumber" prefWidth="108.00004577636719" text="Room Number">
-                        <cellValueFactory>
-                            <PropertyValueFactory property="roomID" />
-                        </cellValueFactory>
-                    </TableColumn>
-                    <TableColumn fx:id="Availability" prefWidth="119.99993896484375" text="Availability">
-                        <cellValueFactory>
-                            <PropertyValueFactory property="availability" />
-                        </cellValueFactory>
-                    </TableColumn>
-                </columns>
-            </TableView>
-            <Hyperlink fx:id="goBack" alignment="TOP_LEFT" layoutX="30.0" layoutY="464.0" onAction="#goBackToHome" prefHeight="24.0" prefWidth="112.0" text="Go back">
-            <font>
-               <Font name="System Bold" size="14.0" />
-            </font></Hyperlink>
-            </AnchorPane>
-    </ScrollPane>
+<VBox alignment="CENTER" style="-fx-background-color: lightgray;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.check1.ApartmentThreeSharingDetailsController">
+     <AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="434.0" prefWidth="648.0" style="-fx-background-color: white; -fx-border-color: black;" VBox.vgrow="SOMETIMES">
+         <Label alignment="TOP_CENTER" layoutX="2.0" layoutY="114.0" prefHeight="53.0" prefWidth="644.0" text="Bed Listings">
+             <font>
+                 <Font name="Cambria Bold" size="30.0" />
+             </font>
+         </Label>
+         <ImageView fitHeight="78.0" fitWidth="232.0" layoutX="208.0" layoutY="10.0" pickOnBounds="true">
+              <image>
+                 <Image url="@../../../images/christLogo.png" />
+              </image>
+         </ImageView>
+         <TableView fx:id="tableView" accessibleRole="PARENT" layoutX="32.0" layoutY="185.0" prefHeight="210.0" prefWidth="586.0">
+             <columns>
+                 <TableColumn fx:id="BedNumber" prefWidth="187.33331489562988" text="Bed No.">
+                     <cellValueFactory>
+                         <PropertyValueFactory property="bedID" />
+                     </cellValueFactory>
+                 </TableColumn>
+                 <TableColumn fx:id="RoomNumber" prefWidth="108.00004577636719" text="Room No.">
+                     <cellValueFactory>
+                         <PropertyValueFactory property="roomID" />
+                     </cellValueFactory>
+                 </TableColumn>
+                 <TableColumn fx:id="Availability" prefWidth="119.99993896484375" text="Availability">
+                     <cellValueFactory>
+                         <PropertyValueFactory property="availability" />
+                     </cellValueFactory>
+                 </TableColumn>
+             </columns>
+         </TableView>
+         <Hyperlink fx:id="goBack" alignment="TOP_LEFT" layoutX="30.0" layoutY="400.0" onAction="#goBackToHome" prefHeight="24.0" prefWidth="112.0" text="Go back">
+         <font>
+            <Font name="Cambria Bold" size="14.0" />
+         </font>
+      </Hyperlink>
+      <Line endX="338.0" layoutX="308.0" layoutY="100.0" startX="-306.0" />
+      <Line endX="338.0" layoutX="308.0" layoutY="169.0" startX="-306.0" />
+         </AnchorPane>
 </VBox>

@@ -106,7 +106,7 @@ public class VillaFourSharingDetailsController implements Initializable {
         }
     }
     public void addColumnForBooking(){
-        TableColumn<VillaBed, Hyperlink> hyperlink = new TableColumn<>("BookedByStudent");
+        TableColumn<VillaBed, Hyperlink> hyperlink = new TableColumn<>("Booking");
         hyperlink.setCellValueFactory(cellData -> {
             VillaBed villaBed = cellData.getValue();
             if(villaBed.getAvailability().equalsIgnoreCase("YES")){
@@ -184,7 +184,7 @@ public class VillaFourSharingDetailsController implements Initializable {
         Scene scene = new Scene(root);
         Stage stage = (Stage) goBack.getScene().getWindow();
         stage.setScene(scene);
-        stage.setTitle("Home Page");
+        stage.setTitle("Villa Listings");
         stage.setMaximized(false);
         stage.setMaximized(true);
         stage.show();

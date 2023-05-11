@@ -35,7 +35,7 @@ public class HomePageController implements Initializable {
         UserAuthentication user = new UserAuthentication();
         this.regID = readUserChoice();
         String userName = user.getUserName(regID);
-        HeadingLabel.setText("Welcome "+userName+"!!");
+        HeadingLabel.setText("Welcome "+userName+"!");
     }
     public String readUserChoice(){
         String userChoice = "";
@@ -90,7 +90,7 @@ public class HomePageController implements Initializable {
             Scene scene = new Scene(root);
             Stage stage = (Stage) btnFindRooms.getScene().getWindow();
             stage.setScene(scene);
-            stage.setTitle("Housing Details");
+            stage.setTitle("House Listings");
             stage.setMaximized(false);
             stage.setMaximized(true);
             stage.show();
