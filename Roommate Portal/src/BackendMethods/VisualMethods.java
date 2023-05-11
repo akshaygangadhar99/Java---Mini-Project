@@ -14,7 +14,6 @@ public class VisualMethods {
     private static final String user = "root";
     private static final String password = "0123456789";
 
-
     public static float getBuildingDistance(String bld_id){
         /*
         This method returns the distance of a given building from the university
@@ -50,6 +49,7 @@ public class VisualMethods {
         float dist = 0.0f;
 
         int[] count = {0,0,0};
+
         /*
         count[0] -> count of booked apartments within 1 km [0,1)
         count[1] -> count of booked apartments between 1 and 2 km [1,2)
@@ -122,8 +122,6 @@ public class VisualMethods {
     }
 
     public static int[] getVillaCount(){
-        //String[] villaIDs = new String[950];
-        //int row = 0;
         float dist = 0.0f;
         String villaID = "";
         int[] count = {0,0,0};
@@ -154,6 +152,7 @@ public class VisualMethods {
         }
         return count;
     }
+
     public static int[] getDistanceWiseCount(){
         /*
         -> We will be offering a visual bar-chart depicting distance-wise no. of bookings.
@@ -192,9 +191,103 @@ public class VisualMethods {
         return count;
     }
 
+    public static int[] getStrWiseReligionCount(String streetID){
+        /*
+        StreetID    StreetName
+            1     Thicket Crescent
+            2        Thicket
+            3         Dasve
+            4       Portofino --> Apartment
+            5       Club View
+            6       Hill View
+         */
+
+        String[] userID = new String[2500];
+        String[] villaIDs = new String[950];
+        int row = 0;
+        String getReligion = "";
+        String religion = "";
+        String getUsers = "";
+        int[] count = {0,0,0,0,0,0};
+
+        try{
+            String dbURL = url + "dbPortal";
+            Connection connection = DriverManager.getConnection(dbURL,user,password);
+            Statement stmt = connection.createStatement();
+
+            String getVillaIDS = "SELECT villa_id from tblVilla WHERE street_id = '"+streetID+"'";
+            ResultSet resultSet = stmt.executeQuery(getVillaIDS);
+            while(resultSet.next()){
+                villaIDs[row]  = resultSet.getString("villa_id");
+                row += 1;
+            }
+
+            villaIDs = MinorMethods.cropArray1D(row,villaIDs);
+
+            row = 0;
+
+            // Now we retrieve user ids for given street
+            for(String ID : villaIDs){
+                 getUsers = "SELECT user_id FROM tblVillaBooking WHERE villa_id = '"+ID+"'";
+                 ResultSet resultSet1 = stmt.executeQuery(getUsers);
+                 while(resultSet1.next()){
+                     userID[row] = resultSet1.getString("user_id");
+                     row += 1;
+                 }
+            }
+
+            userID = MinorMethods.cropArray1D(row,userID);
+            row = 0;
+
+            // Now we retrieve religion of each user and increment count accordingly
+            /*
+                -> Hindu: 0.45
+                -> Christian: 0.3
+                -> Islam: 0.24
+                -> Atheist: 0.2
+                -> Buddhism: 0.05
+                -> Sikh: 0.01
+             */
+            for(String ID : userID){
+                getReligion = "SELECT user_religion FROM tblUser WHERE user_id = '"+ID+"'";
+                ResultSet resultSet1 = stmt.executeQuery(getReligion);
+                while(resultSet1.next()){
+                    religion = resultSet1.getString("user_religion");
+                    if(religion.equalsIgnoreCase("Hindu")){
+                        count[0] += 1;
+                    } else if (religion.equalsIgnoreCase("Christian")) {
+                        count[1] += 1;
+                    } else if (religion.equalsIgnoreCase("Islam")) {
+                        count[2] += 1;
+                    } else if (religion.equalsIgnoreCase("Atheist")) {
+                        count[3] += 1;
+                    } else if (religion.equalsIgnoreCase("Buddhism")) {
+                        count[4] += 1;
+                    } else {
+                        // Sikh
+                        count[5] += 1;
+                    }
+                }
+            }
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+        return count;
+    }
+
     public static void main(String[] args) {
         //System.out.println(getVillaDistance("1"));
-        System.out.println(getDistanceWiseCount());
+        //System.out.println(getDistanceWiseCount());
+
+        // does not work for 4,5 --> need to enter suitable values for #5
+        int[] count = getStrWiseReligionCount("6");
+        System.out.println("Hindu: "+count[0]);
+        System.out.println("Christian: "+count[1]);
+        System.out.println("Islam: "+count[2]);
+        System.out.println("Atheist: "+count[3]);
+        System.out.println("Buddhism: "+count[4]);
+        System.out.println("Sikh: "+count[5]);
+
     }
 
 }
