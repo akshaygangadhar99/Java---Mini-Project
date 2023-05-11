@@ -17,6 +17,17 @@ public class GenerateDatabase2 {
     private static final String user = "root";
     private static final String password = "0123456789";
 
+    public static void createDB() throws SQLException{
+        String sql = "CREATE DATABASE IF NOT EXISTS dbPortal";
+        try {
+            Connection connection = DriverManager.getConnection(url,user,password);
+            Statement stmt = connection.createStatement();
+            stmt.executeUpdate(sql);
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+
     public static String[][] readFile() {
         // This method reads the names_genders.csv file and returns the content in the form of a 2D String array
 
@@ -432,13 +443,32 @@ public class GenerateDatabase2 {
 
         return randomDate;
     }
-    public static void addUsersAndPreferences(String[][] nameGender){
+
+    public static String[] readCities(){
+        String[] city = new String[500];
+        int row = 0;
+        String line = "";
+        try{
+            FileReader fileReader = new FileReader("D:/Work/Data Science/Christ University/Academics/Semester 2/Java/" +
+                    "22122103-MDL273L-JAVA/Java---Mini-Project/Roommate Portal/src/indian_cities.csv");
+            BufferedReader br = new BufferedReader(fileReader);
+            while((line = br.readLine()) != null){
+                city[row] = line;
+                row += 1;
+            }
+
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        return MinorMethods.cropArray1D(row,city);
+    }
+    public static void addUsersAndPreferences(String[][] nameGender, String[] city){
         /*
         This method adds a list of 2500 users to the database, along with their preferences
         to the corresponding tables -> tblUser, tblPreferences
          */
 
-        int regNo = 170933001;
+        int regNo = 18120101;
         int index = 0;
         String name = "";
         int gender = 0;
@@ -464,8 +494,10 @@ public class GenerateDatabase2 {
 
             String user_id = "";
             String firstName = "";
+            String lastName = "";
             LocalDate DOB;
             String course_id = "";
+            String user_city = "";
             String email = "";
             String religion = "";
             String password = "";
@@ -473,6 +505,8 @@ public class GenerateDatabase2 {
             String updateUser = "";
             String updatePreferences = "";
 
+            String user_bio;
+            String user_language = "Hindi,English";
             int food;
             int personality;
             int cookingAbility;
@@ -482,6 +516,7 @@ public class GenerateDatabase2 {
             for(int i=0; i<2500; i++){
                 user_id = Integer.toString(regNo);
                 firstName = nameGender[i][0];
+                lastName = nameGender[random.nextInt(2500)][0];
                 DOB = getDate();
 
                 if(nameGender[i][1].equalsIgnoreCase("M")){
@@ -491,25 +526,28 @@ public class GenerateDatabase2 {
                 }
 
                 course_id = Integer.toString(random.nextInt(8)+1);
+                user_city = city[random.nextInt(213)];
                 email = firstName + "_" + user_id + "@gmail.com";
                 religion = generateReligion();
                 password = firstName;
 
                 updateUser = updateUser = "INSERT INTO tblUser " +
-                        "(user_id,user_fname,user_dob,user_gender,user_course_id,user_email," +
+                        "(user_id,user_fname,user_lname,user_dob,user_gender,user_course_id,user_city,user_state,user_country,user_email," +
                         "user_religion,user_type,user_status,user_password) VALUES " +
-                        "(?,?,?,?,?,?,?,1,1,?)";
+                        "(?,?,?,?,?,?,?,' ','India',?,?,1,1,?)";
 
                 PreparedStatement preparedStatement = connection.prepareStatement(updateUser);
 
                 preparedStatement.setString(1,user_id);
                 preparedStatement.setString(2,firstName);
-                preparedStatement.setDate(3, Date.valueOf(DOB));
-                preparedStatement.setInt(4,gender);
-                preparedStatement.setString(5,course_id);
-                preparedStatement.setString(6,email);
-                preparedStatement.setString(7,religion);
-                preparedStatement.setString(8,password);
+                preparedStatement.setString(3,lastName);
+                preparedStatement.setDate(4, Date.valueOf(DOB));
+                preparedStatement.setInt(5,gender);
+                preparedStatement.setString(6,course_id);
+                preparedStatement.setString(7,user_city);
+                preparedStatement.setString(8,email);
+                preparedStatement.setString(9,religion);
+                preparedStatement.setString(10,password);
 
                 preparedStatement.executeUpdate();
 
@@ -518,19 +556,22 @@ public class GenerateDatabase2 {
                 cookingAbility = random.nextInt(3) + 1;
                 smoker = random.nextInt(3) + 1;
                 alcohol = random.nextInt(3) + 1;
+                user_bio = "My name is "+firstName+" "+lastName+". I am from "+user_city+".";
 
                 updatePreferences = "INSERT INTO tblPreferences " +
-                        "(user_id,user_food_preference,user_personality,user_cooking_ability," +
-                        "user_smoker,user_alcohol) VALUES (?,?,?,?,?,?)";
+                        "(user_id,user_food_preference,user_bio,user_personality,user_cooking_ability," +
+                        "user_smoker,user_alcohol,user_language) VALUES (?,?,?,?,?,?,?,?)";
 
                 PreparedStatement preparedStatement1 = connection.prepareStatement(updatePreferences);
 
                 preparedStatement1.setString(1,user_id);
                 preparedStatement1.setInt(2,food);
-                preparedStatement1.setInt(3,personality);
-                preparedStatement1.setInt(4,cookingAbility);
-                preparedStatement1.setInt(5,smoker);
-                preparedStatement1.setInt(6,alcohol);
+                preparedStatement1.setString(3,user_bio);
+                preparedStatement1.setInt(4,personality);
+                preparedStatement1.setInt(5,cookingAbility);
+                preparedStatement1.setInt(6,smoker);
+                preparedStatement1.setInt(7,alcohol);
+                preparedStatement1.setString(8,user_language);
 
                 preparedStatement1.executeUpdate();
 
@@ -540,8 +581,8 @@ public class GenerateDatabase2 {
                     -> tblAptBooking => tblApartment => tblBuilding
                  */
 
-                if(regNo%100==0){
-                    regNo += 1000;
+                if(regNo%500==0){
+                    regNo += 1000000;
                 }
                 regNo += 1;
             }
@@ -713,24 +754,36 @@ public class GenerateDatabase2 {
         }
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
 
-
-//        createTables();
-//        addStrCourse();
-//        addBuilding();
-//        addVilla();
-//        addApartment();
-//        addAdmin();
+        createDB();
+        System.out.println("Database has been created...");
+        createTables();
+        System.out.println("Tables have been created...");
+        addStrCourse();
+        System.out.println("tblStreet and tlbCourse have been filled...");
+        addBuilding();
+        System.out.println("tblBuilding has been filled...");
+        addVilla();
+        System.out.println("tblVilla has been filled...");
+        addApartment();
+        System.out.println("tblApartment has been filled...");
+        addAdmin();
+        System.out.println("Admins have been added...");
 
 //        System.out.println(generateReligion());
 //        System.out.println(getDate());
-//        String[][] arr = readFile();
-//        addUsersAndPreferences(arr);
+        String[][] arr = readFile();
+        String[] city = readCities();
+        System.out.println("Users and their preferences are being added...");
+        addUsersAndPreferences(arr,city);
 
-//        generateBookingTables();
+        System.out.println("Generating default values for the booking tables...");
+        generateBookingTables();
 
         generateBookings();
+
+        System.out.println("Database has been created successfully!!!");
 
     }
 }
