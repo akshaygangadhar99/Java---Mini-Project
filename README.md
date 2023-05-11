@@ -48,7 +48,7 @@ MySQL has been selected as the RDBMS for our portal. There are 10 tables in our 
  **user_id**: references _tblUser(user_id)_
 
 - ### tblBookingDetails:  
- ![image](https://user-images.githubusercontent.com/118504392/235843726-79d44f62-f2a2-4f48-a4c5-e0fe978671fb.png)  
+ ![image](https://github.com/akshaygangadhar99/Java---Mini-Project/assets/118504392/0118162b-a410-4d1e-b205-866c621f760e)
  **user_id**: references _tblUser(user_id)_  
  **villa_bed_id**: references _tblVillaBooking(bed_id)_  
  **apt_bed_id**: references _tblAptBooking(bed_id)_   
