@@ -7,6 +7,8 @@
 ## About  
 - This is a mini-project developed by myself and Karan Punjabi (GitHub User ID - karanpunjabi18) as part of our Java course in Semester-2 of our MSc in Data Science program.  
 - We are developing a Roommate Portal for the university students. The objective is to develop a fast and efficient system wherein students can check for available housing based on a number of filters such as pricing, distance from campus and room-sharing.  
+- The objective is to aid students in booking a hostel bed at the start of the academic year.  
+- 
 - We hope this serves as a good foundation to help our university develop a real-time portal which can help smoothen the hostel-booking process in the near future.  
 
 ## Database   
@@ -97,9 +99,17 @@ To ease backend programming load, several rules have been implemented for the en
  2. To ensure a more "realistic" feel to the database, religions have been assigned to each user on a random basis while keeping in mind the relative popularity of each religion in today's world. For example, Hinduism/Christianity/Islam has been allotted a higher proportion than, say, Buddhism, Sikh, or Judaism.  
  3. Another point to keep in mind while generating the bookings for the database is to ensure that the villas do not get "overbooked" as a result of the lesser number of available beds (950) as compared to the apartments (3600).  
  4. Unique user names have been obtained from a dataset containing over 800,000 names from [Kaggle](https://www.kaggle.com/datasets/ironicninja/baby-names).  
- 5. The entire set of methods required for generating the same are available within the class apts named [GenerateDatabase2](Roommate%20Portal/src/BackendMethods/GenerateDatabase2.java).  
+ 5. The entire set of methods required for generating the same are available within the class aptly named [GenerateDatabase2](Roommate%20Portal/src/BackendMethods/GenerateDatabase2.java).  
 
-## Functionality  
+## About the Application (Backend)  
+ - All the classes and methods used for backend modifications (based on frontend user-actions) are contained within the package aptly named -[BackendMethods](Roommate%20Portal/src/BackendMethods).  
+ - Important classes within this package are:  
+  - [GenerateDatabase](Roommate%20Portal/src/BackendMethods/GenerateDatabase2.java)  
+  - [AdminMethods](Roommate%20Portal/src/BackendMethods/AdminMethods.java)  
+  - [MinorMethods](Roommate%20Portal/src/BackendMethods/MinorMethods.java)  
+  - [UpdateTables](Roommate%20Portal/src/BackendMethods/UpdateTables.java)  
+
+
 
 
 
