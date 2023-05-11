@@ -92,13 +92,14 @@ To ease backend programming load, several rules have been implemented for the en
   - user_language:  
     - User is required to sequentially list all languages they can speak  
 
-### Note
-(1) To demonstrate the entire range of functionalities possessed by our application, a comprehensize database with 2500 unique users has been designed. This includes a complete set of user-id's, first and last names, date of births, email-id's, religions, and a complete entry of preferences (in tblPreferences). Each user is assigned a particular bed in a specific room of a villa / apartment (on a random basis).  
-(2) To ensure a more "realistic" feel to the database, religions have been assigned to each user on a random basis while keeping in mind the relative popularity of each religion in today's world. For example, Hinduism/Christianity/Islam has been allotted a higher proportion than, say, Buddhism, Sikh, or Judaism.  
-(3) Another point to keep in mind while generating the bookings for the database is to ensure that the villas do not get "overbooked" as a result of the lesser number of available beds (950) as compared to the apartments (3600).  
-(4) Unique user names have been obtained from a dataset containing over 800,000 names from [Kaggle](https://www.kaggle.com/datasets/ironicninja/baby-names).  
-(4) The entire set of methods required for generating the same are available within the class apts named [GenerateDatabase2]()
+### Important Points to Note  
+ 1. To demonstrate the entire range of functionalities possessed by our application, a comprehensize database with 2500 unique users has been designed. This includes a complete set of user-id's, first and last names, date of births, email-id's, religions, and a complete entry of preferences (in tblPreferences). Each user is assigned a particular bed in a specific room of a villa / apartment (on a random basis).  
+ 2. To ensure a more "realistic" feel to the database, religions have been assigned to each user on a random basis while keeping in mind the relative popularity of each religion in today's world. For example, Hinduism/Christianity/Islam has been allotted a higher proportion than, say, Buddhism, Sikh, or Judaism.  
+ 3. Another point to keep in mind while generating the bookings for the database is to ensure that the villas do not get "overbooked" as a result of the lesser number of available beds (950) as compared to the apartments (3600).  
+ 4. Unique user names have been obtained from a dataset containing over 800,000 names from [Kaggle](https://www.kaggle.com/datasets/ironicninja/baby-names).  
+ 5. The entire set of methods required for generating the same are available within the class apts named [GenerateDatabase2](Roommate%20Portal/src/BackendMethods/GenerateDatabase2.java).  
 
 ## Functionality  
+
 
 
