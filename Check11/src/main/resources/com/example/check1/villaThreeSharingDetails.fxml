@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="CENTER" style="-fx-background-color: lightgray;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.check1.VillaThreeSharingDetailsController">
+     <AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="449.0" prefWidth="644.0" style="-fx-background-color: white; -fx-border-color: black;" VBox.vgrow="SOMETIMES">
+         <Label fx:id="HeadingLabel" alignment="TOP_CENTER" layoutX="3.0" layoutY="123.0" prefHeight="53.0" prefWidth="644.0" text="Bed Listings">
+             <font>
+                 <Font name="Cambria Bold" size="30.0" />
+             </font>
+         </Label>
+         <ImageView fitHeight="78.0" fitWidth="232.0" layoutX="206.0" layoutY="14.0" pickOnBounds="true">
+              <image>
+                 <Image url="@../../../images/christLogo.png" />
+              </image>
+         </ImageView>
+         <TableView fx:id="tableView" accessibleRole="PARENT" layoutX="32.0" layoutY="195.0" prefHeight="210.0" prefWidth="586.0">
+             <columns>
+                 <TableColumn fx:id="BedNumber" prefWidth="183.33330917358398" text="Bed No.">
+                     <cellValueFactory>
+                         <PropertyValueFactory property="bedID" />
+                     </cellValueFactory>
+                 </TableColumn>
+                 <TableColumn fx:id="RoomNumber" prefWidth="139.33338928222656" text="Room No.">
+                     <cellValueFactory>
+                         <PropertyValueFactory property="roomID" />
+                     </cellValueFactory>
+                 </TableColumn>
+                 <TableColumn fx:id="Availability" prefWidth="122.0" text="Availability">
+                     <cellValueFactory>
+                         <PropertyValueFactory property="availability" />
+                     </cellValueFactory>
+                 </TableColumn>
+             </columns>
+         </TableView>
+         <Hyperlink fx:id="goBack" alignment="TOP_LEFT" layoutX="32.0" layoutY="415.0" onAction="#goBackToHome" prefHeight="24.0" prefWidth="112.0" text="Go back">
+         <font>
+            <Font name="Cambria Bold" size="14.0" />
+         </font>
+      </Hyperlink>
+      <Line endX="337.0" endY="7.62939453125E-6" layoutX="307.0" layoutY="110.0" startX="-307.0" startY="7.62939453125E-6" />
+      <Line endX="337.0" endY="7.62939453125E-6" layoutX="308.0" layoutY="179.0" startX="-307.0" startY="7.62939453125E-6" />
+         </AnchorPane>
+</VBox>

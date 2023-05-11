@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="CENTER" style="-fx-background-color: lightgray;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.check1.BookedHomePageController">
+   <children>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="303.0" prefWidth="559.0" style="-fx-background-color: white; -fx-border-color: black;">
+         <children>
+            <ImageView fitHeight="78.0" fitWidth="232.0" layoutX="164.0" layoutY="14.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../../../images/christLogo.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="HeadingLabel" layoutX="14.0" layoutY="124.0" text="Welcome to the Room Portal!">
+               <font>
+                  <Font name="Cambria Bold" size="24.0" />
+               </font>
+            </Label>
+            <Line endX="396.0" endY="-349.0" layoutX="163.0" layoutY="523.0" startX="-163.00001525878906" startY="-349.0" />
+
+            <Button fx:id="btnViewRoomMates" layoutX="106.0" layoutY="216.0" mnemonicParsing="false" onAction="#viewRoomMates" text="View My Room Mates">
+               <font>
+                  <Font name="Cambria Bold" size="14.0" />
+               </font>
+            </Button>
+            <Hyperlink fx:id="logout" alignment="CENTER_RIGHT" layoutX="503.0" layoutY="127.0" onAction="#goBackToLogin" text="Logout" underline="true">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Hyperlink>
+            <Button fx:id="btnViewProfile" layoutX="350.0" layoutY="216.0" mnemonicParsing="false" onAction="#viewProfile" text="View My Profile">
+               <font>
+                  <Font name="Cambria Bold" size="14.0" />
+               </font>
+            </Button>
+            <Line endX="396.0" endY="-349.0" layoutX="163.0" layoutY="454.0" startX="-163.00001525878906" startY="-349.0" />
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>

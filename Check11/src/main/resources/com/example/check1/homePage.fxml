@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="CENTER" style="-fx-background-color: lightgray;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.check1.HomePageController">
+   <children>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="363.0" prefWidth="600.0" style="-fx-background-color: white; -fx-border-color: black;">
+         <children>
+            <ImageView fitHeight="78.0" fitWidth="232.0" layoutX="182.0" layoutY="8.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../../../images/christLogo.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="HeadingLabel" layoutX="14.0" layoutY="121.0" text="Welcome to the Housing Portal!">
+               <font>
+                  <Font name="Cambria Bold" size="24.0" />
+               </font>
+            </Label>
+            <Line endX="436.0" endY="-349.0" layoutX="163.0" layoutY="519.0" startX="-163.00001525878906" startY="-349.0" />
+            <Label layoutX="29.0" layoutY="197.0" text="What type of house you are looking for? ">
+               <font>
+                  <Font name="Cambria Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="29.0" layoutY="261.0" text="Which type of sharing would you prefer?">
+               <font>
+                  <Font name="Cambria Bold" size="14.0" />
+               </font>
+            </Label>
+            <RadioButton layoutX="362.0" layoutY="198.0" mnemonicParsing="false" text="Villa">
+               <toggleGroup>
+                  <ToggleGroup fx:id="houseType" />
+               </toggleGroup>
+               <font>
+                  <Font name="Cambria Bold" size="14.0" />
+               </font>
+            </RadioButton>
+            <RadioButton layoutX="472.0" layoutY="198.0" mnemonicParsing="false" text="Apartment" toggleGroup="$houseType">
+               <font>
+                  <Font name="Cambria Bold" size="14.0" />
+               </font>
+            </RadioButton>
+            <RadioButton layoutX="362.0" layoutY="262.0" mnemonicParsing="false" text="3-Sharing">
+               <toggleGroup>
+                  <ToggleGroup fx:id="sharingType" />
+               </toggleGroup>
+               <font>
+                  <Font name="Cambria Bold" size="14.0" />
+               </font>
+            </RadioButton>
+            <RadioButton layoutX="472.0" layoutY="262.0" mnemonicParsing="false" text="4-Sharing" toggleGroup="$sharingType">
+               <font>
+                  <Font name="Cambria Bold" size="14.0" />
+               </font>
+            </RadioButton>
+            <Button fx:id="btnFindRooms" layoutX="252.0" layoutY="312.0" mnemonicParsing="false" onAction="#findRooms" text="Find Rooms">
+               <font>
+                  <Font name="Cambria Bold" size="14.0" />
+               </font>
+            </Button>
+            <Hyperlink fx:id="viewProfile" alignment="CENTER_RIGHT" layoutX="428.0" layoutY="112.0" onAction="#viewProfile" prefHeight="24.0" prefWidth="160.0" text="View My Profile" underline="true">
+               <font>
+                  <Font name="Cambria Bold" size="12.0" />
+               </font>
+            </Hyperlink>
+            <Hyperlink fx:id="logout" alignment="CENTER_RIGHT" layoutX="428.0" layoutY="135.0" onAction="#goBackToLogin" prefHeight="24.0" prefWidth="160.0" text="Logout" underline="true">
+               <font>
+                  <Font name="Cambria Bold" size="12.0" />
+               </font>
+            </Hyperlink>
+            <Line endX="436.0" endY="-349.0" layoutX="163.0" layoutY="450.0" startX="-163.00001525878906" startY="-349.0" />
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>
