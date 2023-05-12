@@ -120,7 +120,7 @@ Admins can avail several different functionalities such as:
   - Block / Unblock apartments  
   - Block / Unblock villas  
 
-### Packages & Classes Developed    
+### Packages & Classes Developed - Backend  
  - All the classes and methods used for backend modifications (based on frontend user-actions) are contained within the package aptly named [BackendMethods](Roommate%20Portal/src/BackendMethods).  
  - Important classes within this package are:  
    - [GenerateDatabase2](Roommate%20Portal/src/BackendMethods/GenerateDatabase2.java)  
@@ -141,6 +141,9 @@ Admins can avail several different functionalities such as:
       - Alterations in any of the tables as a result of a user-action triggers a subsequent sequence of background tasks that updates the entire database. The complete set of methods that implement this are contained within this class.  
    - [VisualMethods](Roommate%20Portal/src/BackendMethods/VisualMethods.java)  
       - This class contains the complete set of methods that retrieve the data that is pertinent to generating key insights for the roommate portal.  
+
+### Graphical User Interface (GUI)  
+
 
 
      
