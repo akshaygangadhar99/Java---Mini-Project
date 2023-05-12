@@ -127,6 +127,7 @@ To ease backend programming load, several rules have been implemented for the en
    - [AdminMethods](Roommate%20Portal/src/BackendMethods/AdminMethods.java)  
    - [MinorMethods](Roommate%20Portal/src/BackendMethods/MinorMethods.java)  
    - [UpdateTables](Roommate%20Portal/src/BackendMethods/UpdateTables.java)  
+   - [VisualMethods](Roommate%20Portal/src/BackendMethods/VisualMethods.java)
      
 
 
