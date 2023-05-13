@@ -10,6 +10,49 @@
 - The objective is to aid students in booking a hostel bed at the start of the academic year.  
 - We hope this serves as a concrete foundation to help our university develop a real-time portal which can help smoothen the hostel-booking process in the near future.    
 
+## Key Features of the Roommate Portal Application  
+There are two user modules - **Student & Admin**.  
+
+### Student Module  
+- House listings are displayed based on user-specified choice of filters. Students can search for available aparments and villas based on their choice of room type (3/4-sharing).  
+- On viewing a room (within an apartment or a villa), profiles of potential roommates (who have already booked a bed) will be visible.    
+- Users will be able to view key insights such as:  
+  - Gender-based demographics of users  
+  - Total bookings based on distance from the university  
+  - Street-wise distribution of religions  
+- The intention is to help students get as much crucial information as possible that will help them make the best decision with respect to their housing concerns.  
+
+### Admin Module  
+Admins can avail several different functionalities such as:  
+  - View all bookings  
+  - Delete bookings  
+  - Block / Unblock buildings  
+  - Block / Unblock apartments  
+  - Block / Unblock villas  
+
+### Packages & Classes Developed - Backend  
+ - All the classes and methods used for backend modifications (based on frontend user-actions) are contained within the package aptly named [BackendMethods](Roommate%20Portal/src/BackendMethods).  
+ - Important classes within this package are:  
+   - [GenerateDatabase2](Roommate%20Portal/src/BackendMethods/GenerateDatabase2.java)  
+      - This class contains the entire set of methods required to generate the simulated database.  
+   - [AdminMethods](Roommate%20Portal/src/BackendMethods/AdminMethods.java)  
+      - This class contains the complete set of methods required to run any and all Admin-related queries and functionalities.  
+      - This involves a series of steps including updation of all relevant tables in the database that are triggered by an admin action on the portal.  
+      - For example, something relatively simple such as - Deleting a Booking - requires subsequent updates to several attributes in the following tables:  
+        - tblBookingDetails  
+        - tblAptBooking / tblApartment / tblBuilding : For the apartment housing type  
+        - tblVillaBooking / tblVilla : For the villa housing type  
+      - In case of other such admin actions, all the linked tables need to be modified.  
+      - Appropriate checks are introduced in place to ensure that the front-end user is notified in case a task fails in the background of the application.  
+   - [MinorMethods](Roommate%20Portal/src/BackendMethods/MinorMethods.java)  
+      - This class contains a set of repetitively-utilized methods that have been developed for convenience to aid the development of other back-end functionalities.   
+   - [UpdateTables](Roommate%20Portal/src/BackendMethods/UpdateTables.java)  
+      - Along with the AdminMethods class, this class represents the other set of methods that are crucial to the working of our portal application.  
+      - Alterations in any of the tables as a result of a user-action triggers a subsequent sequence of background tasks that updates the entire database. The complete set of methods that implement this are contained within this class.  
+   - [VisualMethods](Roommate%20Portal/src/BackendMethods/VisualMethods.java)  
+      - This class contains the complete set of methods that retrieve the data that is pertinent to generating key insights for the roommate portal.  
+
+### Graphical User Interface (GUI)
 ## Database   
 MySQL has been selected as the RDBMS for our portal. There are 10 tables in our MySQL database. These are:  
 
@@ -103,49 +146,7 @@ To ease backend programming load, several rules have been implemented for the en
  4. Unique user names have been obtained from a dataset containing over 800,000 names from [Kaggle](https://www.kaggle.com/datasets/ironicninja/baby-names).  
  5. The entire set of methods required for generating the same are available within the class aptly named [GenerateDatabase2](Roommate%20Portal/src/BackendMethods/GenerateDatabase2.java).  
 
-## Key Features of the Roommate Portal Application  
-There are two user modules - **Student & Admin**.  
-
-### Student Module  
-- House listings are displayed based on user-specified choice of filters. Students can search for available aparments and villas based on their choice of room type (3/4-sharing).  
-- On viewing a room (within an apartment or a villa), profiles of potential roommates (who have already booked a bed) will be visible.    
-- Users will be able to view key insights such as:  
-  - Gender-based demographics of users  
-  - Total bookings based on distance from the university  
-  - Street-wise distribution of religions  
-- The intention is to help students get as much crucial information as possible that will help them make the best decision with respect to their housing concerns.  
-
-### Admin Module  
-Admins can avail several different functionalities such as:  
-  - View all bookings  
-  - Delete bookings  
-  - Block / Unblock buildings  
-  - Block / Unblock apartments  
-  - Block / Unblock villas  
-
-### Packages & Classes Developed - Backend  
- - All the classes and methods used for backend modifications (based on frontend user-actions) are contained within the package aptly named [BackendMethods](Roommate%20Portal/src/BackendMethods).  
- - Important classes within this package are:  
-   - [GenerateDatabase2](Roommate%20Portal/src/BackendMethods/GenerateDatabase2.java)  
-      - This class contains the entire set of methods required to generate the simulated database.  
-   - [AdminMethods](Roommate%20Portal/src/BackendMethods/AdminMethods.java)  
-      - This class contains the complete set of methods required to run any and all Admin-related queries and functionalities.  
-      - This involves a series of steps including updation of all relevant tables in the database that are triggered by an admin action on the portal.  
-      - For example, something relatively simple such as - Deleting a Booking - requires subsequent updates to several attributes in the following tables:  
-        - tblBookingDetails  
-        - tblAptBooking / tblApartment / tblBuilding : For the apartment housing type  
-        - tblVillaBooking / tblVilla : For the villa housing type  
-      - In case of other such admin actions, all the linked tables need to be modified.  
-      - Appropriate checks are introduced in place to ensure that the front-end user is notified in case a task fails in the background of the application.  
-   - [MinorMethods](Roommate%20Portal/src/BackendMethods/MinorMethods.java)  
-      - This class contains a set of repetitively-utilized methods that have been developed for convenience to aid the development of other back-end functionalities.   
-   - [UpdateTables](Roommate%20Portal/src/BackendMethods/UpdateTables.java)  
-      - Along with the AdminMethods class, this class represents the other set of methods that are crucial to the working of our portal application.  
-      - Alterations in any of the tables as a result of a user-action triggers a subsequent sequence of background tasks that updates the entire database. The complete set of methods that implement this are contained within this class.  
-   - [VisualMethods](Roommate%20Portal/src/BackendMethods/VisualMethods.java)  
-      - This class contains the complete set of methods that retrieve the data that is pertinent to generating key insights for the roommate portal.  
-
-### Graphical User Interface (GUI)  
+  
 
 
 
