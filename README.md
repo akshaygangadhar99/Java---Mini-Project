@@ -12,6 +12,9 @@
 
 ## Database   
 MySQL has been selected as the RDBMS for our portal. There are 10 tables in our MySQL database. These are:  
+
+![image](https://github.com/akshaygangadhar99/Java---Mini-Project/assets/118504392/9cae1e84-8c35-4791-97c4-a8eb4166af01)
+
 - ### tblStreet:  
  ![image](https://user-images.githubusercontent.com/118504392/235843172-1bd245ca-4ba4-4224-9b59-1c540b65d727.png)
  
