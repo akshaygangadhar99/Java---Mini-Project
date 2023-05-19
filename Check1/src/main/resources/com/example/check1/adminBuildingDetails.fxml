@@ -4,44 +4,46 @@
 <?import javafx.scene.control.cell.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<VBox alignment="CENTER" style="-fx-background-color: lightblue;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.check1.AdminBuildingDetailsController">
-    <ScrollPane hbarPolicy="NEVER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" pannable="true" prefHeight="588.0" prefWidth="644.0" vbarPolicy="NEVER">
-        <AnchorPane fx:id="anchorPane" minHeight="-Infinity" prefHeight="586.0" prefWidth="647.0" style="-fx-background-color: lightblue; -fx-background-image: buildingImg.jpg;" VBox.vgrow="SOMETIMES" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
-            <Label fx:id="HeadingLabel" alignment="TOP_CENTER" layoutY="133.0" prefHeight="53.0" prefWidth="644.0" text="Building Details" underline="true">
-                <font>
-                    <Font name="System Bold Italic" size="36.0" />
-                </font>
-            </Label>
-            <ImageView fitHeight="112.0" fitWidth="628.0" layoutX="9.0" layoutY="14.0" pickOnBounds="true">
-                 <image>
-                    <Image url="@../../../images/christLogo.png" />
-                 </image>
-            </ImageView>
-            <TableView fx:id="tableView" accessibleRole="PARENT" layoutX="16.0" layoutY="211.0" prefHeight="337.0" prefWidth="612.0">
-                <columns>
-                    <TableColumn fx:id="streetName" prefWidth="186.99999046325684" text="Street Name">
-                        <cellValueFactory>
-                            <PropertyValueFactory property="streetName" />
-                        </cellValueFactory>
-                    </TableColumn>
-                    <TableColumn fx:id="buildingName" prefWidth="145.6666717529297" text="Building Name">
-                        <cellValueFactory>
-                            <PropertyValueFactory property="buildingName" />
-                        </cellValueFactory>
-                    </TableColumn>
-                    <TableColumn fx:id="distance" prefWidth="120.33331298828125" text="Distance in (KM)">
-                        <cellValueFactory>
-                            <PropertyValueFactory property="distance" />
-                        </cellValueFactory>
-                    </TableColumn>
-                </columns>
-            </TableView>
-            <Hyperlink fx:id="goBack" alignment="TOP_LEFT" layoutX="15.0" layoutY="552.0" onAction="#goBackToHome" prefHeight="24.0" prefWidth="112.0" text="Go back">
-            <font>
-               <Font name="System Bold" size="14.0" />
-            </font></Hyperlink>
-            </AnchorPane>
-    </ScrollPane>
+<VBox alignment="CENTER" style="-fx-background-color: lightgray;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.check1.AdminBuildingDetailsController">
+     <AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="586.0" prefWidth="640.0" style="-fx-background-color: white; -fx-border-color: black;" VBox.vgrow="SOMETIMES">
+         <Label fx:id="HeadingLabel" alignment="TOP_CENTER" layoutY="128.0" prefHeight="53.0" prefWidth="644.0" text="Building Listings">
+             <font>
+                 <Font name="Cambria Bold" size="30.0" />
+             </font>
+         </Label>
+         <ImageView fitHeight="78.0" fitWidth="232.0" layoutX="206.0" layoutY="14.0" pickOnBounds="true">
+              <image>
+                 <Image url="@../../../images/christLogo.png" />
+              </image>
+         </ImageView>
+         <TableView fx:id="tableView" accessibleRole="PARENT" layoutX="16.0" layoutY="211.0" prefHeight="337.0" prefWidth="612.0">
+             <columns>
+                 <TableColumn fx:id="streetName" prefWidth="186.99999046325684" text="Street Name">
+                     <cellValueFactory>
+                         <PropertyValueFactory property="streetName" />
+                     </cellValueFactory>
+                 </TableColumn>
+                 <TableColumn fx:id="buildingName" prefWidth="145.6666717529297" text="Building Name">
+                     <cellValueFactory>
+                         <PropertyValueFactory property="buildingName" />
+                     </cellValueFactory>
+                 </TableColumn>
+                 <TableColumn fx:id="distance" prefWidth="120.33331298828125" text="Distance (km)">
+                     <cellValueFactory>
+                         <PropertyValueFactory property="distance" />
+                     </cellValueFactory>
+                 </TableColumn>
+             </columns>
+         </TableView>
+         <Hyperlink fx:id="goBack" alignment="TOP_LEFT" layoutX="15.0" layoutY="552.0" onAction="#goBackToHome" prefHeight="24.0" prefWidth="112.0" text="Go back">
+         <font>
+            <Font name="Cambria Bold" size="14.0" />
+         </font>
+      </Hyperlink>
+      <Line endX="536.0" layoutX="101.0" layoutY="188.0" startX="-100.0" />
+      <Line endX="539.0" layoutX="102.0" layoutY="108.0" startX="-100.0" />
+         </AnchorPane>
 </VBox>

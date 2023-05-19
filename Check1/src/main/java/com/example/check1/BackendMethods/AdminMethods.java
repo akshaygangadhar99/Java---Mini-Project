@@ -10,7 +10,7 @@ import com.example.check1.BackendMethods.MinorMethods.*;
 public class AdminMethods {
     private static final String url = "jdbc:mysql://localhost:3306/";
     private static final String user = "root";
-    private static final String password = "root";
+    private static final String password = "0123456789";
 
     /*
     This class contains methods that will update relevant tables based on admin-action, which basically involves

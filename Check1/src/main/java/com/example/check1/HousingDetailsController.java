@@ -114,7 +114,7 @@ public class HousingDetailsController implements Initializable {
     }
     public void getDataFromDatabaseForVilla(String sql) {
         try {
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbPortal", "root", "root");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbPortal", "root", "0123456789");
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
             while (rs.next()) {
@@ -143,7 +143,7 @@ public class HousingDetailsController implements Initializable {
     }
     public void getDataFromDatabaseForBuilding(String sql) {
         try {
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbPortal", "root", "root");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbPortal", "root", "0123456789");
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
             while (rs.next()) {

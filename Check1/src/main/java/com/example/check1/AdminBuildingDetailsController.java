@@ -88,7 +88,7 @@ public class AdminBuildingDetailsController implements Initializable {
     public void loadData(String sql) {
         if(Integer.parseInt(choice)==1){
             try {
-                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbPortal", "root", "root");
+                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbPortal", "root", "0123456789");
                 Statement stmt = conn.createStatement();
                 ResultSet rs = stmt.executeQuery(sql);
                 while (rs.next()) {
@@ -113,7 +113,7 @@ public class AdminBuildingDetailsController implements Initializable {
             }
         } else if(Integer.parseInt(choice)==2){
             try {
-                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbPortal", "root", "root");
+                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbPortal", "root", "0123456789");
                 Statement stmt = conn.createStatement();
                 ResultSet rs = stmt.executeQuery(sql);
                 while (rs.next()) {
@@ -143,7 +143,7 @@ public class AdminBuildingDetailsController implements Initializable {
             }
         }else if(Integer.parseInt(choice)==3){
             try {
-                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbPortal", "root", "root");
+                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbPortal", "root", "0123456789");
                 Statement stmt = conn.createStatement();
                 ResultSet rs = stmt.executeQuery(sql);
                 while (rs.next()) {

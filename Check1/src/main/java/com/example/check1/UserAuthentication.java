@@ -10,7 +10,7 @@ import java.sql.*;
 public class UserAuthentication {
     private static final String DB_URL = "jdbc:mysql://localhost:3306/dbPortal";
     private static final String DB_USER = "root";
-    private static final String DB_PASSWORD = "root";
+    private static final String DB_PASSWORD = "0123456789";
 
     public boolean authenticateUser(String regNo, String password, int userType) {
         boolean isAuthenticated = false;
@@ -149,7 +149,7 @@ public class UserAuthentication {
         boolean success = false;
         try{
             Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
-            String sql = "select * from tblpreferences where user_id="+regID+";";
+            String sql = "select * from tblbookingdetails where user_id="+regID+";";
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
             while (rs.next()){
@@ -171,6 +171,7 @@ public class UserAuthentication {
                 success = true;
             }
         } catch (SQLException e) {
+//            success = false;
             throw new RuntimeException(e);
         }
         return success;

@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Hyperlink?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Line?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-<VBox alignment="CENTER" style="-fx-background-color: lightgray;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.check1.BookedHomePageController">
+<VBox alignment="CENTER" style="-fx-background-color: lightgray;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.check1.BookedHomePageController">
    <children>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="303.0" prefWidth="559.0" style="-fx-background-color: white; -fx-border-color: black;">
          <children>
@@ -31,7 +27,7 @@
                   <Font name="Cambria Bold" size="14.0" />
                </font>
             </Button>
-            <Hyperlink fx:id="logout" alignment="CENTER_RIGHT" layoutX="503.0" layoutY="127.0" onAction="#goBackToLogin" text="Logout" underline="true">
+            <Hyperlink fx:id="logout" alignment="CENTER_RIGHT" layoutX="504.0" layoutY="128.0" onAction="#goBackToLogin" text="Logout" underline="true">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
@@ -42,6 +38,11 @@
                </font>
             </Button>
             <Line endX="396.0" endY="-349.0" layoutX="163.0" layoutY="454.0" startX="-163.00001525878906" startY="-349.0" />
+            <Label layoutX="321.0" layoutY="273.0" text="Contact us: hostel.lavasa@christuniversity.in">
+               <font>
+                  <Font name="Cambria Italic" size="12.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </children>

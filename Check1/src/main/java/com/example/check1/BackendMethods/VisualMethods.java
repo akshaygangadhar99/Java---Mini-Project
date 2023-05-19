@@ -12,7 +12,7 @@ public class VisualMethods {
 
     private static final String url = "jdbc:mysql://localhost:3306/";
     private static final String user = "root";
-    private static final String password = "root";
+    private static final String password = "0123456789";
 
     public static float getBuildingDistance(String bld_id){
         /*

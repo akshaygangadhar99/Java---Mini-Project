@@ -9,7 +9,7 @@ public class GenerateDatabase {
 
     private static final String url = "jdbc:mysql://localhost:3306/";
     private static final String user = "root";
-    private static final String password = "root";
+    private static final String password = "0123456789";
     public static void createDB() throws SQLException{
         String sql = "CREATE DATABASE IF NOT EXISTS dbPortal";
         try {

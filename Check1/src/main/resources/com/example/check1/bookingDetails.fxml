@@ -1,68 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Hyperlink?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.cell.PropertyValueFactory?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.cell.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-<VBox alignment="CENTER" prefHeight="505.0" prefWidth="818.0" style="-fx-background-color: lightblue;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.check1.BookingDetailsController">
-    <ScrollPane hbarPolicy="NEVER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="505.0" prefWidth="785.0" vbarPolicy="NEVER">
-        <AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="502.0" prefWidth="783.0" style="-fx-background-color: lightblue; -fx-background-image: buildingImg.jpg;" VBox.vgrow="SOMETIMES" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
-            <Label alignment="TOP_CENTER" layoutY="133.0" prefHeight="53.0" prefWidth="774.0" text="Booking Details" underline="true">
-                <font>
-                    <Font name="System Bold Italic" size="36.0" />
-                </font>
-            </Label>
-            <ImageView fitHeight="112.0" fitWidth="773.0" layoutX="3.0" layoutY="14.0" pickOnBounds="true">
-                 <image>
-                    <Image url="@../../../images/christLogo.png" />
-                 </image>
-            </ImageView>
-            <TableView fx:id="tableView" accessibleRole="PARENT" layoutX="23.0" layoutY="194.0" prefHeight="254.0" prefWidth="753.0">
-                <columns>
-                    <TableColumn fx:id="BookingID" prefWidth="84.66669273376465" text="Booking ID">
-                        <cellValueFactory>
-                            <PropertyValueFactory property="bookingID" />
-                        </cellValueFactory>
-                    </TableColumn>
-                    <TableColumn fx:id="UserID" prefWidth="102.66667175292969" text="User ID">
-                        <cellValueFactory>
-                            <PropertyValueFactory property="userID" />
-                        </cellValueFactory>
-                    </TableColumn>
-                    <TableColumn fx:id="Date" prefWidth="101.99996948242188" text="Date">
-                        <cellValueFactory>
-                            <PropertyValueFactory property="date" />
-                        </cellValueFactory>
-                    </TableColumn>
-                    <TableColumn fx:id="Time" prefWidth="109.33331298828125" text="Time">
-                        <cellValueFactory>
-                            <PropertyValueFactory property="time" />
-                        </cellValueFactory>
-                    </TableColumn>
-                    <TableColumn fx:id="VillaBedID" prefWidth="90.66668701171875" text="Villa Bed ID">
-                        <cellValueFactory>
-                            <PropertyValueFactory property="villaBedID" />
-                        </cellValueFactory>
-                    </TableColumn>
-                    <TableColumn fx:id="ApartmentBedID" prefWidth="130.66668701171875" text="Apartment Bed ID">
-                        <cellValueFactory>
-                            <PropertyValueFactory property="apartmentBedID" />
-                        </cellValueFactory>
-                    </TableColumn>
-                </columns>
-            </TableView>
-            <Hyperlink fx:id="goBack" alignment="TOP_LEFT" layoutX="32.0" layoutY="475.0" onAction="#goBackToHome" prefHeight="24.0" prefWidth="112.0" text="Go back">
-            <font>
-               <Font name="System Bold" size="14.0" />
-            </font></Hyperlink>
-            </AnchorPane>
-    </ScrollPane>
+<VBox alignment="CENTER" style="-fx-background-color: lightgray;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.check1.BookingDetailsController">
+     <AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="502.0" prefWidth="783.0" style="-fx-background-color: white; -fx-border-color: black;" VBox.vgrow="SOMETIMES">
+         <Label alignment="TOP_CENTER" layoutX="13.0" layoutY="127.0" prefHeight="53.0" prefWidth="774.0" text="Booking Details">
+             <font>
+                 <Font name="Cambria Bold" size="30.0" />
+             </font>
+         </Label>
+         <ImageView fitHeight="78.0" fitWidth="232.0" layoutX="284.0" layoutY="14.0" pickOnBounds="true">
+              <image>
+                 <Image url="@../../../images/christLogo.png" />
+              </image>
+         </ImageView>
+         <TableView fx:id="tableView" accessibleRole="PARENT" layoutX="23.0" layoutY="194.0" prefHeight="254.0" prefWidth="741.0">
+             <columns>
+                 <TableColumn fx:id="BookingID" prefWidth="84.66669273376465" text="Booking ID">
+                     <cellValueFactory>
+                         <PropertyValueFactory property="bookingID" />
+                     </cellValueFactory>
+                 </TableColumn>
+                 <TableColumn fx:id="UserID" prefWidth="102.66667175292969" text="User ID">
+                     <cellValueFactory>
+                         <PropertyValueFactory property="userID" />
+                     </cellValueFactory>
+                 </TableColumn>
+                 <TableColumn fx:id="Date" prefWidth="101.99996948242188" text="Date">
+                     <cellValueFactory>
+                         <PropertyValueFactory property="date" />
+                     </cellValueFactory>
+                 </TableColumn>
+                 <TableColumn fx:id="Time" prefWidth="109.33331298828125" text="Time">
+                     <cellValueFactory>
+                         <PropertyValueFactory property="time" />
+                     </cellValueFactory>
+                 </TableColumn>
+                 <TableColumn fx:id="VillaBedID" prefWidth="90.66668701171875" text="Villa Bed ID">
+                     <cellValueFactory>
+                         <PropertyValueFactory property="villaBedID" />
+                     </cellValueFactory>
+                 </TableColumn>
+                 <TableColumn fx:id="ApartmentBedID" prefWidth="130.66668701171875" text="Apartment Bed ID">
+                     <cellValueFactory>
+                         <PropertyValueFactory property="apartmentBedID" />
+                     </cellValueFactory>
+                 </TableColumn>
+             </columns>
+         </TableView>
+         <Hyperlink fx:id="goBack" alignment="TOP_LEFT" layoutX="23.0" layoutY="460.0" onAction="#goBackToHome" prefHeight="24.0" prefWidth="112.0" text="Go back">
+         <font>
+            <Font name="Cambria Bold" size="14.0" />
+         </font>
+      </Hyperlink>
+      <Line endX="484.0" layoutX="299.0" layoutY="108.0" startX="-295.0" />
+      <Line endX="682.0" layoutX="101.0" layoutY="186.0" startX="-100.0" />
+         </AnchorPane>
 </VBox>

@@ -47,7 +47,7 @@ public class PieChartStreetWiseReligion implements Initializable {
     public void loadPieChart(){
         Connection conn = null;
         try {
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbportal", "root", "root");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbportal", "root", "0123456789");
 
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT user_gender,COUNT(*) as count FROM tbluser GROUP BY user_gender");

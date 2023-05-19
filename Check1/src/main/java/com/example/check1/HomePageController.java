@@ -118,4 +118,17 @@ public class HomePageController implements Initializable {
         stage.setMaximized(true);
         stage.show();
     }
+
+    public void viewInsights() throws IOException {
+        UserAuthentication user = new UserAuthentication();
+        user.writeToAHiddenFile(regID);
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("pieChartStreetWiseReligion.fxml")));
+        Scene scene = new Scene(root);
+        Stage stage = (Stage) viewProfile.getScene().getWindow();
+        stage.setScene(scene);
+        stage.setTitle("Student Details");
+        stage.setMaximized(false);
+        stage.setMaximized(true);
+        stage.show();
+    }
 }

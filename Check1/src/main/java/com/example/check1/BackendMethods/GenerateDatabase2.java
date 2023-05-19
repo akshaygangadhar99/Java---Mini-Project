@@ -15,8 +15,8 @@ public class GenerateDatabase2 {
 
     private static final String url = "jdbc:mysql://localhost:3306/";
     private static final String user = "root";
-    private static final String password = "root";
-    private static final String path = "C:/Users/hp/IdeaProjects/Check1/src/main/java/com/example/check1/";
+    private static final String password = "0123456789";
+    private static final String path = "D:/Work/Data Science/Christ University/Academics/Semester 2/Java/22122103-MDL273L-JAVA/Java---Mini-Project/Check1/src/main/java/com/example/check1/";
 
     public static void createDB() throws SQLException{
         String sql = "CREATE DATABASE IF NOT EXISTS dbPortal";

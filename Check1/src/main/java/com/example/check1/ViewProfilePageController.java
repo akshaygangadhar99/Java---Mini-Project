@@ -120,7 +120,7 @@ public class ViewProfilePageController implements Initializable {
             String smoker = "";
             String languages = "";
             int personality = 0;
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbPortal", "root", "root");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbPortal", "root", "0123456789");
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
             while (rs.next()) {
